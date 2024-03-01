@@ -1,0 +1,25 @@
+---
+import projectData from "../data/client-data.json";
+
+const { id, images, title, tech } = projectData[0];
+---
+
+<section class="container">
+  <h2 class="uppercase animation underline">Featured client</h2>
+  <div class="">
+    <div class="">
+      <h3 class="">{title}</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum unde
+        blanditiis soluta magni non ducimus velit ad ea omnis doloribus aliquam,
+        aspernatur minima fugit sint ullam fuga! Corporis, fuga iure?
+      </p>
+      <a href={`/client-detail/${id}`}>Find out more</a>
+    </div>
+
+    <div class="">
+      <img src="/assets/images/tim-temp-1.png" alt="temp" />
+      <img src="/assets/images/tim-temp-2.png" alt="temp" />
+    </div>
+  </div>
+</section>

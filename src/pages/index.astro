@@ -1,15 +1,21 @@
 ---
-import Skills from "../components/Skills.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import FeaturedClient from "../components/FeaturedClient.astro";
+import Testimonials from "../components/Testimonials.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Contact from "../components/Contact.astro";
 
-import FeaturedProject from "../components/FeaturedProject.astro";
-
-const pageTitle = "Mark Lawson | Frontend Developer";
+const pageTitle =
+  "Mark Lawson | walkonmars.design | Web Design & Development Services in Bristol, UK.";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <Hero />
-  <Skills />
-  <FeaturedProject />
+  <Services />
+  <FeaturedClient />
+  <Testimonials />
+  <AboutMe />
+  <Contact />
 </BaseLayout>

@@ -1,17 +1,17 @@
 ---
-import projectData from "../data/project-data.json";
+import projectData from "../data/client-data.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
   <div class="page container space-xl">
-    <h1 class="underline">Projects</h1>
+    <h1 class="underline">clients</h1>
 
     <main class="two-columns">
       {
         projectData.map(({ id, title, images, tech, code }) => (
           <div class="project  space-xl">
-            <a href={`/project-detail/${id} `}>
+            <a href={`/client-detail/${id} `}>
               <img src={images.small} alt={title} title="View Project" />
             </a>
             <h3 class="space-s">{title}</h3>
@@ -21,7 +21,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               ))}
             </ul>
             <div class="project__links space-s flex space-around">
-              <a href={`/project-detail/${id}`}>View Project</a>
+              <a href={`/client-detail/${id}`}>View Project</a>
               <a href={code} target="_blank">
                 View Code
               </a>

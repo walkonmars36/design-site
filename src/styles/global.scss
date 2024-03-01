@@ -3,90 +3,40 @@
 @use "./reset.css" as *;
 
 @font-face {
-  font-family: "Space Grotesk";
-  src: url("/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf")
+  font-family: "OpenSans";
+  src: url("/public/assets/fonts/variable/OpenSans-VariableFont_wdth\,wght.ttf")
     format("truetype");
-  font-variation-settings: "wght" 300 700;
+  font-variation-settings: "wght" 400 700;
 }
 
-html {
-  font-family: "Space Grotesk", sans-serif;
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/public/assets/fonts/static/Ubuntu-Regular.ttf") format("truetype"),
+    url("/public/assets/fonts/static/Ubuntu-Bold.ttf") format("truetype");
 }
 
 body {
-  font-weight: 300;
+  font-family: "OpenSans", sans-serif;
+  font-weight: 400;
 }
 
-h1 {
-  font-size: var(--step-4);
+h1,
+h2,
+h3 {
+  font-family: "Ubuntu", sans-serif;
 }
 
+h1,
 h2 {
-  font-size: var(--step-3);
+  font-weight: 700;
 }
 
 h3 {
-  font-size: var(--step-2);
-}
-
-a {
-  text-decoration: none;
-  position: relative;
-  transition: transform 0.3s;
-  overflow: hidden;
-}
-
-a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 0.1em;
-  background-color: var(--clr-links);
-  transition: all 0.3s;
-}
-
-a.hover,
-a.active {
-  transform: scale(1.05);
-}
-
-a.hover::after,
-a.active::after {
-  width: 100%;
+  font-weight: 400;
 }
 
 p {
-  font-size: var(--step-0);
   max-width: 65ch;
-}
-
-:root {
-  --clr-bg: var(--clr-bg-dark);
-  --clr-bg-header: var(--clr-bg-header-dark);
-  --clr-bg-footer: var(--clr-bg-footer-dark);
-  --clr-secondary: var(--clr-secondary-dark);
-  --clr-primary-font: var(--clr-primary-font-dark);
-  --clr-links: var(--clr-links-dark);
-  --clr-btn-bg: var(--clr-btn-bg-dark);
-  --clr-underline: var(--clr-underline-dark);
-  --clr-filter-shadow: var(--clr-green);
-  --clr-filter-bg: var(--clr-filter-bg-dark);
-  --clr-filter-bg-hvr: var(--clr-filter-bg-hvr-dark);
-
-  --input-background: var(--input-background-dark);
-  --input-grey: var(--input-grey-dark);
-  --input-focus-h: var(--input-focus-h-dark);
-  --input-focus-s: var(--input-focus-s-dark);
-  --input-focus-l: var(--input-focus-l-dark);
-
-  background-color: var(--clr-bg);
-  color: var(--clr-primary-font);
-
-  & a {
-    color: var(--clr-links);
-  }
 }
 
 // No scroll when nav is open

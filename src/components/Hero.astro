@@ -1,69 +1,17 @@
 ---
-import HeroImage from "../components/HeroImage.astro";
-import ContactMe from "../components/ContactMe.astro";
+import HireMe from "../components/HireMe.astro";
+import Platforms from "../components/Platforms.astro";
 ---
 
-<section class="container hero divider padding-btm-2xl">
-  <HeroImage />
-  <div class="hero__content">
-    <h1 class="space-m animation underline inline-b">Hi, I'm Mark</h1>
-    <p class="space-s animation">
-      Based in Bristol, UK. I’m an aspiring front-end developer, who, while lost
-      in music, is also now lost in code. I’m driven to produce excellent things
-      for the web, making them as accessible as I possibly can with the tools I
-      currently have. <a href="/about">Read More ...</a>
-    </p>
-    <div class="space-l animation">
-      <ContactMe />
-    </div>
+<section class="container">
+  <div class="">
+    <span>Hi, I'm Mark</span>
+    <h1 class="">I design and develop websites</h1>
+
+    <HireMe />
+    <h2>I can help you with ...</h2>
+  </div>
+  <div class="">
+    <Platforms />
   </div>
 </section>
-
-<style>
-  section {
-    text-align: center;
-  }
-
-  .hero {
-    margin-top: var(--space-l-xl);
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  @media (max-width: 374px) {
-    h1 {
-      font-size: 2.2rem;
-    }
-  }
-
-  @media (min-width: 760px) {
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      grid-template-areas: " hero__content hero__image";
-      align-items: center;
-      justify-items: center;
-      gap: 2rem;
-    }
-
-    .hero__content {
-      grid-area: hero__content;
-      text-align: left;
-    }
-
-    .hero__content h1 {
-      font-size: 3rem;
-    }
-
-    .hero__content p {
-      font-size: 1.2rem;
-    }
-
-    .hero__content a {
-      font-size: 1.2rem;
-    }
-  }
-</style>
