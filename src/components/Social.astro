@@ -1,0 +1,20 @@
+---
+const { platform, username } = Astro.props;
+import { Icon } from "astro-icon";
+const icon =
+  platform === "github" ? "mdi:github" : "linkedin" ? "mdi:linkedin" : null;
+---
+
+<a href={`https://www.${platform}.com/${username}`}>
+  <Icon name={icon} alt={platform} title={`Mark's ${platform} page`} />
+</a>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+  [astro-icon] {
+    width: var(--step-3);
+    height: auto;
+  }
+</style>

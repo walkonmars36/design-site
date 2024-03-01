@@ -1,0 +1,32 @@
+---
+import Navigation from "./Navigation.astro";
+import NavToggle from "./NavToggle.astro";
+---
+
+<header>
+  <div class="container flex space-between align-center">
+    <a class="mark-home" href="/">MarkLawson</a>
+    <nav>
+      <Navigation />
+    </nav>
+    <NavToggle />
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--clr-bg-header);
+    padding: var(--space-s-m) 0;
+    border-bottom: 1px solid var(--clr-secondary);
+  }
+
+  .mark-home {
+    font-size: var(--step-2);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  a {
+    color: var(--clr-mark-hdr);
+  }
+</style>

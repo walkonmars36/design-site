@@ -1,0 +1,58 @@
+---
+import projectData from "../data/project-data.json";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div class="page container space-xl">
+    <h1 class="underline">Projects</h1>
+
+    <main class="two-columns">
+      {
+        projectData.map(({ id, title, images, tech, code }) => (
+          <div class="project  space-xl">
+            <a href={`/project-detail/${id} `}>
+              <img src={images.small} alt={title} title="View Project" />
+            </a>
+            <h3 class="space-s">{title}</h3>
+            <ul class="flex" role="list">
+              {tech.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <div class="project__links space-s flex space-around">
+              <a href={`/project-detail/${id}`}>View Project</a>
+              <a href={code} target="_blank">
+                View Code
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: 60rem;
+  }
+  .project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 760px) {
+    .project {
+      width: 45%;
+    }
+
+    .two-columns {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+</style>

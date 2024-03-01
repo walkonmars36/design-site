@@ -1,0 +1,172 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <main class="container page">
+    <section class="page__text">
+      <h1 class="underline inline-b">Contact Me</h1>
+      <p class="space-m">
+        I would love to hear about your project and how I could help. Please
+        fill in the form, and I’ll get back to you as soon as possible.
+      </p>
+    </section>
+    <form
+      id="contact-form"
+      name="contact"
+      action="/success"
+      method="post"
+      data-netlify="true"
+    >
+      <p>
+        <label for="name">Name</label>
+        <input class="input" type="text" name="name" id="name" />
+        <span id="name-error" class="error-text font-xs-step-2"
+          >Name is required</span
+        >
+      </p>
+      <p>
+        <label for="email">Email</label>
+        <input class="input" type="email" name="email" id="email" />
+        <span id="email-error" class="error-text font-xs-step-2"
+          >Email is not valid</span
+        >
+      </p>
+      <p>
+        <label for="message">Message</label>
+        <textarea class="input" name="message" id="message" rows="5"></textarea>
+      </p>
+      <button class="submit btn" type="submit">Send</button>
+    </form>
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  .page {
+    margin-top: var(--space-xl);
+    // max-width: 50rem;
+
+    &__text {
+      text-align: center;
+    }
+
+    span {
+      display: block;
+      text-align: end;
+    }
+    .error-text {
+      display: none;
+      color: var(--clr-error);
+    }
+
+    @media (min-width: 56rem) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3xl);
+
+      &__text {
+        text-align: left;
+        margin-top: var(--space-l);
+      }
+    }
+  }
+  form {
+    margin-top: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .input {
+    font-size: 16px;
+    font-size: max(16px, 1em);
+    color: inherit;
+    width: 100%;
+    padding: 0.25em 0.5em;
+    background-color: var(--input-background);
+    border: none;
+    border-bottom: 2px solid var(--input-grey);
+    outline: transparent;
+  }
+
+  .input:focus {
+    background-color: var(--input-grey);
+    border-color: hsl(
+      var(--input-focus-h),
+      var(--input-focus-s),
+      var(--input-focus-l)
+    );
+  }
+
+  .input.error {
+    border-bottom: 2px solid var(--clr-error);
+  }
+
+  .input:not(textarea) {
+    line-height: 1;
+    height: 2.25rem;
+  }
+
+  textarea.input {
+    margin-top: var(--space-2xs);
+    resize: vertical;
+    overflow: auto;
+  }
+
+  button.submit {
+    background-color: var(--clr-btn-bg);
+    color: var(--clr-bg);
+    border-radius: 4px;
+    padding: 0.5em 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border: 0.1emsolid var(--clr-bg);
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--clr-bg);
+      color: var(--clr-btn-bg);
+      border: 0.1em solid var(--clr-btn-bg);
+    }
+  }
+</style>
+
+<script>
+  function validateEmail(email) {
+    const regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    return regex.test(email);
+  }
+
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const nameInput = document.getElementById("name") as HTMLInputElement;
+  const emailInput = document.getElementById("email") as HTMLInputElement;
+  const nameError = document.getElementById("name-error") as HTMLSpanElement;
+  const emailError = document.getElementById("email-error") as HTMLSpanElement;
+
+  nameInput.addEventListener("blur", () => {
+    if (!nameInput.value) {
+      nameInput.classList.add("error");
+      nameError.style.display = "block";
+    } else {
+      nameInput.classList.remove("error");
+      nameError.style.display = "none";
+    }
+  });
+
+  emailInput.addEventListener("blur", () => {
+    if (!validateEmail(emailInput.value)) {
+      emailInput.classList.add("error");
+      emailError.style.display = "block";
+    } else {
+      emailInput.classList.remove("error");
+      emailError.style.display = "none";
+    }
+  });
+
+  form.addEventListener("submit", (e) => {
+    if (!nameInput.value || !validateEmail(emailInput.value)) {
+      e.preventDefault();
+      alert("Please correct the errors and try again.");
+    }
+  });
+</script>

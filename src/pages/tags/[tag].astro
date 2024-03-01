@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob("../blog/posts/*.md");
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.frontmatter.tags.includes(tag)
+    );
+
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag: selectedTag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout pageTitle={selectedTag}>
+  <nav class="container space-l" aria-label="breadcrumb">
+    <ul class="breadcrumb flex" role="list">
+      <li class="breadcrumb-item">
+        <a href="/blog/">Blog /</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {selectedTag}
+      </li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1 class="space-xl underline">Posts tagged - {selectedTag}</h1>
+    <ul>
+      {
+        posts.map((post) => (
+          <BlogPost
+            date={new Date(post.frontmatter.pubDate).toLocaleDateString(
+              "en-GB",
+              {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              }
+            )}
+            class="blog-post"
+            url={post.url}
+            title={post.frontmatter.title}
+            description={post.frontmatter.description}
+            tags={post.frontmatter.tags}
+            image={post.frontmatter.image.url}
+          />
+        ))
+      }
+    </ul>
+  </main>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    --gap: 0.5rem;
+  }
+</style>

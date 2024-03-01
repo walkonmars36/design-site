@@ -1,0 +1,20 @@
+{
+  "name": "tutorial",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^2.1.0",
+    "@astrojs/rss": "^2.3.0",
+    "astro": "^2.0.18",
+    "astro-icon": "^0.8.0",
+    "preact": "^10.13.2",
+    "sass": "^1.62.0"
+  }
+}

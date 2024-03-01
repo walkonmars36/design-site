@@ -1,0 +1,15 @@
+---
+import Skills from "../components/Skills.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+
+import FeaturedProject from "../components/FeaturedProject.astro";
+
+const pageTitle = "Mark Lawson | Frontend Developer";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Hero />
+  <Skills />
+  <FeaturedProject />
+</BaseLayout>

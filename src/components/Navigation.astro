@@ -1,0 +1,44 @@
+---
+---
+
+<ul data-visible="false" class="primary-navigation flex">
+  <li><a href="/">Home</a></li>
+  <li><a href="/about/">About</a></li>
+  <li><a href="/projects/">Projects</a></li>
+  <li class="blog"><a href="/blog/">Blog</a></li>
+  <li><a href="/contact/">Contact Me</a></li>
+</ul>
+
+<style lang="scss">
+  ul {
+    list-style: none;
+  }
+  .primary-navigation {
+    --gap: clamp(1.5rem, 5vw, 3.5rem);
+    flex-direction: column;
+    inset: 0 0 0 30%;
+    position: fixed;
+    background: var(--clr-secondary);
+    z-index: 100;
+    padding: min(10rem, 15vh) 2rem;
+    transform: translateX(100%);
+    transition: transform ease-in-out 0.5s;
+
+    @media (min-width: 40rem) {
+      inset: 0 0 0 50%;
+    }
+
+    & * a {
+      font-size: var(--step-2);
+    }
+
+    &[data-visible="true"] {
+      transform: translateX(0);
+      --webkit-transform: translateX(0);
+    }
+  }
+
+  .blog {
+    margin-bottom: auto;
+  }
+</style>

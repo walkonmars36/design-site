@@ -1,0 +1,42 @@
+---
+const { date, url, title, description, tags, image } = Astro.props;
+---
+
+<article data-tags={tags} class="blog-item">
+  <a href={url}> <img src={image} alt={title} /></a>
+  <h3 class="blog__post-title">{title}</h3>
+
+  <time class="space-xs" datetime={date}>{date}</time>
+
+  <p class="space-s">{description}</p>
+  <a class="read-more space-s" href={url}>Read More ...</a>
+</article>
+
+<style>
+  li {
+    list-style-type: none;
+  }
+
+  time {
+    display: inline-block;
+  }
+
+  .blog-item {
+    margin-top: var(--space-2xl);
+  }
+
+  .blog__post-title {
+    margin-top: var(--space-m);
+  }
+
+  .read-more {
+    display: inline-block;
+  }
+
+  article:not(:last-child)::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid var(--clr-secondary);
+    margin-top: var(--space-2xl);
+  }
+</style>
