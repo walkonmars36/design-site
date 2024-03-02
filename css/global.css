@@ -1,3 +1,58 @@
+:root {
+  --color-primary: #fff;
+  --color-primary-80: rgba(255, 255, 255, 0.8);
+  --color-primary-30: rgba(255, 255, 255, 0.3);
+  --color-accent-300: #a9f0e2;
+  --color-accent-400: #0fc5b0;
+  --color-accent-500: #00937e;
+  --color-accent-600: #0a4039;
+  --color-secondary-200: #434956;
+  --color-secondary-300: #272a2e;
+  --color-secondary-400: #222529;
+  --color-secondary-500: #1d1e20;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-700: 700;
+  --step--2: clamp(0.7813rem, 0.7483rem + 0.1646vi, 0.88rem);
+  --step--1: clamp(0.9375rem, 0.8833rem + 0.2708vi, 1.1rem);
+  --step-0: clamp(1.125rem, 1.0417rem + 0.4167vi, 1.375rem);
+  --step-1: clamp(1.35rem, 1.2271rem + 0.6146vi, 1.7188rem);
+  --step-2: clamp(1.62rem, 1.4439rem + 0.8807vi, 2.1484rem);
+  --step-3: clamp(1.944rem, 1.6968rem + 1.2359vi, 2.6855rem);
+  --step-4: clamp(2.3328rem, 1.9914rem + 1.7069vi, 3.3569rem);
+  --step-5: clamp(2.7994rem, 2.3338rem + 2.328vi, 4.1962rem);
+  --step-xl: clamp(4.5rem, 3.5417rem + 4.7917vi, 7.375rem);
+  --space-3xs: clamp(0.3125rem, 0.2917rem + 0.1042vi, 0.375rem);
+  --space-2xs: clamp(0.5625rem, 0.5208rem + 0.2083vi, 0.6875rem);
+  --space-xs: clamp(0.875rem, 0.8125rem + 0.3125vi, 1.0625rem);
+  --space-s: clamp(1.125rem, 1.0417rem + 0.4167vi, 1.375rem);
+  --space-m: clamp(1.6875rem, 1.5625rem + 0.625vi, 2.0625rem);
+  --space-l: clamp(2.25rem, 2.0833rem + 0.8333vi, 2.75rem);
+  --space-xl: clamp(3.375rem, 3.125rem + 1.25vi, 4.125rem);
+  --space-2xl: clamp(4.5rem, 4.1667rem + 1.6667vi, 5.5rem);
+  --space-3xl: clamp(6.75rem, 6.25rem + 2.5vi, 8.25rem);
+  --fluid-18-80: clamp(1.125rem, -0.1667rem + 6.4583vi, 5rem);
+  /* one-up pairs */
+  --space-3xs-2xs: clamp(0.3125rem, 0.1875rem + 0.625vi, 0.6875rem);
+  --space-2xs-xs: clamp(0.5625rem, 0.3958rem + 0.8333vi, 1.0625rem);
+  --space-xs-s: clamp(0.875rem, 0.7083rem + 0.8333vi, 1.375rem);
+  --space-s-m: clamp(1.125rem, 0.8125rem + 1.5625vi, 2.0625rem);
+  --space-m-l: clamp(1.6875rem, 1.3333rem + 1.7708vi, 2.75rem);
+  --space-l-xl: clamp(2.25rem, 1.625rem + 3.125vi, 4.125rem);
+  --space-xl-2xl: clamp(3.375rem, 2.6667rem + 3.5417vi, 5.5rem);
+  --space-2xl-3xl: clamp(4.5rem, 3.25rem + 6.25vi, 8.25rem);
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 2rem;
+}
+
+.wrapper {
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: var(--fluid-18-80);
+}
+
 .flex {
   display: flex;
   gap: var(--gap, 1rem);
@@ -35,9 +90,12 @@
   align-self: flex-end;
 }
 
-.container {
-  margin-inline: auto;
-  max-width: 80rem;
+.grid {
+  display: grid;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .d-block {
@@ -68,16 +126,24 @@
   margin-top: var(--space-xl);
 }
 
-.space-l-2xl {
-  margin-top: var(--space-l-2xl);
+.space-l-xl {
+  margin-top: var(--space-l-xl);
 }
 
 .space-xl-2xl {
   margin-top: var(--space-xl-2xl);
 }
 
+.space-2xl-3xl {
+  margin-top: var(--space-2xl-3xl);
+}
+
 .padding-btm-2xl {
   padding-bottom: var(--space-2xl);
+}
+
+.padding-block-m {
+  padding-block: var(--space-m);
 }
 
 .uppercase {
@@ -97,27 +163,39 @@
 }
 
 .underline {
-  border-bottom: 0.5rem solid var(--clr-underline);
+  border-bottom: 0.5rem solid var(--color-underline);
 }
 
 .font-xs-step-2 {
   font-size: var(--step--2);
 }
 
-.border-radius-2 {
-  border-radius: var(--border-radius-2);
+.h2 {
+  font-size: var(--step-4);
 }
 
-.font-m-step-1 {
-  font-size: var(--step-1);
+.h3 {
+  font-size: var(--step-2);
 }
 
-.dark-grey {
-  color: var(--clr-dark-purple-grey);
+.border-radius-sm {
+  border-radius: var(--border-radius-sm);
 }
 
-.divider {
-  border-bottom: 2px solid var(--clr-lilac);
+.border-radius-md {
+  border-radius: var(--border-radius-md);
+}
+
+.border-radius-lg {
+  border-radius: var(--border-radius-lg);
+}
+
+.border-radius-xl {
+  border-radius: var(--border-radius-xl);
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
 }
 
 /* Box sizing rules */
@@ -125,6 +203,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Prevent font size inflation */
@@ -132,20 +212,6 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-}
-
-/* Remove default margin in favour of better control in authored CSS */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin-block-end: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -192,6 +258,12 @@ picture {
   display: block;
 }
 
+/* give svg's that don't have width or height set a default size */
+svg:not([width]):not([height]) {
+  height: 1.5ex;
+  width: auto;
+}
+
 /* Inherit fonts for inputs and buttons */
 input,
 button,
@@ -222,6 +294,13 @@ textarea:not([rows]) {
 body {
   font-family: "OpenSans", sans-serif;
   font-weight: 400;
+  font-size: var(--step-0);
+  background: var(--color-secondary-500);
+  color: var(--color-primary);
+}
+
+#main-content.blur {
+  filter: blur(10px);
 }
 
 h1,
@@ -230,19 +309,34 @@ h3 {
   font-family: "Ubuntu", sans-serif;
 }
 
-h1,
+h1 {
+  font-size: var(--step-xl);
+  max-width: 10ch;
+}
+
 h2 {
-  font-weight: 700;
+  font-size: var(--step-4);
 }
 
 h3 {
-  font-weight: 400;
+  font-size: var(--step-2);
 }
 
 p {
-  max-width: 65ch;
+  max-width: 60ch;
+  color: var(--color-primary-80);
+}
+
+a {
+  color: var(--color-accent-300);
+  text-decoration: none;
 }
 
 .no-scroll {
   overflow: hidden;
+}
+
+::selection {
+  background: var(--color-accent-300);
+  color: var(--color-secondary-500);
 }/*# sourceMappingURL=global.css.map */

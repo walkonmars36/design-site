@@ -18,6 +18,13 @@
 body {
   font-family: "OpenSans", sans-serif;
   font-weight: 400;
+  font-size: var(--step-0);
+  background: var(--color-secondary-500);
+  color: var(--color-primary);
+}
+
+#main-content.blur {
+  filter: blur(10px);
 }
 
 h1,
@@ -26,20 +33,35 @@ h3 {
   font-family: "Ubuntu", sans-serif;
 }
 
-h1,
+h1 {
+  font-size: var(--step-xl);
+  max-width: 10ch;
+}
+
 h2 {
-  font-weight: 700;
+  font-size: var(--step-4);
 }
 
 h3 {
-  font-weight: 400;
+  font-size: var(--step-2);
 }
 
 p {
-  max-width: 65ch;
+  max-width: 60ch;
+  color: var(--color-primary-80);
+}
+
+a {
+  color: var(--color-accent-300);
+  text-decoration: none;
 }
 
 // No scroll when nav is open
 .no-scroll {
   overflow: hidden;
+}
+
+::selection {
+  background: var(--color-accent-300);
+  color: var(--color-secondary-500);
 }

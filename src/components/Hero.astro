@@ -3,15 +3,27 @@ import HireMe from "../components/HireMe.astro";
 import Platforms from "../components/Platforms.astro";
 ---
 
-<section class="container">
-  <div class="">
-    <span>Hi, I'm Mark</span>
+<section>
+  <div class="wrapper">
+    <span class="bold h3">Hi, I'm Mark</span>
     <h1 class="">I design and develop websites</h1>
 
     <HireMe />
     <h2>I can help you with ...</h2>
   </div>
-  <div class="">
+  <div class="platform flex">
     <Platforms />
   </div>
 </section>
+
+<style>
+  .platform {
+    margin-top: var(--space-l-xl);
+    border-top: 2px solid var(--color-primary-30);
+    border-bottom: 2px solid var(--color-primary-30);
+  }
+
+  h2 {
+    margin-top: var(--space-l);
+  }
+</style>

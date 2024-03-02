@@ -3,8 +3,8 @@ import Navigation from "./Navigation.astro";
 import NavToggle from "./NavToggle.astro";
 ---
 
-<header>
-  <div class="">
+<header class="wrapper">
+  <div class="header-content">
     <a class="" href="/">walkonmars.design</a>
     <nav>
       <Navigation />
@@ -13,4 +13,13 @@ import NavToggle from "./NavToggle.astro";
   </div>
 </header>
 
-<style></style>
+<style>
+  .header-content {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-s);
+    padding-block: var(--space-m-l);
+
+    z-index: 200;
+  }
+</style>

@@ -17,7 +17,7 @@ const { title, description, images, url, code, tech } = Astro.props;
 ---
 
 <BaseLayout>
-  <main class="container space-xl">
+  <main class="wrapper space-xl">
     <h1 class="underline">{title}</h1>
     <img class="space-xl" src={images.small} alt={title} />
     <div class="project-links space-s flex">
