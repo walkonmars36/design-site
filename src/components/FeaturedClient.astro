@@ -4,22 +4,52 @@ import projectData from "../data/client-data.json";
 const { id, images, title, tech } = projectData[0];
 ---
 
-<section class="wrapper space-2xl-3xl">
-  <h2 class="">Featured client</h2>
-  <div class="">
-    <div class="">
-      <h3 class="">{title}</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum unde
-        blanditiis soluta magni non ducimus velit ad ea omnis doloribus aliquam,
-        aspernatur minima fugit sint ullam fuga! Corporis, fuga iure?
-      </p>
-      <a href={`/client-detail/${id}`}>Find out more</a>
-    </div>
-
-    <div class="">
-      <img src="/assets/images/tim-temp-1.png" alt="temp" />
-      <img src="/assets/images/tim-temp-2.png" alt="temp" />
+<section class="wrapper space-xl-2xl">
+  <div class="featured">
+    <h2 class="">Featured client</h2>
+    <div class="featured__content">
+      <div class="featured__content-text flow">
+        <h3 class="">{title}</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum unde
+          blanditiis soluta magni non ducimus velit ad ea omnis doloribus
+          aliquam, aspernatur minima fugit sint ullam fuga! Corporis, fuga iure?
+        </p>
+        <a href={`/client-detail/${id}`}>Find out more</a>
+      </div>
+      <div class="featured__images flow">
+        <picture><img src="/assets/images/tim-temp-1.png" alt="temp" /></picture
+        >
+        <picture><img src="/assets/images/tim-temp-2.png" alt="temp" /></picture
+        >
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  a {
+    display: block;
+  }
+
+  .featured {
+    background: var(--color-secondary-400);
+    padding: var(--space-3xl) var(--space-xl);
+    border-radius: var(--border-radius-xl);
+  }
+  .featured__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: var(--space-l);
+  }
+  .featured__content > * {
+    flex: 1 1 20rem;
+  }
+
+  .featured__content-text {
+    border-right: 1px solid var(--color-primary-30);
+    padding-right: var(--space-m);
+    padding-top: var(--space-m);
+  }
+</style>

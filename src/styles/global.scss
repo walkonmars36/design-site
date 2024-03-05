@@ -1,18 +1,19 @@
 @use "./variables.scss" as *;
 @use "./utilities.scss" as *;
 @use "./reset.css" as *;
+@use "./elements.scss" as *;
 
 @font-face {
   font-family: "OpenSans";
-  src: url("/public/assets/fonts/variable/OpenSans-VariableFont_wdth\,wght.ttf")
-    format("truetype");
+  src: url("/assets/fonts/variable/OpenSans-VariableFont_wght.woff2")
+    format("woff2");
   font-variation-settings: "wght" 400 700;
 }
 
 @font-face {
   font-family: "Ubuntu";
-  src: url("/public/assets/fonts/static/Ubuntu-Regular.ttf") format("truetype"),
-    url("/public/assets/fonts/static/Ubuntu-Bold.ttf") format("truetype");
+  src: url("/assets/fonts/static/Ubuntu-400.woff2") format("woff2"),
+    url("/assets/fonts/static/Ubuntu-700.woff2") format("woff2");
 }
 
 body {
@@ -49,6 +50,10 @@ h3 {
 p {
   max-width: 60ch;
   color: var(--color-primary-80);
+}
+
+p.large {
+  font-size: var(--step-1);
 }
 
 a {

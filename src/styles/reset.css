@@ -80,3 +80,18 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+/* Where it has a class of btn remove default button styles  */
+
+button.btn {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 2px solid currentcolor;
+  }
+}

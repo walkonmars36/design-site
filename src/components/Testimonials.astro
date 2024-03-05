@@ -2,14 +2,35 @@
 ---
 
 <section class="wrapper" id="testimonials">
-  <img src="/assets/images/quote-mark.svg" aria-hidden="true" alt="" />
-
-  <div>
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
-      commodi numquam nobis enim beatae earum modi eligendi saepe dignissimos
-      vel sequi, doloremque obcaecati aut fuga distinctio vitae culpa? Atque,
-      dolorem.
-    </p>
+  <div class="testimonial">
+    <picture class="inline"
+      ><img
+        src="/assets/images/quote-mark.svg"
+        aria-hidden="true"
+        alt=""
+      /></picture
+    >
+    <div class="testimonial__text">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
+        commodi numquam nobis enim beatae earum modi eligendi saepe dignissimos
+        vel sequi, doloremque obcaecati aut fuga distinctio vitae culpa? Atque,
+        dolorem.
+      </p>
+    </div>
   </div>
 </section>
+
+<style>
+  section {
+    padding-block: var(--space-3xl);
+    display: grid;
+    place-items: center;
+  }
+  .testimonial__text {
+    background: var(--color-secondary-200);
+    margin: var(--space-l);
+    padding: var(--space-l);
+    border-radius: var(--border-radius-lg);
+  }
+</style>

@@ -6,35 +6,35 @@
     <h2>Client Services</h2>
 
     <div class="services grid grid-cols-2">
-      <div class="ux-ui-design">
+      <div class="ux-ui-design flow">
         <h3>UX/UI Design</h3>
         <p>
           Designing user interfaces and experiences that are intuitive, easy to
           use, and visually appealing.
         </p>
       </div>
-      <div class="wordpress-dev">
+      <div class="flow">
         <h3>WordPress Development</h3>
         <p>
           Building custom WordPress themes and plugins that are easy to manage
           and update.
         </p>
       </div>
-      <div class="webflow-dev">
+      <div class="flow">
         <h3>Webflow Development</h3>
         <p>
           Building custom websites using Webflow, a powerful and flexible design
           tool.
         </p>
       </div>
-      <div class="shopify-dev">
+      <div class="flow">
         <h3>Shopify Development</h3>
         <p>
           Building custom Shopify themes and apps that are easy to manage and
           update.
         </p>
       </div>
-      <div class="frontend-dev">
+      <div class="flow">
         <h3>Frontend Development</h3>
         <p>
           Building custom websites and web applications using modern frontend
@@ -54,23 +54,6 @@
     padding-block: var(--space-2xl-3xl);
   }
 
-  h3 {
-    position: relative;
-    display: inline-block;
-    z-index: 2;
-  }
-
-  h3::after {
-    content: "";
-    position: absolute;
-    bottom: -0.25rem;
-    left: 0;
-    width: 100%;
-    height: 0.6rem;
-    background: var(--color-accent-500);
-    z-index: -1;
-  }
-
   p {
     max-width: 30ch;
   }
@@ -78,5 +61,9 @@
   .services {
     margin-top: var(--space-xl-2xl);
     gap: var(--space-xl-2xl);
+  }
+
+  .flow {
+    --flow-space: var(--space-2xs);
   }
 </style>

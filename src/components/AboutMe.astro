@@ -2,7 +2,7 @@
 ---
 
 <section class="wrapper" id="about-me">
-  <div>
+  <div class="flow">
     <h2>About Me</h2>
     <p>
       I haven’t taken the typical route to becoming a freelance web designer.
@@ -26,6 +26,70 @@
       over into the web world. From there I dabbled in web design, creating
       simple websites for friends and small businesses.
     </p>
-    <a href="#">Read more</a>
+    <div class="more-text flow">
+      <p>
+        In 2020, as happened to many people, my business stalled as we all went
+        into lock-down. I took time to reflect on my work and consider the
+        aspects of it that brought me joy - I found that it was web design and
+        development that really excited and compelled me.
+      </p>
+      <p>
+        Over the last four years I have studied x, y and z - running my own
+        business means that I am very self motivated! Learning as much as I can
+        to be able to offer a cross-section of website options to anyone looking
+        for a bespoke, affordable and xxxxx site.
+      </p>
+      <p>
+        Outside of work I am a musician, a dad, a husband, a lover of film,
+        football and good ale, oh and the pet-dad to a soppy unconditionally
+        loving black labrador called Rocket.
+      </p>
+    </div>
+    <button class="btn read-more">Read more</button>
+    <button class="btn read-less">Read less</button>
   </div>
 </section>
+
+<style>
+  section {
+    background: var(--color-secondary-300);
+    border-radius: var(--border-radius-xl);
+    padding-block: var(--space-3xl);
+  }
+  button.btn {
+    color: var(--color-accent-300);
+  }
+
+  .read-less {
+    display: none;
+  }
+
+  .more-text {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s, max-height 0.5s;
+  }
+  .more-text.visible {
+    opacity: 1;
+    max-height: 500px;
+  }
+</style>
+
+<script is:inline>
+  const readMore = document.querySelector(".read-more");
+  const readLess = document.querySelector(".read-less");
+  const moreText = document.querySelector(".more-text");
+
+  readMore.addEventListener("click", () => {
+    moreText.classList.add("visible");
+    readMore.style.display = "none";
+    readLess.style.display = "block";
+  });
+
+  readLess.addEventListener("click", () => {
+    moreText.classList.remove("visible");
+    readMore.style.display = "block";
+    readLess.style.display = "none";
+  });
+</script>

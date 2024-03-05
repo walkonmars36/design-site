@@ -50,8 +50,8 @@
   --space-2xl-3xl: clamp(4.5rem, 3.25rem + 6.25vi, 8.25rem);
 
   //   border radius
-  --border-radius-sm: 0.25rem;
-  --border-radius-md: 0.5rem;
-  --border-radius-lg: 1rem;
-  --border-radius-xl: 2rem;
+  --border-radius-sm: 0.25rem; // 4px
+  --border-radius-md: 0.5rem; // 8px
+  --border-radius-lg: 1rem; // 16px
+  --border-radius-xl: 2rem; // 32px
 }

@@ -10,6 +10,11 @@
   padding-inline: var(--fluid-18-80);
 }
 
+// flow space //
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
 // FLEX //
 
 .flex {
@@ -45,7 +50,11 @@
   align-items: center;
 }
 
-.flex-end {
+.self-center {
+  align-self: center;
+}
+
+.self-end {
   align-self: flex-end;
 }
 
@@ -119,7 +128,7 @@
   text-transform: uppercase;
 }
 
-.inline-b {
+.inline {
   display: inline-block;
 }
 
@@ -164,9 +173,4 @@
 
 .border-radius-xl {
   border-radius: var(--border-radius-xl); // 32
-}
-
-// flow space //
-.flow > * + * {
-  margin-top: var(--flow-space, 1em);
 }
