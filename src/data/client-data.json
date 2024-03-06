@@ -1,11 +1,11 @@
 [
   {
     "id": "timothy-malnick",
-    "title": "timothymalnick.com",
+    "title": "Timothy Malnick",
     "description": "Minim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem.",
     "url": "https://timothymalnick.com/",
     "images": {
-      "small": "",
+      "small": "/assets/images/tim-sm-client-temp.png",
       "large": ""
     },
     "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
@@ -16,7 +16,7 @@
     "description": "Minim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem.",
     "url": "https://judelawsontherapy.co.uk/",
     "images": {
-      "small": "",
+      "small": "/assets/images/jude-sm-client-temp.png",
       "large": ""
     },
     "tech": ["Webflow", "Netlify"]

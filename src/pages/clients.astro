@@ -1,58 +1,50 @@
 ---
-import projectData from "../data/client-data.json";
+import clientData from "../data/client-data.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <div class="page wrapper space-xl">
-    <h1 class="underline">clients</h1>
+  <main class="wrapper" id="main-content">
+    <h1 class="">Clients</h1>
 
-    <main class="two-columns">
-      {
-        projectData.map(({ id, title, images, tech, code }) => (
-          <div class="project  space-xl">
-            <a href={`/client-detail/${id} `}>
-              <img src={images.small} alt={title} title="View Project" />
-            </a>
-            <h3 class="space-s">{title}</h3>
-            <ul class="flex" role="list">
-              {tech.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-            <div class="project__links space-s flex space-around">
-              <a href={`/client-detail/${id}`}>View Project</a>
-              <a href={code} target="_blank">
-                View Code
-              </a>
-            </div>
-          </div>
-        ))
-      }
-    </main>
-  </div>
+    {
+      clientData.map(({ id, title, images, tech }) => (
+        <div class="client border-radius-xl">
+          <h2 class="">{title}</h2>
+          <a href={`/client-detail/${id} `}>
+            <picture>
+              <img
+                class="border-radius-lg"
+                src={images.small}
+                alt={title}
+                title="View Project"
+              />
+            </picture>
+          </a>
+
+          <ul class="flex space-s" role="list">
+            {tech.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+
+          <a class="space-m inline" href={`/client-detail/${id}`}>
+            View Project
+          </a>
+        </div>
+      ))
+    }
+  </main>
 </BaseLayout>
 
 <style>
-  .page {
-    max-width: 60rem;
-  }
-  .project {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .client {
+    margin-top: var(--space-2xl-3xl);
+    background: var(--color-secondary-400);
+    padding: var(--space-2xl-3xl) var(--space-l-xl);
   }
 
-  @media (min-width: 760px) {
-    .project {
-      width: 45%;
-    }
-
-    .two-columns {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
+  picture {
+    margin-top: var(--space-s-m);
   }
 </style>

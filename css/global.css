@@ -337,8 +337,8 @@ body {
   color: var(--color-primary);
 }
 
-#main-content.blur {
-  filter: blur(10px);
+#main-content.opacity-01 {
+  opacity: 0.01;
 }
 
 h1,

@@ -16,13 +16,13 @@ navToggle.addEventListener("click", function () {
     navToggle.setAttribute("aria-label", "Open Menu");
     navToggle.setAttribute("aria-expanded", "false");
     document.body.classList.remove("no-scroll"); // Enable scrolling
-    mainContent.classList.remove("blur"); // Remove blur effect
+    mainContent.classList.remove("opacity-01"); // Remove opacity-01 effect
   } else {
     nav.setAttribute("data-visible", "true");
     navToggle.setAttribute("aria-label", "Close Menu");
     navToggle.setAttribute("aria-expanded", "true");
     document.body.classList.add("no-scroll"); // Disable scrolling
-    mainContent.classList.add("blur"); // Add blur effect
+    mainContent.classList.add("opacity-01"); // Add opacity-01 effect
   }
 });
 

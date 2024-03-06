@@ -1,12 +1,13 @@
 ---
-import Social from "./Social.astro";
-
 const year = new Date().getFullYear();
 ---
 
 <footer class="wrapper">
   <p>Mark Lawson <span>&copy; {year}</span></p>
-  <div class="">
-    <Social platform="linkedin" username="in/mark-lawson-001/" />
-  </div>
 </footer>
+
+<style>
+  footer {
+    padding: var(--space-m) 0;
+  }
+</style>
