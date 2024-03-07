@@ -18,8 +18,9 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Header />
-    <slot />
-
+    <main id="main-content">
+     <slot />
+    </main>
     <button class="back-to-top" title="Back to top"
       ><span class="chevron">&#9650;</span></button
     >

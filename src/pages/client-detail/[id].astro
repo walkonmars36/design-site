@@ -3,30 +3,34 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import projectData from "../../data/client-data.json";
 
 export async function getStaticPaths() {
-  return projectData.map(
-    ({ id, title, description, images, url, code, tech }) => {
-      return {
-        params: { id },
-        props: { title, description, url, code, images, tech },
-      };
-    }
-  );
+  return projectData.map(({ id, title, description, images, url, tech }) => {
+    return {
+      params: { id },
+      props: { title, description, url, images, tech },
+    };
+  });
 }
 
-const { title, description, images, url, code, tech } = Astro.props;
+const { title, description, images, url, tech } = Astro.props;
+const paragraphs = description.split("\n");
+const pageTitle = `${title} | Client Project`;
 ---
 
-<BaseLayout>
-  <main class="wrapper space-xl">
-    <h1 class="underline">{title}</h1>
-    <img class="space-xl" src={images.small} alt={title} />
-    <div class="project-links space-s flex">
-      <a href={url} target="_blank">View Live Site</a>
-      <a href={code} target="_blank">View Code</a>
+<BaseLayout pageTitle={pageTitle}>
+  <article class="wrapper space-xl">
+    <h1 class="">Client focus: <br />{title}</h1>
+    <img class="space-xl border-radius-lg" src={images.small} alt={title} />
+    <div class="flex column">
+     
+      <ul class="flex space-m">
+        <li>Built with:</li>
+        {tech.map((item) => <li>{item}</li>)}
+      </ul>
+      <a class="space-m inline" href={url} target="_blank">View Live Site</a>
+      {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    
     </div>
-    <p class="space-l">{description}</p>
-    <ul class="flex space-l">
-      {tech.map((item) => <li>{item}</li>)}
-    </ul>
-  </main>
+  </article>
 </BaseLayout>
+
+

@@ -26,6 +26,23 @@ navToggle.addEventListener("click", function () {
   }
 });
 
+// read more button
+const readMore = document.querySelector(".read-more");
+const readLess = document.querySelector(".read-less");
+const moreText = document.querySelector(".more-text");
+
+readMore.addEventListener("click", () => {
+  moreText.classList.add("visible");
+  readMore.style.display = "none";
+  readLess.style.display = "block";
+});
+
+readLess.addEventListener("click", () => {
+  moreText.classList.remove("visible");
+  readMore.style.display = "block";
+  readLess.style.display = "none";
+});
+
 // Scroll to Top //
 
 const backToTopButton = document.querySelector(".back-to-top");

@@ -1,15 +1,16 @@
 ---
 import clientData from "../data/client-data.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Clients | walkonmars.design";
 ---
 
-<BaseLayout>
-  <main class="wrapper" id="main-content">
+<BaseLayout pageTitle={pageTitle}>
+  <article class="wrapper" id="main-content">
     <h1 class="">Clients</h1>
 
     {
       clientData.map(({ id, title, images, tech }) => (
-        <div class="client border-radius-xl">
+        <section class="client border-radius-xl">
           <h2 class="">{title}</h2>
           <a href={`/client-detail/${id} `}>
             <picture>
@@ -31,10 +32,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <a class="space-m inline" href={`/client-detail/${id}`}>
             View Project
           </a>
-        </div>
+        </section>
       ))
     }
-  </main>
+  </article>
 </BaseLayout>
 
 <style>
