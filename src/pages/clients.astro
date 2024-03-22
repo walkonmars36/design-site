@@ -5,13 +5,13 @@ const pageTitle = "Clients | walkonmars.design";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <article class="wrapper" id="main-content">
-    <h1 class="">Clients</h1>
+  <article class="wrapper" id="main-content" transition:animate="slide">
+    <h1 class="" >Clients</h1>
 
     {
       clientData.map(({ id, title, images, tech }) => (
         <section class="client border-radius-xl">
-          <h2 class="">{title}</h2>
+          <h2 class="" >{title}</h2>
           <a href={`/client-detail/${id} `}>
             <picture>
               <img
