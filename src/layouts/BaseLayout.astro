@@ -1,6 +1,6 @@
 ---
 
-import { ViewTransitions } from "astro:transitions";
+
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.scss";
@@ -13,7 +13,7 @@ const { pageTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <ViewTransitions />
+ 
     <title>{pageTitle}</title>
   </head>
   <body >
@@ -58,3 +58,29 @@ const { pageTitle } = Astro.props;
     color: var(--color-bg);
   }
 </style>
+
+
+<script>
+  // Scroll to Top //
+
+const backToTopButton = document.querySelector(".back-to-top");
+
+if (backToTopButton !== null) {
+  backToTopButton.addEventListener("click", scrollToTop);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      backToTopButton.classList.add("show");
+    } else {
+      backToTopButton.classList.remove("show");
+    }
+  });
+}
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+</script>

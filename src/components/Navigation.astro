@@ -1,8 +1,8 @@
 ---
 ---
 
-<ul data-visible="false" class="primary-navigation" >
-  <li><a href="/">Home</a></li>
+<ul data-visible="false" class="primary-navigation"  >
+  <li><a href="/" >Home</a></li>
   <li><a href="/#services">Services</a></li>
   <li><a href="/clients">Clients</a></li>
   <li class=""><a href="/#testimonials">Testimonials</a></li>
@@ -37,3 +37,72 @@
     }
   }
 </style>
+
+
+<script>
+  // Nav Menu //
+
+const nav = document.querySelector(".primary-navigation");
+const navToggle = document.querySelector(".nav-toggle");
+const mainContent = document.querySelector("#main-content");
+
+// Function to close the navigation menu
+function closeNav() {
+  nav.setAttribute("data-visible", "false");
+  navToggle.setAttribute("aria-label", "Open Menu");
+  navToggle.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("no-scroll"); // Enable scrolling
+  mainContent.classList.remove("opacity-01"); // Remove opacity-01 effect
+}
+
+// Event listener for the navigation toggle button
+
+navToggle.addEventListener("click", function () {
+  const navIsOpen = nav.getAttribute("data-visible");
+  
+  if (navIsOpen === "true") {
+    closeNav();
+  } else {
+    nav.setAttribute("data-visible", "true");
+    navToggle.setAttribute("aria-label", "Close Menu");
+    navToggle.setAttribute("aria-expanded", "true");
+    document.body.classList.add("no-scroll"); // Disable scrolling
+    mainContent.classList.add("opacity-01"); // Add opacity-01 effect
+  }
+});
+
+// Event listeners for in-page links
+document
+  .querySelectorAll('.primary-navigation a[href^="/"]')
+  .forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // Close the navigation menu
+      closeNav();
+      // Check if it's an in-page link or a different page
+      if (this.getAttribute("href").startsWith("/")) {
+        // Remove the leading "/" from the href value
+        const targetId = this.getAttribute("href").substring(1);
+
+        // Check if it's an in-page link
+        if (this.getAttribute("href").startsWith("/#")) {
+          // Check if the target element exists
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            // Scroll to the target element
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+            });
+          } else {
+            // Navigate to the target page
+            window.location.href = this.getAttribute("href");
+          }
+        } else {
+          // Navigate to the target page
+          window.location.href = this.getAttribute("href");
+        }
+      }
+    });
+  });
+</script>
