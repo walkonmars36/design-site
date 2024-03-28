@@ -1,26 +1,32 @@
 ---
-import HireMe from "../components/HireMe.astro";
-import Platforms from "../components/Platforms.astro";
+import HeroBtn from "../components/HeroBtn.astro";
 ---
 
 <section>
   <div class="wrapper">
-    <span class="bold h3">Hi, I'm Mark</span>
-    <h1 class="" >I design and develop websites</h1>
+    <span class="h3 bold">Hi, I'm Mark</span>
+    <h1>I design and develop websites</h1>
 
-    <HireMe />
-    <h2>I can help you with ...</h2>
-  </div>
-  <div class="platform flex">
-    <Platforms />
+    <HeroBtn />
+    <h2 class="h3">I can help you with ...</h2>
   </div>
 </section>
 
 <style>
-  .platform {
-    margin-top: var(--space-l-xl);
-    border-top: 2px solid var(--color-primary-30);
-    border-bottom: 2px solid var(--color-primary-30);
+  section * {
+    color: var(--color-white);
+  }
+
+  section {
+    margin-top: var(--space-3xl);
+  }
+
+  div {
+    background: var(--color-secondary-200);
+  }
+
+  h1 {
+    max-width: 16ch;
   }
 
   h2 {

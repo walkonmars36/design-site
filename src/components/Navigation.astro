@@ -1,108 +1,93 @@
 ---
+
 ---
 
-<ul data-visible="false" class="primary-navigation"  >
-  <li><a href="/" >Home</a></li>
+<ul data-visible="false" class="primary-navigation">
+  <li><a href="/">Home</a></li>
   <li><a href="/#services">Services</a></li>
   <li><a href="/clients">Clients</a></li>
-  <li class=""><a href="/#testimonials">Testimonials</a></li>
-  <li class=""><a href="/#about-me">About me</a></li>
-  <li><a href="/#contact">Get in touch</a></li>
+  <li><a href="/#testimonials">Testimonials</a></li>
+  <li><a href="/#about-me">About me</a></li>
+  <li><a href="/#contact">Contact me</a></li>
 </ul>
 
 <style lang="scss">
+  ul {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+  }
+  a {
+    color: var(--color-white);
+    font-family: var(--ff-headings);
+    font-size: var(--step--1);
+    letter-spacing: 0.03em;
+  }
 
-  .primary-navigation {
-    --gap: clamp(1.5rem, 5vw, 3.5rem);
-    flex-direction: column;
-    inset: 0 0 0 30%;
-    position: fixed;
+  a:hover {
+    color: var(--color-accent-400);
+  }
+  ul li:nth-of-type(1) {
+    margin-left: auto;
+  }
+  ul li:nth-of-type(6) {
+    margin-left: auto;
     background: var(--color-accent-400);
-    z-index: 100;
-    padding: min(10rem, 15vh) 2rem;
-    transform: translateX(100%);
-    transition: transform ease-in-out 0.5s;
+    border-radius: var(--border-radius-md) var(--border-radius-xxl)
+      var(--border-radius-xxl) var(--border-radius-md);
+    overflow: hidden;
+  }
 
-    @media (min-width: 40rem) {
-      inset: 0 0 0 50%;
-    }
+  ul li:nth-of-type(6) a {
+    color: inherit;
+    font-weight: 700;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: var(--space-xs);
+  }
 
-    & * a {
-      font-size: var(--step-2);
-    }
+  ul li:nth-of-type(6) a:hover {
+    background: var(--color-accent-300);
+  }
 
-    &[data-visible="true"] {
-      transform: translateX(0);
-      --webkit-transform: translateX(0);
-    }
+  .primary-navigation.visible {
+    opacity: 1;
   }
 </style>
 
-
 <script>
-  // Nav Menu //
+  document.addEventListener("astro:page-load", () => {
+    document
+      .querySelectorAll('.primary-navigation a[href^="/"]')
+      .forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
 
-const nav = document.querySelector(".primary-navigation");
-const navToggle = document.querySelector(".nav-toggle");
-const mainContent = document.querySelector("#main-content");
+          // Check if it's an in-page link or a different page
+          if (this.getAttribute("href").startsWith("/")) {
+            // Remove the leading "/" from the href value
+            const targetId = this.getAttribute("href").substring(1);
 
-// Function to close the navigation menu
-function closeNav() {
-  nav.setAttribute("data-visible", "false");
-  navToggle.setAttribute("aria-label", "Open Menu");
-  navToggle.setAttribute("aria-expanded", "false");
-  document.body.classList.remove("no-scroll"); // Enable scrolling
-  mainContent.classList.remove("opacity-01"); // Remove opacity-01 effect
-}
-
-// Event listener for the navigation toggle button
-
-navToggle.addEventListener("click", function () {
-  const navIsOpen = nav.getAttribute("data-visible");
-  
-  if (navIsOpen === "true") {
-    closeNav();
-  } else {
-    nav.setAttribute("data-visible", "true");
-    navToggle.setAttribute("aria-label", "Close Menu");
-    navToggle.setAttribute("aria-expanded", "true");
-    document.body.classList.add("no-scroll"); // Disable scrolling
-    mainContent.classList.add("opacity-01"); // Add opacity-01 effect
-  }
-});
-
-// Event listeners for in-page links
-document
-  .querySelectorAll('.primary-navigation a[href^="/"]')
-  .forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      // Close the navigation menu
-      closeNav();
-      // Check if it's an in-page link or a different page
-      if (this.getAttribute("href").startsWith("/")) {
-        // Remove the leading "/" from the href value
-        const targetId = this.getAttribute("href").substring(1);
-
-        // Check if it's an in-page link
-        if (this.getAttribute("href").startsWith("/#")) {
-          // Check if the target element exists
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            // Scroll to the target element
-            targetElement.scrollIntoView({
-              behavior: "smooth",
-            });
-          } else {
-            // Navigate to the target page
-            window.location.href = this.getAttribute("href");
+            // Check if it's an in-page link
+            if (this.getAttribute("href").startsWith("/#")) {
+              // Check if the target element exists
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                // Scroll to the target element
+                targetElement.scrollIntoView({
+                  behavior: "smooth",
+                });
+              } else {
+                // Navigate to the target page
+                window.location.href = this.getAttribute("href");
+              }
+            } else {
+              // Navigate to the target page
+              window.location.href = this.getAttribute("href");
+            }
           }
-        } else {
-          // Navigate to the target page
-          window.location.href = this.getAttribute("href");
-        }
-      }
-    });
+        });
+      });
   });
 </script>

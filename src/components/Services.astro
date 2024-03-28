@@ -1,12 +1,13 @@
 ---
+
 ---
 
-<section class="space-xl-2xl" id="services">
+<section id="services">
   <div class="wrapper">
-    <h2>Client Services</h2>
+    <h2>Services</h2>
 
-    <div class="services grid grid-cols-2">
-      <div class="ux-ui-design flow">
+    <div class="services grid">
+      <div class="flow">
         <h3>UX/UI Design</h3>
         <p>
           Designing user interfaces and experiences that are intuitive, easy to
@@ -49,18 +50,27 @@
 
 <style>
   section {
-    background: var(--color-secondary-400);
-    border-radius: var(--border-radius-xl);
-    padding-block: var(--space-2xl-3xl);
+    margin-top: var(--space-l);
   }
 
   p {
     max-width: 30ch;
   }
 
+  .wrapper {
+    background: var(--color-bg-light);
+  }
+
   .services {
-    margin-top: var(--space-xl-2xl);
-    gap: var(--space-xl-2xl);
+    gap: var(--space-l);
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    margin-top: var(--space-xl);
+  }
+
+  .services div {
+    background: var(--color-white-80);
+    border-radius: var(--border-radius-xl);
+    padding: var(--space-s);
   }
 
   .flow {

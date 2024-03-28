@@ -1,0 +1,28 @@
+---
+
+---
+
+<a href="#contact">Get in touch</a>
+
+<style>
+  a {
+    display: inline-block;
+    font-weight: 700;
+    background: var(--color-accent-400);
+    color: var(--color-secondary-500);
+    padding: 0.5em 1.75em;
+    border-radius: var(--border-radius-sm);
+    margin-top: var(--space-m-l);
+  }
+
+  a:hover {
+    background: var(--color-accent-300);
+  }
+</style>
+
+<script>
+  document.querySelector(".hire-me").addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
+  });
+</script>

@@ -1,15 +1,23 @@
 ---
+
 ---
 
-<button
-  class="nav-toggle"
-  aria-controls="primary-navigation"
-  aria-label="Open Menu"
-  aria-expanded="false"
->
-</button>
+<div class="mob-nav-toggle">
+  <button
+    class="nav-toggle"
+    aria-controls="primary-navigation"
+    aria-label="Open Menu"
+    aria-expanded="false"
+  >
+  </button>
+</div>
 
 <style>
+  .mob-nav-toggle {
+    background: var(--color-accent-400);
+    padding: 1em;
+    border-radius: 50%;
+  }
   .nav-toggle {
     background: transparent;
     background-image: url(/assets/icons/icon-hamburger.svg);
@@ -21,11 +29,18 @@
     aspect-ratio: 1/1;
     border: 0;
     cursor: pointer;
-    z-index: 2;
+    transition: background-image 0.3s;
   }
 
   .nav-toggle[aria-expanded="true"] {
     background-image: url(/assets/icons/icon-close.svg);
     z-index: 200;
+    position: relative;
+  }
+
+  @media (min-width: 992px) {
+    .mob-nav-toggle {
+      display: none;
+    }
   }
 </style>

@@ -12,26 +12,33 @@
 
 @font-face {
   font-family: "Ubuntu";
-  src: url("/assets/fonts/static/Ubuntu-400.woff2") format("woff2"),
+  src:
+    url("/assets/fonts/static/Ubuntu-400.woff2") format("woff2"),
     url("/assets/fonts/static/Ubuntu-700.woff2") format("woff2");
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "OpenSans", sans-serif;
   font-weight: 400;
   font-size: var(--step-0);
-  background: var(--color-secondary-500);
+  background: var(--color-secondary-400);
   color: var(--color-primary);
 }
 
-#main-content.opacity-01 {
-  opacity: 0.01;
+main,
+header,
+footer {
+  padding-inline: var(--space-m);
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Ubuntu-700", sans-serif;
 }
 
 h1 {
@@ -48,24 +55,36 @@ h3 {
 
 p {
   max-width: 60ch;
-  color: var(--color-primary-80);
-}
-
-p.large {
-  font-size: var(--step-1);
+  color: var(--color-primary);
 }
 
 a {
-  color: var(--color-accent-300);
+  color: var(--color-accent-500);
   text-decoration: none;
 }
 
+fieldset {
+  border: none;
+}
+
+#main-content.opacity-01 {
+  opacity: 0.01;
+}
 // No scroll when nav is open
 .no-scroll {
   overflow: hidden;
 }
 
+// text selection color and background
 ::selection {
   background: var(--color-accent-300);
   color: var(--color-secondary-500);
+}
+
+@media (max-width: 370px) {
+  header,
+  main,
+  footer {
+    padding-inline: var(--space-2xs);
+  }
 }

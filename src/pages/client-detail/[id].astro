@@ -17,20 +17,37 @@ const pageTitle = `${title} | Client Project`;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <article class="wrapper space-xl">
-    <h1 class="">Client focus: <br />{title}</h1>
-    <img class="space-xl border-radius-lg" src={images.small} alt={title} />
-    <div class="flex column">
-     
-      <ul class="flex space-m">
-        <li>Built with:</li>
-        {tech.map((item) => <li>{item}</li>)}
-      </ul>
-      <a class="space-m inline" href={url} target="_blank">View Live Site</a>
-      {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-    
-    </div>
+  <article>
+    <h1 class="wrapper">Client focus: <br />{title}</h1>
+    <section class="wrapper">
+      <img class="space-xl border-radius-lg" src={images.small} alt={title} />
+      <div class="flex column">
+        <ul class="flex space-m">
+          <li>Built with:</li>
+          {tech.map((item) => <li>{item}</li>)}
+        </ul>
+        <a class="space-m inline" href={url} target="_blank">View Live Site</a>
+        {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </section>
   </article>
 </BaseLayout>
 
+<style>
+  article {
+    margin-top: var(--space-3xl-4xl);
+  }
+  h1 {
+    padding: var(--space-s-m) var(--space-l-xl);
+    background: var(--color-secondary-200);
+    color: var(--color-white);
+    border-radius: var(--border-radius-xxl);
+  }
 
+  section {
+    margin-top: var(--space-l);
+    background: var(--color-bg-light);
+    padding: var(--space-xl-2xl) var(--space-l-xl);
+    border-radius: var(--border-radius-xxl);
+  }
+</style>

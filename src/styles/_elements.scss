@@ -1,18 +1,20 @@
 .services h3,
-.featured h3 {
+.featured h3,
+.contact h2 {
   position: relative;
   display: inline-block;
   z-index: 2;
 }
 
 .services h3::after,
-.featured h3::after {
+.featured h3::after,
+.contact h2::after {
   content: "";
   position: absolute;
   bottom: -0.25rem;
   left: 0;
   width: 100%;
   height: 0.6rem;
-  background: var(--color-accent-500);
+  background: var(--color-accent-400);
   z-index: -1;
 }

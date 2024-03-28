@@ -1,0 +1,56 @@
+<button class="back-to-top" title="Back to top"
+  ><span class="chevron">&#9650;</span></button
+>
+
+<style>
+  .back-to-top {
+    opacity: 0;
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--color-accent-400);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .back-to-top:hover {
+    background-color: var(--color-accent-300);
+  }
+
+  .back-to-top.show {
+    opacity: 1;
+  }
+
+  .chevron {
+    color: var(--color-secondary-500);
+  }
+</style>
+
+<script>
+  // Scroll to Top //
+  document.addEventListener("astro:page-load", () => {
+    const backToTopButton = document.querySelector(".back-to-top");
+
+    if (backToTopButton !== null) {
+      backToTopButton.addEventListener("click", scrollToTop);
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 500) {
+          backToTopButton.classList.add("show");
+        } else {
+          backToTopButton.classList.remove("show");
+        }
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  });
+</script>

@@ -1,0 +1,126 @@
+---
+
+---
+
+<ul data-visible="false" class="mob-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/#services">Services</a></li>
+  <li><a href="/clients">Clients</a></li>
+  <li><a href="/#testimonials">Testimonials</a></li>
+  <li><a href="/#about-me">About me</a></li>
+  <li><a href="/#contact">Get in touch</a></li>
+</ul>
+
+<style lang="scss">
+  .mob-navigation {
+    inset: 0 0 0 30%;
+    position: fixed;
+    background: var(--color-accent-400);
+    z-index: 100;
+    padding: min(10rem, 15vh) 0;
+    transform: translateX(100%);
+    transition: transform ease-in-out 0.5s;
+
+    &[data-visible="true"] {
+      transform: translateX(0);
+      --webkit-transform: translateX(0);
+    }
+  }
+
+  a {
+    color: var(--color-secondary-500);
+    font-size: var(--step-2);
+    font-weight: 700;
+    font-family: var(--ff-headings);
+    display: block;
+    padding: 0.5em 0;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+  }
+
+  a:focus,
+  a:active {
+    background-color: var(--color-secondary-200);
+    color: var(--color-white);
+  }
+</style>
+
+<script>
+  // Nav Menu //
+  document.addEventListener("astro:page-load", () => {
+    const nav = document.querySelector(".mob-navigation");
+    const navToggle = document.querySelector(".nav-toggle");
+    const mainContent = document.querySelector("#main-content");
+
+    console.log(navToggle);
+    // Function to close the navigation menu
+    function closeNav() {
+      nav.setAttribute("data-visible", "false");
+      navToggle.setAttribute("aria-label", "Open Menu");
+      navToggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("no-scroll"); // Enable scrolling
+      mainContent.classList.remove("opacity-01"); // Remove opacity-01 effect
+    }
+
+    // Event listener for the navigation toggle button
+
+    navToggle.addEventListener("click", function () {
+      const navIsOpen = nav.getAttribute("data-visible");
+
+      if (navIsOpen === "true") {
+        closeNav();
+      } else {
+        nav.setAttribute("data-visible", "true");
+        navToggle.setAttribute("aria-label", "Close Menu");
+        navToggle.setAttribute("aria-expanded", "true");
+        document.body.classList.add("no-scroll"); // Disable scrolling
+        mainContent.classList.add("opacity-01"); // Add opacity-01 effect
+      }
+    });
+
+    // Event listener for the main content area
+    mainContent.addEventListener("click", function () {
+      const navIsOpen = nav.getAttribute("data-visible");
+
+      if (navIsOpen === "true") {
+        closeNav();
+      }
+    });
+
+    // Event listeners for in-page links
+    document
+      .querySelectorAll('.mob-navigation a[href^="/"]')
+      .forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Close the navigation menu
+          closeNav();
+          // Check if it's an in-page link or a different page
+          if (this.getAttribute("href").startsWith("/")) {
+            // Remove the leading "/" from the href value
+            const targetId = this.getAttribute("href").substring(1);
+
+            // Check if it's an in-page link
+            if (this.getAttribute("href").startsWith("/#")) {
+              // Check if the target element exists
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                // Scroll to the target element
+                targetElement.scrollIntoView({
+                  behavior: "smooth",
+                });
+              } else {
+                // Navigate to the target page
+                window.location.href = this.getAttribute("href");
+              }
+            } else {
+              // Navigate to the target page
+              window.location.href = this.getAttribute("href");
+            }
+          }
+        });
+      });
+  });
+</script>

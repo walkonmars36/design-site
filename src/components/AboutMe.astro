@@ -2,99 +2,113 @@
 
 ---
 
-<section class="wrapper" id="about-me">
-  <div class="flow">
-    <h2>About Me</h2>
-    <p>
-      I haven’t taken the typical route to becoming a freelance web designer.
-    </p>
-    <p>
-      My first experience of designing websites was 17 years ago, when I
-      co-created two sites for the sustainable printing business that my wife
-      and I ran together.
-    </p>
-    <p>
-      We worked with local artists, helping to promote their work by printing
-      their designs onto t-shirts and selling them at festivals and online.
-    </p>
-    <p>
-      I also ran a not-for-profit print studio where artists could come and use
-      the facilities to create their own work and printed commercially for
-      charities, not-for-profits and small sustainable businesses.
-    </p>
-    <p>
-      My passion for colour and design, vital in printing, naturally crossed
-      over into the web world. From there I dabbled in web design, creating
-      simple websites for friends and small businesses.
-    </p>
-    <div class="more-text flow">
-      <p>
-        In 2020, as happened to many people, my business stalled as we all went
-        into lock-down. I took time to reflect on my work and consider the
-        aspects of it that brought me joy - I found that it was web design and
-        development that really excited and compelled me.
-      </p>
-      <p>
-        Over the last four years I have studied x, y and z - running my own
-        business means that I am very self motivated! Learning as much as I can
-        to be able to offer a cross-section of website options to anyone looking
-        for a bespoke, affordable and xxxxx site.
-      </p>
-      <p>
-        Outside of work I am a musician, a dad, a husband, a lover of film,
-        football and good ale, oh and the pet-dad to a soppy unconditionally
-        loving black labrador called Rocket.
-      </p>
+<section id="about-me">
+  <div class="about flow wrapper">
+    <div class="about__content">
+      <div class="flow">
+        <h2>About Me</h2>
+        <p class="huge-5">
+          I haven’t taken the typical route to becoming a freelance web
+          designer.
+        </p>
+        <p>
+          My first experience of designing websites was 17 years ago, when I
+          co-created two sites for the sustainable printing business that my
+          wife and I ran together.
+        </p>
+      </div>
+      <div class="more-text flow">
+        <p>
+          We worked with local artists, helping to promote their work by
+          printing their designs onto t-shirts and selling them at festivals and
+          online.
+        </p>
+        <p>
+          I also ran a not-for-profit print studio where artists could come and
+          use the facilities to create their own work and printed commercially
+          for charities, not-for-profits and small sustainable businesses.
+        </p>
+        <p>
+          My passion for colour and design, vital in printing, naturally crossed
+          over into the web world. From there I dabbled in web design, creating
+          simple websites for friends and small businesses.
+        </p>
+        <p>
+          In 2020, as happened to many people, my business stalled as we all
+          went into lock-down. I took time to reflect on my work and consider
+          the aspects of it that brought me joy - I found that it was web design
+          and development that really excited and compelled me.
+        </p>
+        <p>
+          Over the last four years I have studied x, y and z - running my own
+          business means that I am very self motivated! Learning as much as I
+          can to be able to offer a cross-section of website options to anyone
+          looking for a bespoke, affordable and xxxxx site.
+        </p>
+        <p>
+          Outside of work I am a musician, a dad, a husband, a lover of film,
+          football and good ale, oh and the pet-dad to a soppy unconditionally
+          loving black labrador called Rocket.
+        </p>
+      </div>
+      <button class="btn read-more">Read more</button>
+      <button class="btn read-less">Read less</button>
     </div>
-    <button class="btn read-more">Read more</button>
-    <button class="btn read-less">Read less</button>
   </div>
 </section>
 
 <style>
-  section {
-    background: var(--color-secondary-300);
-    border-radius: var(--border-radius-xl);
-    padding-block: var(--space-3xl);
-  }
   button.btn {
-    color: var(--color-accent-300);
+    color: var(--color-accent-500);
   }
 
+  .about {
+    margin-inline: auto;
+    background: var(--color-bg-light);
+  }
+
+  .about__content {
+    max-width: 65rem;
+    margin-inline: auto;
+  }
+  .huge-5 {
+    line-height: 1.2;
+    max-width: 23ch;
+  }
   .read-less {
     display: none;
   }
 
   .more-text {
+    margin-top: 1em;
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transition: opacity 0.5s, max-height 0.5s;
+    transition:
+      opacity 0.5s,
+      max-height 0.5s;
   }
   .more-text.visible {
     opacity: 1;
-    max-height: 500px;
+    max-height: 1000px;
   }
 </style>
 
-
 <script>
-// read more button
-const readMore = document.querySelector(".read-more") as HTMLButtonElement;
-const readLess = document.querySelector(".read-less") as HTMLButtonElement;
-const moreText = document.querySelector(".more-text") as HTMLButtonElement;
+  // read more button
+  const readMore = document.querySelector(".read-more") as HTMLButtonElement;
+  const readLess = document.querySelector(".read-less") as HTMLButtonElement;
+  const moreText = document.querySelector(".more-text") as HTMLButtonElement;
 
+  readMore.addEventListener("click", () => {
+    moreText.classList.add("visible");
+    readMore.style.display = "none";
+    readLess.style.display = "block";
+  });
 
-readMore.addEventListener("click", () => {
-  moreText.classList.add("visible");
-  readMore.style.display = "none";
-  readLess.style.display = "block";
-});
-
-readLess.addEventListener("click", () => {
-  moreText.classList.remove("visible");
-  readMore.style.display = "block";
-  readLess.style.display = "none";
-});
-
+  readLess.addEventListener("click", () => {
+    moreText.classList.remove("visible");
+    readMore.style.display = "block";
+    readLess.style.display = "none";
+  });
 </script>

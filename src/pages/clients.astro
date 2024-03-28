@@ -5,13 +5,13 @@ const pageTitle = "Clients | walkonmars.design";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <article class="wrapper" id="main-content" >
-    <h1 class="" >Clients</h1>
+  <article id="main-content">
+    <h1 class="wrapper">Clients</h1>
 
     {
       clientData.map(({ id, title, images, tech }) => (
-        <section class="client border-radius-xl">
-          <h2 class="" >{title}</h2>
+        <section class="wrapper client border-radius-xl">
+          <h2 class="">{title}</h2>
           <a href={`/client-detail/${id} `}>
             <picture>
               <img
@@ -39,13 +39,21 @@ const pageTitle = "Clients | walkonmars.design";
 </BaseLayout>
 
 <style>
-  .client {
-    margin-top: var(--space-2xl-3xl);
-    background: var(--color-secondary-400);
-    padding: var(--space-2xl-3xl) var(--space-l-xl);
+  article {
+    margin-top: var(--space-3xl-4xl);
   }
-
+  h1 {
+    padding: var(--space-s-m) var(--space-l-xl);
+    background: var(--color-secondary-200);
+    color: var(--color-white);
+    border-radius: var(--border-radius-xxl);
+  }
   picture {
     margin-top: var(--space-s-m);
+  }
+  .client {
+    margin-top: var(--space-l);
+    background: var(--color-bg-light);
+    padding: var(--space-xl-2xl) var(--space-l-xl);
   }
 </style>

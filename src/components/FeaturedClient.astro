@@ -1,26 +1,25 @@
 ---
 import projectData from "../data/client-data.json";
 
-const { id, images, title, tech } = projectData[0];
+const { id, title } = projectData[0];
 ---
 
-<section class="wrapper space-xl-2xl">
-  <div class="featured">
-    <h2 class="">Featured client</h2>
-    <div class="featured__content">
-      <div class="featured__content-text flow">
-        <h3 class="">{title}</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum unde
-          blanditiis soluta magni non ducimus velit ad ea omnis doloribus
-          aliquam, aspernatur minima fugit sint ullam fuga! Corporis, fuga iure?
-        </p>
-        <a href={`/client-detail/${id}`}>Find out more</a>
-      </div>
-      <div class="featured__images flow">
+<section>
+  <div class="wrapper">
+    <div class="featured">
+      <h2 class="">Featured client</h2>
+      <div class="featured__content">
+        <div class="featured__content-text flow">
+          <h3>{title}</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum unde
+            blanditiis soluta magni non ducimus velit ad ea omnis doloribus
+            aliquam, aspernatur minima fugit sint ullam fuga! Corporis, fuga
+            iure?
+          </p>
+          <a href={`/client-detail/${id}`}>Find out more</a>
+        </div>
         <picture><img src="/assets/images/tim-temp-1.png" alt="temp" /></picture
-        >
-        <picture><img src="/assets/images/tim-temp-2.png" alt="temp" /></picture
         >
       </div>
     </div>
@@ -28,27 +27,39 @@ const { id, images, title, tech } = projectData[0];
 </section>
 
 <style>
+  section {
+    margin-top: var(--space-l);
+  }
   a {
     display: block;
   }
 
+  img {
+    width: 100%;
+  }
+
+  .wrapper {
+    background: var(--color-bg-light);
+    padding-block: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .wrapper {
+      padding: var(--space-3xl) var(--space-xl);
+    }
+  }
+
   .featured {
-    background: var(--color-secondary-400);
-    padding: var(--space-3xl) var(--space-xl);
-    border-radius: var(--border-radius-xl);
+    max-width: 65rem;
+    margin-inline: auto;
   }
   .featured__content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     margin-top: var(--space-l);
-  }
-  .featured__content > * {
-    flex: 1 1 20rem;
   }
 
   .featured__content-text {
-    border-right: 1px solid var(--color-primary-30);
     padding-right: var(--space-m);
     padding-top: var(--space-m);
   }
