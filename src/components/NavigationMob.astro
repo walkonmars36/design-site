@@ -107,7 +107,10 @@
               const targetElement = document.querySelector(targetId);
               if (targetElement) {
                 // Scroll to the target element
-                targetElement.scrollIntoView({
+                const targetPosition =
+                  targetElement.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({
+                  top: targetPosition,
                   behavior: "smooth",
                 });
               } else {
