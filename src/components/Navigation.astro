@@ -64,42 +64,8 @@
   // Event listener for the navigation links
   anchors.forEach((anchor) => {
     anchor.addEventListener("click", function () {
-      // Navigate to the target page
+      // Navigate to the target page / section
       window.location.href = this.getAttribute("href");
     });
   });
-
-  // document.addEventListener("astro:page-load", () => {
-  //   document
-  //     .querySelectorAll('.primary-navigation a[href^="/"]')
-  //     .forEach((anchor) => {
-  //       anchor.addEventListener("click", function (e) {
-  //         e.preventDefault();
-
-  //         // Check if it's an in-page link or a different page
-  //         if (this.getAttribute("href").startsWith("/")) {
-  //           // Remove the leading "/" from the href value
-  //           const targetId = this.getAttribute("href").substring(1);
-
-  //           // Check if it's an in-page link
-  //           if (this.getAttribute("href").startsWith("/#")) {
-  //             // Check if the target element exists
-  //             const targetElement = document.querySelector(targetId);
-  //             if (targetElement) {
-  //               // Scroll to the target element
-  //               targetElement.scrollIntoView({
-  //                 behavior: "smooth",
-  //               });
-  //             } else {
-  //               // Navigate to the target page
-  //               window.location.href = this.getAttribute("href");
-  //             }
-  //           } else {
-  //             // Navigate to the target page
-  //             window.location.href = this.getAttribute("href");
-  //           }
-  //         }
-  //       });
-  //     });
-  // });
 </script>
