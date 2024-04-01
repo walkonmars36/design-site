@@ -58,22 +58,23 @@ const pageTitle = `${title} | Client Project`;
           <span class="project-info title-small">Project info</span>
         </div>
         <div>
-          <div>
+          <div class="client-detail-content">
             <h2 class="client-detail__h2">{heading}</h2>
             <div class="client-detail__url flex">
               <span class="title-small">Client site:</span>
               <a href={url} target="_blank">{url}</a>
             </div>
           </div>
-          <div class="client-detail__services">
-            <h3 class="title-small">Services</h3>
-            <ul>
-              {services.map((service) => <li>{service}</li>)}
-            </ul>
-          </div>
         </div>
       </div>
-
+      <div class="client-detail__info flex space-xl">
+        <h3 class="services-h3 title-small self-start">Services</h3>
+        <div class="client-detail__services">
+          <ul>
+            {services.map((service) => <li>{service}</li>)}
+          </ul>
+        </div>
+      </div>
       <div class="client-detail__info-b flex">
         <div class="flow">
           <h3>Objective</h3>
@@ -137,16 +138,42 @@ const pageTitle = `${title} | Client Project`;
         margin-top: var(--space-m-l);
       }
 
-      .client-detail__services {
-        margin-top: var(--space-xl-2xl);
-      }
       .client-detail__services li {
         border-bottom: 1px solid var(--color-accent-400);
+      }
+
+      .client-detail__services li {
         padding-top: var(--space-l);
       }
 
       .project-info {
         margin-bottom: var(--space-s);
+      }
+
+      .title-small {
+        margin-top: var(--space-3xs);
+      }
+
+      @media (min-width: 768px) {
+        .client-detail__url {
+          flex-direction: row;
+          --gap: 0.5em;
+        }
+
+        .client-detail__url a {
+          padding-top: 0.15em;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .client-detail__info {
+          display: grid;
+          grid-template-columns: 0.5fr 1fr;
+        }
+
+        .client-detail__services li:first-child {
+          padding-top: 0;
+        }
       }
     </style>
   </article>

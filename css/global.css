@@ -128,6 +128,10 @@
   align-items: center;
 }
 
+.self-start {
+  align-self: flex-start;
+}
+
 .self-center {
   align-self: center;
 }
@@ -381,7 +385,7 @@ h2:not(.h3, .client-detail__h2)::after {
   background: var(--color-accent-400);
 }
 
-h3:not(.client-detail__services h3)::after {
+h3:not(.services-h3)::after {
   content: "";
   position: absolute;
   bottom: 0;
