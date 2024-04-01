@@ -98,11 +98,13 @@
           closeNav();
           // Check if it's an in-page link or a different page
           if (this.getAttribute("href").startsWith("/")) {
-            // Remove the leading "/" from the href value
-            const targetId = this.getAttribute("href").substring(1);
+            // Get the target href
+            const href = this.getAttribute("href");
 
             // Check if it's an in-page link
-            if (this.getAttribute("href").startsWith("/#")) {
+            if (href.startsWith("/#")) {
+              // Remove the leading "/" from the href value
+              const targetId = href.substring(1);
               // Check if the target element exists
               const targetElement = document.querySelector(targetId);
               if (targetElement) {
@@ -115,11 +117,11 @@
                 });
               } else {
                 // Navigate to the target page
-                window.location.href = this.getAttribute("href");
+                window.location.href = href;
               }
             } else {
               // Navigate to the target page
-              window.location.href = this.getAttribute("href");
+              window.location.href = href;
             }
           }
         });
