@@ -8,7 +8,7 @@
   <li><a href="/clients">Clients</a></li>
   <li><a href="/#testimonials">Testimonials</a></li>
   <li><a href="/#about-me">About me</a></li>
-  <li><a href="/#contact">Get in touch</a></li>
+  <li><a href="https://wom-design.netlify.app/#contact">Get in touch</a></li>
 </ul>
 
 <style lang="scss">
@@ -87,49 +87,49 @@
     });
 
     // Event listeners for in-page links
-    document
-      .querySelectorAll('.mob-navigation a[href^="/"]')
-      .forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
+    // document
+    //   .querySelectorAll('.mob-navigation a[href^="/"]')
+    //   .forEach((anchor) => {
+    //     anchor.addEventListener("click", function (e) {
+    //       e.preventDefault();
 
-          // Close the navigation menu
-          closeNav();
-          // Check if it's an in-page link or a different page
-          if (this.getAttribute("href").startsWith("/")) {
-            // Get the target href
-            const href = this.getAttribute("href");
-            console.log(`Clicked link with href: ${href}`);
+    //       // Close the navigation menu
+    //       closeNav();
+    //       // Check if it's an in-page link or a different page
+    //       if (this.getAttribute("href").startsWith("/")) {
+    //         // Get the target href
+    //         const href = this.getAttribute("href");
+    //         console.log(`Clicked link with href: ${href}`);
 
-            // Check if it's an in-page link
-            if (href.startsWith("/#")) {
-              // Remove the leading "/" from the href value
-              const targetId = href.substring(2);
-              console.log(`Target ID: ${targetId}`);
+    //         // Check if it's an in-page link
+    //         if (href.startsWith("/#")) {
+    //           // Remove the leading "/" from the href value
+    //           const targetId = href.substring(2);
+    //           console.log(`Target ID: ${targetId}`);
 
-              // Check if the target element exists
-              const targetElement = document.querySelector(targetId);
-              if (targetElement) {
-                console.log(`Found target element: ${targetId}`);
-                // Scroll to the target element
-                const targetPosition =
-                  targetElement.getBoundingClientRect().top + window.scrollY;
-                window.scrollTo({
-                  top: targetPosition,
-                  behavior: "smooth",
-                });
-              } else {
-                console.log(`Did not find target element: ${targetId}`);
-                // Navigate to the target page
-                window.location.href = href;
-              }
-            } else {
-              console.log(`Navigating to page: ${href}`);
-              // Navigate to the target page
-              window.location.href = href;
-            }
-          }
-        });
-      });
+    //           // Check if the target element exists
+    //           const targetElement = document.querySelector(targetId);
+    //           if (targetElement) {
+    //             console.log(`Found target element: ${targetId}`);
+    //             // Scroll to the target element
+    //             const targetPosition =
+    //               targetElement.getBoundingClientRect().top + window.scrollY;
+    //             window.scrollTo({
+    //               top: targetPosition,
+    //               behavior: "smooth",
+    //             });
+    //           } else {
+    //             console.log(`Did not find target element: ${targetId}`);
+    //             // Navigate to the target page
+    //             window.location.href = href;
+    //           }
+    //         } else {
+    //           console.log(`Navigating to page: ${href}`);
+    //           // Navigate to the target page
+    //           window.location.href = href;
+    //         }
+    //       }
+    //     });
+    //   });
   });
 </script>
