@@ -10,7 +10,7 @@ const pageTitle = "Clients | walkonmars.design";
 
     {
       clientData.map(({ id, title, images, tech }) => (
-        <section class="wrapper client border-radius-xl">
+        <section class="client wrapper ">
           <h2 class="">{title}</h2>
           <a href={`/client-detail/${id} `}>
             <picture>
@@ -40,10 +40,10 @@ const pageTitle = "Clients | walkonmars.design";
 
 <style>
   article {
-    margin-top: var(--space-3xl-4xl);
+    margin-top: 6rem;
   }
   h1 {
-    padding: var(--space-s-m) var(--space-l-xl);
+    padding: var(--space-s-m) var(--fluid-18-80);
     background: var(--color-secondary-200);
     color: var(--color-white);
     border-radius: var(--border-radius-xxl);
@@ -54,6 +54,5 @@ const pageTitle = "Clients | walkonmars.design";
   .client {
     margin-top: var(--space-l);
     background: var(--color-bg-light);
-    padding: var(--space-xl-2xl) var(--space-l-xl);
   }
 </style>

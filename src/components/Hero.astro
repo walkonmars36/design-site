@@ -3,22 +3,34 @@ import HeroBtn from "../components/HeroBtn.astro";
 ---
 
 <section>
-  <div class="wrapper">
+  <div class="hero wrapper">
     <span class="h3 bold">Hi, I'm Mark</span>
     <h1>I design and develop websites</h1>
 
+    <h2 class="h3">
+      I can help you with ... <span id="typewriter"> </span>
+    </h2>
     <HeroBtn />
-    <h2 class="h3">I can help you with ...</h2>
   </div>
 </section>
 
 <style>
+  h2 {
+    margin-top: var(--space-m);
+    display: flex;
+    flex-direction: column;
+    height: 3.75rem;
+  }
+  #typewriter {
+    margin-left: 0;
+  }
+
   section * {
     color: var(--color-white);
   }
 
   section {
-    margin-top: var(--space-3xl);
+    margin-top: 6rem;
   }
 
   div {
@@ -29,7 +41,62 @@ import HeroBtn from "../components/HeroBtn.astro";
     max-width: 16ch;
   }
 
-  h2 {
-    margin-top: var(--space-l);
+  @media (min-width: 768px) {
+    h2 {
+      flex-direction: row;
+      height: initial;
+    }
+    #typewriter {
+      margin-left: var(--space-xs);
+    }
   }
 </style>
+
+<script>
+  const words = [
+    "Webflow",
+    "Wordpress",
+    "Shopify",
+    "SEO",
+    "UX / UI Design",
+    "Custom Code",
+  ];
+  let el = document.getElementById("typewriter");
+
+  let sleepTime = 100;
+  let curWordIndex = 0;
+
+  function writeLoop() {
+    if (!el) {
+      return;
+    }
+
+    let curWord = words[curWordIndex % words.length];
+    let i = 0;
+
+    function typeForward() {
+      if (i <= curWord.length) {
+        el.textContent = curWord.substring(0, i + 1);
+        i++;
+        setTimeout(typeForward, sleepTime);
+      } else {
+        setTimeout(typeBackward, sleepTime * 5);
+      }
+    }
+
+    function typeBackward() {
+      if (i >= 0) {
+        el.textContent = curWord.substring(0, i - 1);
+        i--;
+        setTimeout(typeBackward, sleepTime);
+      } else {
+        curWordIndex = (curWordIndex + 1) % words.length;
+        setTimeout(writeLoop, sleepTime * 5);
+      }
+    }
+
+    typeForward();
+  }
+
+  writeLoop();
+</script>

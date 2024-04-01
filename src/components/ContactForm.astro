@@ -6,22 +6,39 @@
   data-netlify="true"
 >
   <fieldset>
-    <label for="name">Name</label>
-    <input class="input" type="text" name="name" id="name" />
+    <label for="firstName">First name</label>
+    <input
+      type="text"
+      name="firstName"
+      id="firstName"
+      autocomplete="given-name"
+    />
     <span id="name-error" class="error-text font-xs-step-2"
-      >Name is required</span
+      >First name is required</span
+    >
+  </fieldset>
+  <fieldset>
+    <label for="lastName">Last name</label>
+    <input
+      type="text"
+      name="lastName"
+      id="lastName"
+      autocomplete="family-name"
+    />
+    <span id="name-error" class="error-text font-xs-step-2"
+      >Last name is required</span
     >
   </fieldset>
   <fieldset>
     <label for="email">Email</label>
-    <input class="input" type="email" name="email" id="email" />
+    <input type="email" name="email" id="email" autocomplete="off" />
     <span id="email-error" class="error-text font-xs-step-2"
       >Email is not valid</span
     >
   </fieldset>
   <fieldset>
     <label for="message">Message</label>
-    <textarea class="input" name="message" id="message" rows="5"></textarea>
+    <textarea name="message" id="message" rows="5"></textarea>
   </fieldset>
   <button class="submit btn" type="submit">Send</button>
 </form>
@@ -42,7 +59,11 @@
     gap: 1rem;
   }
 
-  .input {
+  label {
+    color: var(--color-white);
+  }
+  input,
+  textarea {
     color: inherit;
     width: 100%;
     padding: 0.25em 0.5em;
@@ -53,24 +74,24 @@
     outline: transparent;
   }
 
-  .input:focus,
-  .input:focus-within,
+  input:focus,
+  input:focus-within,
   textarea:focus,
   textarea:focus-within {
     background-color: var(--input-focus);
     color: var(--color-primary);
   }
 
-  .input.error {
+  input.error {
     border: 2px solid var(--clr-error);
   }
 
-  .input:not(textarea) {
+  input:not(textarea) {
     line-height: 1;
     height: 2.25rem;
   }
 
-  textarea.input {
+  textarea {
     margin-top: var(--space-2xs);
     resize: vertical;
     overflow: auto;
@@ -102,17 +123,28 @@
   }
 
   const form = document.getElementById("contact-form") as HTMLFormElement;
-  const nameInput = document.getElementById("name") as HTMLInputElement;
+  const firstName = document.getElementById("firstName") as HTMLInputElement;
+  const lastName = document.getElementById("lastName") as HTMLInputElement;
   const emailInput = document.getElementById("email") as HTMLInputElement;
   const nameError = document.getElementById("name-error") as HTMLSpanElement;
   const emailError = document.getElementById("email-error") as HTMLSpanElement;
 
-  nameInput.addEventListener("blur", () => {
-    if (!validateName(nameInput.value)) {
-      nameInput.classList.add("error");
+  firstName.addEventListener("blur", () => {
+    if (!validateName(firstName.value)) {
+      firstName.classList.add("error");
       nameError.style.display = "block";
     } else {
-      nameInput.classList.remove("error");
+      firstName.classList.remove("error");
+      nameError.style.display = "none";
+    }
+  });
+
+  lastName.addEventListener("blur", () => {
+    if (!validateName(lastName.value)) {
+      lastName.classList.add("error");
+      nameError.style.display = "block";
+    } else {
+      lastName.classList.remove("error");
       nameError.style.display = "none";
     }
   });
@@ -128,7 +160,11 @@
   });
 
   form.addEventListener("submit", (e) => {
-    if (!nameInput.value || !validateEmail(emailInput.value)) {
+    if (
+      !firstName.value ||
+      !lastName.value ||
+      !validateEmail(emailInput.value)
+    ) {
       e.preventDefault();
       alert("Please correct the errors and try again.");
     }
