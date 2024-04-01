@@ -9,10 +9,9 @@ const pageTitle = "Clients | walkonmars.design";
     <h1 class="wrapper">Clients</h1>
 
     {
-      clientData.map(({ id, title, images, tech }) => (
-        <section class="client wrapper ">
-          <h2 class="">{title}</h2>
-          <a href={`/client-detail/${id} `}>
+      clientData.map(({ id, title, images, excerpt }) => (
+        <section class="client wrapper">
+          <a href={`/client-detail/${id} `} class="client-link">
             <picture>
               <img
                 class="border-radius-lg"
@@ -21,16 +20,12 @@ const pageTitle = "Clients | walkonmars.design";
                 title="View Project"
               />
             </picture>
-          </a>
 
-          <ul class="flex space-s" role="list">
-            {tech.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-
-          <a class="space-m inline" href={`/client-detail/${id}`}>
-            View Project
+            <div>
+              <h2 class="client-h2">{title}</h2>
+              <p>{excerpt}</p>
+            </div>
+            <span>View Project</span>
           </a>
         </section>
       ))
@@ -48,11 +43,77 @@ const pageTitle = "Clients | walkonmars.design";
     color: var(--color-white);
     border-radius: var(--border-radius-xxl);
   }
+
+  h2 {
+    color: initial;
+    font-size: var(--step-2);
+    margin-top: var(--space-l);
+  }
   picture {
     margin-top: var(--space-s-m);
+    position: relative;
+    padding-top: 2em;
+  }
+
+  p {
+    margin-top: var(--space-s);
+  }
+  span {
+    display: inline-block;
+    margin-top: var(--space-s);
+  }
+
+  picture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    height: 0.4rem;
+    background: var(--color-accent-400);
   }
   .client {
     margin-top: var(--space-l);
     background: var(--color-bg-light);
+  }
+
+  .client-link {
+    display: inline-block;
+  }
+
+  .client-link picture {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .client-link picture::after {
+    content: "View";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--color-accent-400);
+    color: var(--color-primary);
+    text-align: center;
+    line-height: 100px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .client-link:hover picture::after {
+    opacity: 1;
+  }
+
+  .client-link picture img {
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+
+  .client-link:hover picture img {
+    transform: scale(1.1);
   }
 </style>

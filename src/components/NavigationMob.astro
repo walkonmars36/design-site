@@ -4,10 +4,12 @@
 
 <ul data-visible="false" class="mob-navigation">
   <li><a href="/">Home</a></li>
-  <li><a href="/#services">Services</a></li>
+  <li><a href="https://wom-design.netlify.app/#services">Services</a></li>
   <li><a href="/clients">Clients</a></li>
-  <li><a href="/#testimonials">Testimonials</a></li>
-  <li><a href="/#about-me">About me</a></li>
+  <li>
+    <a href="https://wom-design.netlify.app/#testimonials">Testimonials</a>
+  </li>
+  <li><a href="https://wom-design.netlify.app/#about-me">About me</a></li>
   <li><a href="https://wom-design.netlify.app/#contact">Get in touch</a></li>
 </ul>
 
@@ -48,88 +50,63 @@
 
 <script>
   // Nav Menu //
-  document.addEventListener("astro:page-load", () => {
-    const nav = document.querySelector(".mob-navigation");
-    const navToggle = document.querySelector(".nav-toggle");
-    const mainContent = document.querySelector("#main-content");
 
-    // Function to close the navigation menu
-    function closeNav() {
-      nav.setAttribute("data-visible", "false");
-      navToggle.setAttribute("aria-label", "Open Menu");
-      navToggle.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("no-scroll"); // Enable scrolling
-      mainContent.classList.remove("opacity-01"); // Remove opacity-01 effect
+  const nav = document.querySelector(".mob-navigation");
+  const navToggle = document.querySelector(".nav-toggle");
+  const mainContent = document.querySelector("#main-content");
+  const anchors = document.querySelectorAll(".mob-navigation a");
+
+  // Function to close the navigation menu
+  function closeNav() {
+    nav.setAttribute("data-visible", "false");
+    navToggle.setAttribute("aria-label", "Open Menu");
+    navToggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("no-scroll"); // Enable scrolling
+    mainContent.classList.remove("opacity-01"); // Remove opacity-01 effect
+  }
+
+  // Event listener for the navigation toggle button
+  navToggle.addEventListener("click", function () {
+    const navIsOpen = nav.getAttribute("data-visible");
+
+    if (navIsOpen === "true") {
+      closeNav();
+    } else {
+      nav.setAttribute("data-visible", "true");
+      navToggle.setAttribute("aria-label", "Close Menu");
+      navToggle.setAttribute("aria-expanded", "true");
+      document.body.classList.add("no-scroll"); // Disable scrolling
+      mainContent.classList.add("opacity-01"); // Add opacity-01 effect
     }
+  });
 
-    // Event listener for the navigation toggle button
-    navToggle.addEventListener("click", function () {
-      const navIsOpen = nav.getAttribute("data-visible");
+  // Event listener for the navigation links
+  anchors.forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
 
-      if (navIsOpen === "true") {
+      if (nav.getAttribute("data-visible") === "true") {
         closeNav();
-      } else {
-        nav.setAttribute("data-visible", "true");
-        navToggle.setAttribute("aria-label", "Close Menu");
-        navToggle.setAttribute("aria-expanded", "true");
-        document.body.classList.add("no-scroll"); // Disable scrolling
-        mainContent.classList.add("opacity-01"); // Add opacity-01 effect
+        window.location.href = this.getAttribute("href");
       }
     });
+  });
 
-    // Event listener for the main content area
-    mainContent.addEventListener("click", function () {
-      const navIsOpen = nav.getAttribute("data-visible");
+  // Event listener for the main content area
+  mainContent.addEventListener("click", function () {
+    const navIsOpen = nav.getAttribute("data-visible");
 
-      if (navIsOpen === "true") {
-        closeNav();
-      }
-    });
+    if (navIsOpen === "true") {
+      closeNav();
+    }
+  });
 
-    // Event listeners for in-page links
-    // document
-    //   .querySelectorAll('.mob-navigation a[href^="/"]')
-    //   .forEach((anchor) => {
-    //     anchor.addEventListener("click", function (e) {
-    //       e.preventDefault();
+  // Event listener for the escape key
+  document.addEventListener("keydown", function (event) {
+    const navIsOpen = nav.getAttribute("data-visible");
 
-    //       // Close the navigation menu
-    //       closeNav();
-    //       // Check if it's an in-page link or a different page
-    //       if (this.getAttribute("href").startsWith("/")) {
-    //         // Get the target href
-    //         const href = this.getAttribute("href");
-    //         console.log(`Clicked link with href: ${href}`);
-
-    //         // Check if it's an in-page link
-    //         if (href.startsWith("/#")) {
-    //           // Remove the leading "/" from the href value
-    //           const targetId = href.substring(2);
-    //           console.log(`Target ID: ${targetId}`);
-
-    //           // Check if the target element exists
-    //           const targetElement = document.querySelector(targetId);
-    //           if (targetElement) {
-    //             console.log(`Found target element: ${targetId}`);
-    //             // Scroll to the target element
-    //             const targetPosition =
-    //               targetElement.getBoundingClientRect().top + window.scrollY;
-    //             window.scrollTo({
-    //               top: targetPosition,
-    //               behavior: "smooth",
-    //             });
-    //           } else {
-    //             console.log(`Did not find target element: ${targetId}`);
-    //             // Navigate to the target page
-    //             window.location.href = href;
-    //           }
-    //         } else {
-    //           console.log(`Navigating to page: ${href}`);
-    //           // Navigate to the target page
-    //           window.location.href = href;
-    //         }
-    //       }
-    //     });
-    //   });
+    if (navIsOpen === "true" && event.key === "Escape") {
+      closeNav();
+    }
   });
 </script>
