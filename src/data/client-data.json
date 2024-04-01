@@ -18,12 +18,17 @@
   {
     "id": "jude-lawson",
     "title": "Jude Lawson Therapy",
-    "heading": "Minim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem.\nMinim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem. \nMinim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem.\nMinim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem.\n",
-    "url": "https://judelawsontherapy.co.uk/",
+    "excerpt": "Minim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem.",
+    "heading": "Website design and development of a custom Wordpress site for a Bristol based coach, facilitator and organisational psychologist.",
+    "url": "https://timothymalnick.com/",
+    "services": ["Website Design", "Wordpress Development", "SEO", "Hosting"],
+    "objective": "To create a professional and engaging website that showcases the client's services and expertise.",
+    "process": "The client provided a detailed brief and content for the site. I designed and developed the site using Wordpress and Oxygen Builder. The site was optimised for SEO and performance.",
+    "result": "The client was very happy with the site and has received positive feedback from clients and colleagues.",
     "images": {
       "small": "/assets/images/jude-sm-client-temp.png",
       "large": ""
     },
-    "tech": ["Webflow", "Netlify"]
+    "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
   }
 ]
