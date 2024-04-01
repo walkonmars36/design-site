@@ -32,25 +32,24 @@
 
 <script>
   // Scroll to Top //
-  document.addEventListener("astro:page-load", () => {
-    const backToTopButton = document.querySelector(".back-to-top");
 
-    if (backToTopButton !== null) {
-      backToTopButton.addEventListener("click", scrollToTop);
+  const backToTopButton = document.querySelector(".back-to-top");
 
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 500) {
-          backToTopButton.classList.add("show");
-        } else {
-          backToTopButton.classList.remove("show");
-        }
-      });
-    }
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  });
+  if (backToTopButton !== null) {
+    backToTopButton.addEventListener("click", scrollToTop);
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        backToTopButton.classList.add("show");
+      } else {
+        backToTopButton.classList.remove("show");
+      }
+    });
+  }
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 </script>
