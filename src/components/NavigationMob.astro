@@ -92,7 +92,7 @@
     });
   });
 
-  // Event listener for the main content area
+  // Event listener to close the navigation menu when clicking outside of it
   mainContent.addEventListener("click", function () {
     const navIsOpen = nav.getAttribute("data-visible");
 
@@ -101,7 +101,7 @@
     }
   });
 
-  // Event listener for the escape key
+  // Event listener to close the navigation menu when pressing the Escape key
   document.addEventListener("keydown", function (event) {
     const navIsOpen = nav.getAttribute("data-visible");
 
