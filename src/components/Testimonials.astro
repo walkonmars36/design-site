@@ -11,13 +11,50 @@
         alt=""
       /></picture
     >
-    <div class="testimonial__text">
+    <div class="testimonial__text flow">
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
-        commodi numquam nobis enim beatae earum modi eligendi saepe dignissimos
-        vel sequi, doloremque obcaecati aut fuga distinctio vitae culpa? Atque,
-        dolorem.
+        I have run my own small business for over 20 years. In that time I have
+        probably worked with 4 or 5 web designers on different iterations of my
+        site. Mark has been far and away the best I have ever worked with and I
+        am really delighted with the results. Mark has a rare combination of
+        qualities that make him in my view perfect for supporting solo / small
+        business owners create websites that really fit their personalities and
+        brand.
       </p>
+      <div class="more-text flow">
+        <p>
+          He is highly competent with the techie practical stuff. But he also
+          has a very finely tuned sense of aesthetic and design - which in my
+          experience is quite rare for techie people! He obviously really enjoys
+          the subtleties of working with space, colour and design and takes a
+          great deal of time and care to get it looking and feeling just right.
+          I have appreciated the sense that Mark cares about my site personally
+          - beyond it just being another job.
+        </p>
+        <p>
+          Finally he is also incredibly easy, straightforward, friendly and fun
+          to work with. Again this has not always been my experience of working
+          with professional website designers. Mark has spent many years in
+          creative, customer focused roles of different sorts, and has also run
+          his own design business for many years. I think this all shows up, and
+          rubs off in the way he works alongside you in the web design project.
+          All projects inevitably have little hiccups, confusions and delays,
+          and the communication with Mark around these when they pop up, has
+          always been totally straightforward, hassle free, and with a great
+          sense that he really does want the very best for his customers.
+          <p>
+            I’ve not previously felt that same level of care, competence and
+            connection with other website designers. I am very happy with the
+            end result new website, and would highly recommend Mark to any solo
+            / small business owners wanting their site to really express who
+            they are. I continue to work with Mark on a monthly retainer basis
+            and it’s a relief to know that my website maintenance and ongoing
+            improvement is in the very best hands.
+          </p>
+        </p>
+      </div>
+      <button class="btn read-more">Read more</button>
+      <button class="btn show-less">Show less</button>
     </div>
   </div>
 </section>
@@ -32,10 +69,32 @@
   img {
     width: var(--step-5);
   }
+
+  button.btn {
+    color: var(--color-accent-500);
+  }
   .testimonial__text {
     background: var(--color-bg-light);
     margin: var(--space-m-l) 0;
     padding: var(--space-l);
     border-radius: var(--border-radius-lg);
+  }
+
+  .show-less {
+    display: none;
+  }
+
+  .more-text {
+    margin-top: 1em;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      opacity 0.5s,
+      max-height 0.5s;
+  }
+  .more-text.visible {
+    opacity: 1;
+    max-height: 1000px;
   }
 </style>

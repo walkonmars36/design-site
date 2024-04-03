@@ -52,7 +52,7 @@
         </p>
       </div>
       <button class="btn read-more">Read more</button>
-      <button class="btn read-less">Read less</button>
+      <button class="btn show-less">Show less</button>
     </div>
   </div>
 </section>
@@ -75,7 +75,7 @@
     line-height: 1.2;
     max-width: 23ch;
   }
-  .read-less {
+  .show-less {
     display: none;
   }
 
@@ -93,22 +93,3 @@
     max-height: 1000px;
   }
 </style>
-
-<script>
-  // read more button
-  const readMore = document.querySelector(".read-more") as HTMLButtonElement;
-  const readLess = document.querySelector(".read-less") as HTMLButtonElement;
-  const moreText = document.querySelector(".more-text") as HTMLButtonElement;
-
-  readMore.addEventListener("click", () => {
-    moreText.classList.add("visible");
-    readMore.style.display = "none";
-    readLess.style.display = "block";
-  });
-
-  readLess.addEventListener("click", () => {
-    moreText.classList.remove("visible");
-    readMore.style.display = "block";
-    readLess.style.display = "none";
-  });
-</script>
