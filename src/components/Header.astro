@@ -32,7 +32,7 @@ import NavToggle from "./NavToggle.astro";
     opacity: 1;
   }
 
-  header.frosty {
+  header.background {
     background-color: var(--color-secondary-400);
   }
 
@@ -79,15 +79,19 @@ import NavToggle from "./NavToggle.astro";
 
 <script>
   let lastScrollTop = 0;
-  window.addEventListener("scroll", function () {
+
+  function handleScroll() {
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop) {
       document.querySelector("header").classList.remove("visible");
-      document.querySelector("header").classList.remove("frosty");
+      document.querySelector("header").classList.remove("background");
     } else {
       document.querySelector("header").classList.add("visible");
-      document.querySelector("header").classList.add("frosty");
+      document.querySelector("header").classList.add("background");
     }
     lastScrollTop = scrollTop;
-  });
+  }
+
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("touchmove", handleScroll);
 </script>
