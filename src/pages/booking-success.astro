@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section>
+    <div class="wrapper flow">
+      <h1>Thanks for booking a call</h1>
+      <p>
+        I've received your booking and I'll confirm our meeting soon. If you
+        haven't received a confirmation email from Cal.com, check it hasn't
+        fallen into the spam.
+      </p>
+
+      <a href="/">Back to home page</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    margin-top: 6rem;
+  }
+  div * {
+    color: var(--color-white);
+  }
+
+  div a {
+    color: var(--color-accent-300);
+    display: inline-block;
+  }
+
+  div {
+    background: var(--color-secondary-200);
+  }
+
+  .flow {
+    --flow-space: 2em;
+  }
+</style>

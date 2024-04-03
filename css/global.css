@@ -375,25 +375,15 @@ h3 {
   padding-bottom: 0.3em;
 }
 
-h2:not(.h3, .client-detail__h2)::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 3rem;
-  height: 0.4rem;
-  background: var(--color-accent-400);
-}
-
+h2:not(.h3, .client-detail__h2)::after,
 h3:not(.services-h3)::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 3rem;
-  height: 0.2rem;
+  height: 0.3rem;
   background: var(--color-accent-400);
-  z-index: -1;
 }
 
 .title-small {
