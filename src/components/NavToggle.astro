@@ -2,44 +2,72 @@
 
 ---
 
-<div class="mob-nav-toggle">
-  <button
-    class="nav-toggle"
-    aria-controls="primary-navigation"
-    aria-label="Open Menu"
-    aria-expanded="false"
+<button
+  class="nav-toggle"
+  aria-controls="primary-navigation"
+  aria-label="Open Menu"
+  aria-expanded="false"
+>
+  <svg
+    fill="var(--hamburger-color)"
+    class="hamburger"
+    viewBox="0 0 100 100"
+    width="60"
   >
-  </button>
-</div>
+    <rect class="line top" width="60" height="8" x="20" y="27" rx="5"> </rect>
+    <rect class="line middle" width="60" height="8" x="20" y="45" rx="5">
+    </rect>
+    <rect class="line bottom" width="60" height="8" x="20" y="63" rx="5">
+    </rect>
+  </svg>
+</button>
+<!-- </div> -->
 
 <style>
-  .mob-nav-toggle {
+  button {
     background: var(--color-accent-400);
-    padding: 1em;
+    border: none;
+    display: grid;
     border-radius: 50%;
   }
+
   .nav-toggle {
-    background: transparent;
-    background-image: url(/assets/icons/icon-hamburger.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-    width: var(--step-2);
-    aspect-ratio: 1/1;
-    border: 0;
-    cursor: pointer;
-    transition: background-image 0.3s;
+    z-index: 100;
   }
 
-  .nav-toggle[aria-expanded="true"] {
-    background-image: url(/assets/icons/icon-close.svg);
-    z-index: 200;
-    position: relative;
+  .nav-toggle .line {
+    transition:
+      y 300ms ease-in 300ms,
+      rotate 300ms ease-in,
+      opacity 0ms 300ms;
+    transform-origin: center;
+  }
+
+  .nav-toggle[aria-expanded="true"] .line {
+    transition:
+      y 300ms ease-in,
+      rotate 300ms ease-in 300ms,
+      opacity 0ms 300ms;
+  }
+
+  .nav-toggle[aria-expanded="true"] :is(.top, .bottom) {
+    y: 45;
+  }
+
+  .nav-toggle[aria-expanded="true"] .top {
+    rotate: 45deg;
+  }
+
+  .nav-toggle[aria-expanded="true"] .middle {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"] .bottom {
+    rotate: -45deg;
   }
 
   @media (min-width: 992px) {
-    .mob-nav-toggle {
+    .nav-toggle {
       display: none;
     }
   }

@@ -13,6 +13,7 @@
   --color-secondary-500: #1d1e20;
   --color-bg-light: #f8f8f8;
   --clr-error: #ffe165;
+  --hamburger-color: var(--color-primary);
   --ff-secondary: "Ubuntu", sans-serif;
   --ff-body: "OpenSans", sans-serif;
   --step--2: clamp(0.7813rem, 0.7483rem + 0.1646vi, 0.88rem);
