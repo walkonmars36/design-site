@@ -36,33 +36,27 @@
 
   .nav-toggle .line {
     transition:
-      y 300ms ease-in 300ms,
-      rotate 300ms ease-in,
+      transform 300ms ease-in,
       opacity 0ms 300ms;
     transform-origin: center;
   }
 
   .nav-toggle[aria-expanded="true"] .line {
     transition:
-      y 300ms ease-in,
-      rotate 300ms ease-in 300ms,
+      transform 300ms ease-in,
       opacity 0ms 300ms;
-  }
-
-  .nav-toggle[aria-expanded="true"] :is(.top, .bottom) {
-    y: 45;
-  }
-
-  .nav-toggle[aria-expanded="true"] .top {
-    rotate: 45deg;
   }
 
   .nav-toggle[aria-expanded="true"] .middle {
     opacity: 0;
   }
 
+  .nav-toggle[aria-expanded="true"] .top {
+    transform: translateY(10%) rotate(45deg);
+  }
+
   .nav-toggle[aria-expanded="true"] .bottom {
-    rotate: -45deg;
+    transform: translateY(-15%) rotate(-45deg);
   }
 
   @media (min-width: 992px) {
