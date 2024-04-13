@@ -13,7 +13,7 @@
       id="firstName"
       autocomplete="given-name"
     />
-    <span id="name-error" class="error-text font-xs-step-2"
+    <span class="name-error error-text font-xs-step-2"
       >First name is required</span
     >
   </fieldset>
@@ -25,7 +25,7 @@
       id="lastName"
       autocomplete="family-name"
     />
-    <span id="name-error" class="error-text font-xs-step-2"
+    <span class="name-error error-text font-xs-step-2"
       >Last name is required</span
     >
   </fieldset>
@@ -126,26 +126,36 @@
   const firstName = document.getElementById("firstName") as HTMLInputElement;
   const lastName = document.getElementById("lastName") as HTMLInputElement;
   const emailInput = document.getElementById("email") as HTMLInputElement;
-  const nameError = document.getElementById("name-error") as HTMLSpanElement;
+  const nameError = document.querySelectorAll(
+    ".name-error"
+  ) as NodeListOf<HTMLSpanElement>;
   const emailError = document.getElementById("email-error") as HTMLSpanElement;
 
   firstName.addEventListener("blur", () => {
     if (!validateName(firstName.value)) {
       firstName.classList.add("error");
-      nameError.style.display = "block";
+      nameError.forEach((error) => {
+        error.style.display = "block";
+      });
     } else {
       firstName.classList.remove("error");
-      nameError.style.display = "none";
+      nameError.forEach((error) => {
+        error.style.display = "none";
+      });
     }
   });
 
   lastName.addEventListener("blur", () => {
     if (!validateName(lastName.value)) {
       lastName.classList.add("error");
-      nameError.style.display = "block";
+      nameError.forEach((error) => {
+        error.style.display = "block";
+      });
     } else {
       lastName.classList.remove("error");
-      nameError.style.display = "none";
+      nameError.forEach((error) => {
+        error.style.display = "none";
+      });
     }
   });
 
