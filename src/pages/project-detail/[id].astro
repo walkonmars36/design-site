@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import projectData from "../../data/client-data.json";
+import projectData from "../../data/project-data.json";
 
 export async function getStaticPaths() {
   return projectData.map(
@@ -45,37 +45,37 @@ const {
   result,
   tech,
 } = Astro.props;
-const pageTitle = `${title} | Client Project`;
+const pageTitle = `${title} | Project detail`;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <article>
-    <h1 class="wrapper">Client focus: <br />{title}</h1>
+    <h1 class="wrapper">Project detail: <br />{title}</h1>
     <section class="wrapper">
       <img src={images.small} alt={title} />
-      <div class="client-detail__info flex space-xl">
+      <div class="project-detail__info flex space-xl">
         <div>
           <span class="project-info title-small">Project info</span>
         </div>
         <div>
-          <div class="client-detail-content">
-            <h2 class="client-detail__h2">{heading}</h2>
-            <div class="client-detail__url flex">
-              <span class="title-small">Client site:</span>
+          <div class="project-detail-content">
+            <h2 class="project-detail__h2">{heading}</h2>
+            <div class="project-detail__url flex">
+              <span class="title-small">project site:</span>
               <a href={url} target="_blank">{url}</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="client-detail__info flex space-xl">
+      <div class="project-detail__info flex space-xl">
         <h3 class="services-h3 title-small self-start">Services</h3>
-        <div class="client-detail__services">
+        <div class="project-detail__services">
           <ul>
             {services.map((service) => <li>{service}</li>)}
           </ul>
         </div>
       </div>
-      <div class="client-detail__info-b flex">
+      <div class="project-detail__info-b flex">
         <div class="flow">
           <h3>Objective</h3>
           <p>{objective}</p>
@@ -117,12 +117,12 @@ const pageTitle = `${title} | Client Project`;
         border-radius: var(--border-radius-md);
       }
 
-      .client-detail__info {
+      .project-detail__info {
         flex-direction: column;
         --gap: 0;
       }
 
-      .client-detail__info-b {
+      .project-detail__info-b {
         flex-direction: column;
         --gap: var(--space-xl-2xl);
         margin-top: var(--space-2xl-3xl);
@@ -132,17 +132,17 @@ const pageTitle = `${title} | Client Project`;
         --flow-space: var(--space-xs);
       }
 
-      .client-detail__url {
+      .project-detail__url {
         flex-direction: column;
         --gap: 0;
         margin-top: var(--space-m-l);
       }
 
-      .client-detail__services li {
+      .project-detail__services li {
         border-bottom: 1px solid var(--color-accent-400);
       }
 
-      .client-detail__services li {
+      .project-detail__services li {
         padding-top: var(--space-l);
       }
 
@@ -155,23 +155,23 @@ const pageTitle = `${title} | Client Project`;
       }
 
       @media (min-width: 768px) {
-        .client-detail__url {
+        .project-detail__url {
           flex-direction: row;
           --gap: 0.5em;
         }
 
-        .client-detail__url a {
+        .project-detail__url a {
           padding-top: 0.15em;
         }
       }
 
       @media (min-width: 992px) {
-        .client-detail__info {
+        .project-detail__info {
           display: grid;
           grid-template-columns: 0.5fr 1fr;
         }
 
-        .client-detail__services li:first-child {
+        .project-detail__services li:first-child {
           padding-top: 0;
         }
       }

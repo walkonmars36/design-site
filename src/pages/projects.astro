@@ -1,17 +1,17 @@
 ---
-import clientData from "../data/client-data.json";
+import projectData from "../data/project-data.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Clients | walkonmars.design";
+const pageTitle = "Projects | walkonmars.design";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <article id="main-content">
-    <h1 class="wrapper">Clients</h1>
+    <h1 class="wrapper">Projects</h1>
 
     {
-      clientData.map(({ id, title, images, excerpt }) => (
-        <section class="client wrapper">
-          <a href={`/client-detail/${id} `} class="client-link">
+      projectData.map(({ id, title, images, excerpt }) => (
+        <section class="project wrapper">
+          <a href={`/project-detail/${id} `} class="project-link">
             <picture>
               <img
                 class="border-radius-lg"
@@ -22,7 +22,7 @@ const pageTitle = "Clients | walkonmars.design";
             </picture>
 
             <div>
-              <h2 class="client-h2">{title}</h2>
+              <h2 class="project-h2">{title}</h2>
               <p>{excerpt}</p>
             </div>
             <span>View Project</span>
@@ -72,22 +72,22 @@ const pageTitle = "Clients | walkonmars.design";
     height: 0.3rem;
     background: var(--color-accent-400);
   }
-  .client {
+  .project {
     margin-top: var(--space-l);
     background: var(--color-bg-light);
   }
 
-  .client-link {
+  .project-link {
     display: inline-block;
   }
 
-  .client-link picture {
+  .project-link picture {
     position: relative;
     display: inline-block;
     overflow: hidden;
   }
 
-  .client-link picture::after {
+  .project-link picture::after {
     content: "View";
     position: absolute;
     top: 50%;
@@ -104,16 +104,16 @@ const pageTitle = "Clients | walkonmars.design";
     transition: opacity 0.3s ease;
   }
 
-  .client-link:hover picture::after {
+  .project-link:hover picture::after {
     opacity: 1;
   }
 
-  .client-link picture img {
+  .project-link picture img {
     transition: transform 0.3s ease;
     position: relative;
   }
 
-  .client-link:hover picture img {
+  .project-link:hover picture img {
     transform: scale(1.1);
   }
 </style>

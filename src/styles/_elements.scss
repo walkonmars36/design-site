@@ -10,7 +10,7 @@ h3 {
   padding-bottom: 0.3em;
 }
 
-h2:not(.h3, .client-detail__h2)::after,
+h2:not(.h3, .project-detail__h2)::after,
 h3:not(.services-h3)::after {
   content: "";
   position: absolute;
@@ -27,7 +27,7 @@ h3:not(.services-h3)::after {
   font-weight: 400;
 }
 
-.title-small:not(.client-detail__url):before {
+.title-small:not(.project-detail__url):before {
   content: "";
   width: 0.5em;
   height: 0.5em;

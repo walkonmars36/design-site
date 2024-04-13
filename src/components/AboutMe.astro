@@ -93,3 +93,22 @@
     max-height: 1000px;
   }
 </style>
+
+<script>
+  // read more button
+  const readMore = document.querySelector(".read-more") as HTMLButtonElement;
+  const showLess = document.querySelector(".show-less") as HTMLButtonElement;
+  const moreText = document.querySelector(".more-text");
+
+  readMore.addEventListener("click", () => {
+    moreText.classList.add("visible");
+    readMore.style.display = "none";
+    showLess.style.display = "block";
+  });
+
+  showLess.addEventListener("click", () => {
+    moreText.classList.remove("visible");
+    readMore.style.display = "block";
+    showLess.style.display = "none";
+  });
+</script>

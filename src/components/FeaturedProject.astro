@@ -1,5 +1,5 @@
 ---
-import projectData from "../data/client-data.json";
+import projectData from "../data/project-data.json";
 import FeaturedBtn from "./FeaturedBtn.astro";
 
 const { id, title } = projectData[0];
@@ -8,7 +8,7 @@ const { id, title } = projectData[0];
 <section>
   <div class="wrapper">
     <div class="featured">
-      <h2 class="">Featured client</h2>
+      <h2 class="">Featured project</h2>
       <div class="featured__content">
         <div class="featured__content-text flow">
           <h3>{title}</h3>
