@@ -6,6 +6,7 @@
   <div class="testimonial">
     <picture class="inline"
       ><img
+        class="quote-mark"
         src="/assets/images/quote-mark.svg"
         aria-hidden="true"
         alt=""
@@ -15,52 +16,79 @@
       <p>
         I have run my own small business for over 20 years. In that time I have
         probably worked with 4 or 5 web designers on different iterations of my
-        site. Mark has been far and away the best I have ever worked with and I
-        am really delighted with the results. Mark has a rare combination of
-        qualities that make him in my view perfect for supporting solo / small
-        business owners create websites that really fit their personalities and
-        brand.
+        site.
       </p>
+      <p>
+        Mark has been far and away the best I have ever worked with and I am
+        really delighted with the results.
+      </p>
+      <p>
+        Mark has a rare combination of qualities that make him in my view
+        perfect for supporting solo / small business owners in creating websites
+        that really fit their personalities and brand.
+      </p>
+      <div class="flex align-center space-xs">
+        <span class="testimonial_author">Timothy Malnick</span>
+        <img
+          class="testimonial_author-img"
+          src="/public/assets/images/tim.webp"
+        />
+      </div>
     </div>
   </div>
+
+  <style>
+    section {
+      padding-block: var(--space-3xl);
+      display: grid;
+      place-items: center;
+    }
+
+    button.btn {
+      color: var(--color-accent-500);
+    }
+
+    p:last-of-type {
+      padding-bottom: 1em;
+      border-bottom: 1px solid var(--color-secondary-200);
+    }
+
+    .quote-mark {
+      width: var(--step-5);
+    }
+
+    .flow {
+      --flow-space: 0.5em;
+    }
+
+    .testimonial_author-img {
+      width: clamp(3.75rem, 3.3152rem + 2.1739vi, 5rem);
+      border-radius: 50%;
+      box-shadow: var(--shadow-medium);
+    }
+    .testimonial__text {
+      background: var(--color-bg-light);
+      margin: var(--space-m-l) 0;
+      padding: var(--space-l) var(--space-s-m);
+      border-radius: var(--border-radius-lg);
+    }
+
+    .show-less {
+      display: none;
+    }
+
+    .more-text {
+      margin-top: 1em;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition:
+        opacity 0.5s,
+        max-height 0.5s;
+    }
+    .more-text.visible {
+      opacity: 1;
+      max-height: 1000px;
+    }
+  </style>
 </section>
-
-<style>
-  section {
-    padding-block: var(--space-3xl);
-    display: grid;
-    place-items: center;
-  }
-
-  img {
-    width: var(--step-5);
-  }
-
-  button.btn {
-    color: var(--color-accent-500);
-  }
-  .testimonial__text {
-    background: var(--color-bg-light);
-    margin: var(--space-m-l) 0;
-    padding: var(--space-l);
-    border-radius: var(--border-radius-lg);
-  }
-
-  .show-less {
-    display: none;
-  }
-
-  .more-text {
-    margin-top: 1em;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition:
-      opacity 0.5s,
-      max-height 0.5s;
-  }
-  .more-text.visible {
-    opacity: 1;
-    max-height: 1000px;
-  }
-</style>

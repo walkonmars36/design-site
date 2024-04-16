@@ -8,17 +8,20 @@
     position: fixed;
     bottom: 1.25rem;
     right: 1.25rem;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
     background-color: var(--color-accent-400);
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition:
+      background 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
   }
 
   .back-to-top:hover {
-    background-color: var(--color-accent-300);
+    background: var(--color-accent-300);
+    transform: scale(1.04);
   }
 
   .back-to-top.show {

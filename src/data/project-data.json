@@ -2,13 +2,13 @@
   {
     "id": "timothy-malnick",
     "title": "Timothy Malnick",
-    "excerpt": "Minim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem.",
-    "heading": "Website design and development of a custom Wordpress site for a Bristol based coach, facilitator and organisational psychologist.",
+    "excerpt": "Website design and development of a custom Wordpress site for a coach, facilitator and organisational psychologist.",
+    "heading": "Website design and development of a custom Wordpress site for a coach, facilitator and organisational psychologist.",
     "url": "https://timothymalnick.com/",
     "services": ["Website Design", "Wordpress Development", "SEO", "Hosting"],
-    "objective": "To create a professional and engaging website that showcases the project's services and expertise.",
-    "process": "The project provided a detailed brief and content for the site. I designed and developed the site using Wordpress and Oxygen Builder. The site was optimised for SEO and performance.",
-    "result": "The project was very happy with the site and has received positive feedback from projects and colleagues.",
+    "objective": "To create a professional and engaging website that showcases the client's services and expertise.",
+    "process": "The client provided a detailed brief and content for the site. I designed and developed the site using Wordpress and Oxygen Builder. The site was optimised for SEO and performance.",
+    "result": "The client was very happy with the site and has received positive feedback from clients and colleagues.",
     "images": {
       "small": "/assets/images/tim-sm-project-temp.png",
       "large": ""
@@ -18,13 +18,18 @@
   {
     "id": "jude-lawson",
     "title": "Jude Lawson Therapy",
-    "excerpt": "Minim ex quis laboris cillum qui laboris culpa. Laborum ut exercitation elit enim cupidatat proident dolore sit non duis duis Lorem laboris laborum. Minim duis veniam veniam enim proident dolor Lorem incididunt amet Lorem.",
-    "heading": "Website design and development of a custom Wordpress site for a Bristol based coach, facilitator and organisational psychologist.",
-    "url": "https://timothymalnick.com/",
-    "services": ["Website Design", "Wordpress Development", "SEO", "Hosting"],
-    "objective": "To create a professional and engaging website that showcases the project's services and expertise.",
-    "process": "The project provided a detailed brief and content for the site. I designed and developed the site using Wordpress and Oxygen Builder. The site was optimised for SEO and performance.",
-    "result": "The project was very happy with the site and has received positive feedback from projects and colleagues.",
+    "excerpt": "Webflow development of a custom site for a Bristol based counsellor and psychotherapist.",
+    "heading": "Webflow development of a custom site for a Bristol based counsellor and psychotherapist.",
+    "url": "https://judelawsontherapy.co.uk/",
+    "services": [
+      "Website Design",
+      "Webflow Development",
+      "SEO",
+      "Netlify Hosting"
+    ],
+    "objective": "To create a professional and engaging website that showcases the client's services and expertise. Focussing on accessibility and inclusivity.",
+    "process": "The client provided a simple brief, design system and content for the site. Using a font developed for dyslexic readers and a colour palette that is accessible to all, I designed the site in Figma and developed the final website using Webflow.",
+    "result": "The client was delighted with the site and extremely grateful for the attention to detail and accessibility considerations.",
     "images": {
       "small": "/assets/images/jude-sm-project-temp.png",
       "large": ""

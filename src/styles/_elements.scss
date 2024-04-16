@@ -3,15 +3,17 @@ h2 {
   position: relative;
   display: inline-block;
   z-index: 2;
-}
-
-h2,
-h3 {
   padding-bottom: 0.3em;
 }
 
+.testimonial_author {
+  position: relative;
+  padding-bottom: 0.2em;
+}
+
 h2:not(.h3, .project-detail__h2)::after,
-h3:not(.services-h3)::after {
+h3:not(.services-h3)::after,
+.testimonial_author::after {
   content: "";
   position: absolute;
   bottom: 0;

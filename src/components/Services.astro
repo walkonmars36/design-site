@@ -1,5 +1,5 @@
 ---
-
+import { Code } from "astro:components";
 ---
 
 <section id="services">
@@ -7,74 +7,123 @@
     <h2>Services</h2>
 
     <div class="services grid">
-      <div class="flow">
-        <h3>UX/UI Design</h3>
+      <div class="flow wdn">
+        <h3>Web Design</h3>
         <p>
-          Designing user interfaces and experiences that are intuitive, easy to
-          use, and visually appealing.
+          My focus is on creating clean, modern designs prioritising User
+          Experience (UX) best practices that aim for an inclusive and intuitive
+          experience for all users.
+        </p>
+        <p>
+          I use Figma, the leading user interface (UI) design tool, to craft web
+          designs with interactive prototyping, which means you'll be able to
+          see a working model of your website before the actual build.
+        </p>
+        <p>
+          This approach allows for client feedback and refinement, providing
+          opportunities for quick adjustments and redesigns before finalizing
+          the design that will go on to be developed.
         </p>
       </div>
-      <div class="flow">
-        <h3>WordPress Development</h3>
+      <div class="flow wp">
+        <h3>Wordpress development</h3>
         <p>
-          Building custom WordPress themes and plugins that are easy to manage
-          and update.
+          I build custom WordPress sites using Oxygen or Bricks builder,
+          allowing me to prioritise both speed of development and client
+          usability.
+        </p>
+        <p>
+          With my knowledge of CSS and JavaScript, along with PHP and custom
+          theme creation, I can also customise existing WordPress sites.
+        </p>
+        <p>
+          Whether customising code on your existing website or building a new
+          site from scratch, I work hard to ensure each WordPress website I
+          build meets your unique requirements.
         </p>
       </div>
-      <div class="flow">
-        <h3>Webflow Development</h3>
+      <div class="flow wfw">
+        <h3>Webflow development</h3>
         <p>
-          Building custom websites using Webflow, a powerful and flexible design
-          tool.
+          As an advanced visual development tool, this platform enables rapid
+          development and easy client editing, ensuring efficient project
+          delivery.
+        </p>
+        <p>
+          Webflow is also renowned for its interaction and animation tools,
+          which can be used to create engaging and dynamic websites.
+          Functionality can also be further further enhanced with JavaScript and
+          custom CSS for tailored solutions.
         </p>
       </div>
-      <div class="flow">
-        <h3>Shopify Development</h3>
+      <div class="flow shp">
+        <h3>Shopify</h3>
         <p>
-          Building custom Shopify themes and apps that are easy to manage and
-          update.
+          Drawing from first hand experience of running my own ecommerce store,
+          I recommend Shopify as a platform that is easy to use and maintain.
+        </p>
+        <p>
+          I can create custom frontends or modify existing themes to meet the
+          requirements of the project, whilst also integrating third-party apps
+          and services to enhance the functionality of your store.
         </p>
       </div>
-      <div class="flow">
+      <div class="flow fed">
         <h3>Frontend Development</h3>
         <p>
-          Building custom websites and web applications using modern frontend
-          technologies.
+          While I'm primarily focussed on client-friendly platforms like
+          WordPress, Webflow, and Shopify, I'm in my happy place when working in
+          code; using HTML, CSS and JavaScript. I've also built projects in
+          ReactJS and this site is built in a cutting edge framework called
+          Astro.
         </p>
-        <span>Find out more on my dedicated dev site</span>
-        <a href="#">walkonmars.dev</a>
+        <p>
+          Whether it's enhancing an existing site with responsive layouts and
+          cross-browser compatibility or building one from scratch with dynamic
+          user interfaces, I ensure a seamless and engaging user experience
+          across all devices and browsers.
+        </p>
+      </div>
+      <div class="flow seo">
+        <h3>SEO</h3>
+        <p>
+          While SEO isn't my primary focus, I continuously strive to implement
+          best practices into my code.
+        </p>
+        <p>
+          By optimizing website structures and content, conducting technical SEO
+          audits, and implementing on-page optimization strategies like keyword
+          research and content optimization, I aim to improve search engine
+          visibility and drive organic traffic.
+        </p>
       </div>
     </div>
+
+    <style>
+      section {
+        margin-top: var(--space-l);
+      }
+
+      .wrapper {
+        background: var(--color-bg-light);
+      }
+
+      .services {
+        gap: var(--space-m);
+        grid-template-columns: repeat(auto-fill, minmax(min(25rem, 100%), 1fr));
+        margin-top: var(--space-xl);
+      }
+
+      .services div {
+        background: var(--color-white-80);
+        border-radius: var(--border-radius-xl);
+        padding: var(--space-l) var(--space-m);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .flow {
+        --flow-space: var(--space-s);
+      }
+    </style>
   </div>
 </section>
-
-<style>
-  section {
-    margin-top: var(--space-l);
-  }
-
-  p {
-    max-width: 30ch;
-  }
-
-  .wrapper {
-    background: var(--color-bg-light);
-  }
-
-  .services {
-    gap: var(--space-l);
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    margin-top: var(--space-xl);
-  }
-
-  .services div {
-    background: var(--color-white-80);
-    border-radius: var(--border-radius-xl);
-    padding: var(--space-s);
-    box-shadow: var(--shadow-medium);
-  }
-
-  .flow {
-    --flow-space: var(--space-2xs);
-  }
-</style>

@@ -1,6 +1,7 @@
 ---
 import projectData from "../data/project-data.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 const pageTitle = "Projects | walkonmars.design";
 ---
 
@@ -77,8 +78,15 @@ const pageTitle = "Projects | walkonmars.design";
     background: var(--color-bg-light);
   }
 
-  .project-link {
+  a.project-link {
     display: inline-block;
+  }
+
+  a span {
+    transition: font-weight 0.2s;
+  }
+  a span:hover {
+    font-weight: 700;
   }
 
   .project-link picture {
@@ -96,7 +104,7 @@ const pageTitle = "Projects | walkonmars.design";
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: var(--color-accent-400);
+    background: var(--color-white);
     color: var(--color-primary);
     text-align: center;
     line-height: 100px;

@@ -61,7 +61,7 @@ const pageTitle = `${title} | Project detail`;
           <div class="project-detail-content">
             <h2 class="project-detail__h2">{heading}</h2>
             <div class="project-detail__url flex">
-              <span class="title-small">project site:</span>
+              <span class="title-small">Client site:</span>
               <a href={url} target="_blank">{url}</a>
             </div>
           </div>
@@ -120,6 +120,14 @@ const pageTitle = `${title} | Project detail`;
       .project-detail__info {
         flex-direction: column;
         --gap: 0;
+      }
+
+      a {
+        transition: font-weight 0.2s;
+      }
+
+      a:hover {
+        font-weight: 700;
       }
 
       .project-detail__info-b {
