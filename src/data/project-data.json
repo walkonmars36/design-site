@@ -10,8 +10,8 @@
     "process": "The client provided a detailed brief and content for the site. I designed and developed the site using Wordpress and Oxygen Builder. The site was optimised for SEO and performance.",
     "result": "The client was very happy with the site and has received positive feedback from clients and colleagues.",
     "images": {
-      "small": "/assets/images/tim-sm-project-temp.png",
-      "large": ""
+      "small": "",
+      "large": "/assets/images/tim-hero-1280.webp"
     },
     "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
   },
@@ -31,8 +31,8 @@
     "process": "The client provided a simple brief, design system and content for the site. Using a font developed for dyslexic readers and a colour palette that is accessible to all, I designed the site in Figma and developed the final website using Webflow.",
     "result": "The client was delighted with the site and extremely grateful for the attention to detail and accessibility considerations.",
     "images": {
-      "small": "/assets/images/jude-sm-project-temp.png",
-      "large": ""
+      "small": "",
+      "large": "/assets/images/jude-hero-1280.webp"
     },
     "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
   }
