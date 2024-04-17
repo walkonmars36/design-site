@@ -11,7 +11,7 @@
     "result": "The client was very happy with the site and has received positive feedback from clients and colleagues.",
     "images": {
       "small": "",
-      "large": "/assets/images/tim-hero-1280.webp"
+      "large": "/assets/images/tim-hero.webp"
     },
     "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
   },
