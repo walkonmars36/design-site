@@ -48,10 +48,12 @@ const {
   result,
   tech,
 } = Astro.props;
+
 const pageTitle = `${title} | Project detail`;
+const description = `Project detail for ${title}`;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description}>
   <article>
     <h1 class="wrapper">Project detail: <br />{title}</h1>
     <section class="wrapper">

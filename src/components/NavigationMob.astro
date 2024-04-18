@@ -51,62 +51,64 @@
 <script>
   // Nav Menu //
 
-  const nav = document.querySelector(".mob-navigation");
-  const navToggle = document.querySelector(".nav-toggle");
-  const mainContent = document.querySelector("#main-content");
-  const anchors = document.querySelectorAll(".mob-navigation a");
+  document.addEventListener("astro:page-load", () => {
+    const nav = document.querySelector(".mob-navigation");
+    const navToggle = document.querySelector(".nav-toggle");
+    const mainContent = document.querySelector("#main-content");
+    const anchors = document.querySelectorAll(".mob-navigation a");
 
-  // Function to close the navigation menu
-  function closeNav() {
-    nav.setAttribute("data-visible", "false");
-    navToggle.setAttribute("aria-label", "Open Menu");
-    navToggle.setAttribute("aria-expanded", "false");
-    document.body.classList.remove("no-scroll"); // Enable scrolling
-    mainContent.classList.remove("opacity-01"); // Remove opacity-01 effect
-  }
-
-  // Event listener for the navigation toggle button
-  navToggle.addEventListener("click", function () {
-    const navIsOpen = nav.getAttribute("data-visible");
-
-    if (navIsOpen === "true") {
-      closeNav();
-    } else {
-      nav.setAttribute("data-visible", "true");
-      navToggle.setAttribute("aria-label", "Close Menu");
-      navToggle.setAttribute("aria-expanded", "true");
-      document.body.classList.add("no-scroll"); // Disable scrolling
-      mainContent.classList.add("opacity-01"); // Add opacity-01 effect
+    // Function to close the navigation menu
+    function closeNav() {
+      nav.setAttribute("data-visible", "false");
+      navToggle.setAttribute("aria-label", "Open Menu");
+      navToggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("no-scroll"); // Enable scrolling
+      mainContent.classList.remove("opacity-01"); // Remove opacity-01 effect
     }
-  });
 
-  // Event listener for the navigation links
-  anchors.forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
+    // Event listener for the navigation toggle button
+    navToggle.addEventListener("click", function () {
+      const navIsOpen = nav.getAttribute("data-visible");
 
-      if (nav.getAttribute("data-visible") === "true") {
+      if (navIsOpen === "true") {
         closeNav();
-        window.location.href = this.getAttribute("href");
+      } else {
+        nav.setAttribute("data-visible", "true");
+        navToggle.setAttribute("aria-label", "Close Menu");
+        navToggle.setAttribute("aria-expanded", "true");
+        document.body.classList.add("no-scroll"); // Disable scrolling
+        mainContent.classList.add("opacity-01"); // Add opacity-01 effect
       }
     });
-  });
 
-  // Event listener to close the navigation menu when clicking outside of it
-  mainContent.addEventListener("click", function () {
-    const navIsOpen = nav.getAttribute("data-visible");
+    // Event listener for the navigation links
+    anchors.forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
 
-    if (navIsOpen === "true") {
-      closeNav();
-    }
-  });
+        if (nav.getAttribute("data-visible") === "true") {
+          closeNav();
+          window.location.href = this.getAttribute("href");
+        }
+      });
+    });
 
-  // Event listener to close the navigation menu when pressing the Escape key on tablet
-  document.addEventListener("keydown", function (event) {
-    const navIsOpen = nav.getAttribute("data-visible");
+    // Event listener to close the navigation menu when clicking outside of it
+    mainContent.addEventListener("click", function () {
+      const navIsOpen = nav.getAttribute("data-visible");
 
-    if (navIsOpen === "true" && event.key === "Escape") {
-      closeNav();
-    }
+      if (navIsOpen === "true") {
+        closeNav();
+      }
+    });
+
+    // Event listener to close the navigation menu when pressing the Escape key on tablet
+    document.addEventListener("keydown", function (event) {
+      const navIsOpen = nav.getAttribute("data-visible");
+
+      if (navIsOpen === "true" && event.key === "Escape") {
+        closeNav();
+      }
+    });
   });
 </script>
