@@ -50,7 +50,6 @@
 
 <script>
   // Nav Menu //
-
   document.addEventListener("astro:page-load", () => {
     const nav = document.querySelector(".mob-navigation");
     const navToggle = document.querySelector(".nav-toggle");
@@ -82,6 +81,7 @@
     });
 
     // Event listener for the navigation links
+
     anchors.forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
@@ -103,6 +103,7 @@
     });
 
     // Event listener to close the navigation menu when pressing the Escape key on tablet
+
     document.addEventListener("keydown", function (event) {
       const navIsOpen = nav.getAttribute("data-visible");
 
