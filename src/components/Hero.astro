@@ -53,50 +53,52 @@ import HeroBtn from "../components/HeroBtn.astro";
 </style>
 
 <script>
-  const words = [
-    "Webflow",
-    "Wordpress",
-    "Shopify",
-    "SEO",
-    "UX / UI Design",
-    "Custom Code",
-  ];
-  let el = document.getElementById("typewriter");
+  document.addEventListener("astro:page-load", () => {
+    const words = [
+      "Webflow",
+      "Wordpress",
+      "Shopify",
+      "SEO",
+      "UX / UI Design",
+      "Custom Code",
+    ];
+    let el = document.getElementById("typewriter");
 
-  let sleepTime = 100;
-  let curWordIndex = 0;
+    let sleepTime = 100;
+    let curWordIndex = 0;
 
-  function writeLoop() {
-    if (!el) {
-      return;
-    }
-
-    let curWord = words[curWordIndex % words.length];
-    let i = 0;
-
-    function typeForward() {
-      if (i <= curWord.length) {
-        el.textContent = curWord.substring(0, i + 1);
-        i++;
-        setTimeout(typeForward, sleepTime);
-      } else {
-        setTimeout(typeBackward, sleepTime * 5);
+    function writeLoop() {
+      if (!el) {
+        return;
       }
-    }
 
-    function typeBackward() {
-      if (i >= 0) {
-        el.textContent = curWord.substring(0, i - 1);
-        i--;
-        setTimeout(typeBackward, sleepTime);
-      } else {
-        curWordIndex = (curWordIndex + 1) % words.length;
-        setTimeout(writeLoop, sleepTime * 5);
+      let curWord = words[curWordIndex % words.length];
+      let i = 0;
+
+      function typeForward() {
+        if (i <= curWord.length) {
+          el.textContent = curWord.substring(0, i + 1);
+          i++;
+          setTimeout(typeForward, sleepTime);
+        } else {
+          setTimeout(typeBackward, sleepTime * 5);
+        }
       }
+
+      function typeBackward() {
+        if (i >= 0) {
+          el.textContent = curWord.substring(0, i - 1);
+          i--;
+          setTimeout(typeBackward, sleepTime);
+        } else {
+          curWordIndex = (curWordIndex + 1) % words.length;
+          setTimeout(writeLoop, sleepTime * 5);
+        }
+      }
+
+      typeForward();
     }
 
-    typeForward();
-  }
-
-  writeLoop();
+    writeLoop();
+  });
 </script>
