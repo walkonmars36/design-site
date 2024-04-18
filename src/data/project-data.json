@@ -2,12 +2,17 @@
   {
     "id": "timothy-malnick",
     "title": "Timothy Malnick",
-    "excerpt": "Website design and development of a custom Wordpress site for a coach, facilitator and organisational psychologist.",
-    "heading": "Website design and development of a custom Wordpress site for a coach, facilitator and organisational psychologist.",
+    "excerpt": "Website design and development of a custom Wordpress site for a leadership coach, facilitator and organisational psychologist.",
+    "heading": "Website design and development of a custom Wordpress site.",
     "url": "https://timothymalnick.com/",
-    "services": ["Website Design", "Wordpress Development", "SEO", "Hosting"],
-    "objective": "To create a professional and engaging website that showcases the client's services and expertise.",
-    "process": "The client provided a detailed brief and content for the site. I designed and developed the site using Wordpress and Oxygen Builder. The site was optimised for SEO and performance.",
+    "services": [
+      "Website Design",
+      "Wordpress Development",
+      "SEO",
+      "Green Hosting"
+    ],
+    "objective": "Timothy Malnick is a leadership coach, facilitator and organisational psychologist. He wanted a website that reflected his professional services and expertise. His existing site was several years old, hard to navigate and needed a refresh. The new site had to be easy to navigate, showcase his services and provide a platform for his blog.",
+    "process": "The client provided a detailed brief and content for the site. After consultation and a thorough audit of the existing site I created the new design in Figma and developed it in Wordpress using custom code and Oxygen Builder. The site was optimised for SEO and performance.",
     "result": "The client was very happy with the site and has received positive feedback from clients and colleagues.",
     "images": {
       "small": "",
@@ -21,8 +26,8 @@
   {
     "id": "jude-lawson",
     "title": "Jude Lawson Therapy",
-    "excerpt": "Webflow development of a custom site for a Bristol based counsellor and psychotherapist.",
-    "heading": "Webflow development of a custom site for a Bristol based counsellor and psychotherapist.",
+    "excerpt": "Web design and development of a custom Webflow site for a Bristol based counsellor and psychotherapist.",
+    "heading": "Web design and development of a custom Webflow site.",
     "url": "https://judelawsontherapy.co.uk/",
     "services": [
       "Website Design",
@@ -30,8 +35,8 @@
       "SEO",
       "Netlify Hosting"
     ],
-    "objective": "To create a professional and engaging website that showcases the client's services and expertise. Focussing on accessibility and inclusivity.",
-    "process": "The client provided a simple brief, design system and content for the site. Using a font developed for dyslexic readers and a colour palette that is accessible to all, I designed the site in Figma and developed the final website using Webflow.",
+    "objective": "Jude Lawson is a Bristol based counsellor and psychotherapist. She required a simple and engaging website that showcased her services and expertise, focussing on accessibility and inclusivity.",
+    "process": "The client provided a simple brief, design system and content for the site. Using a font developed for dyslexic readers and a colour palette that is accessible to all, I designed the site in Figma and developed the final website using Webflow. As  there was no need for regular content updates, the site was exported from Webflow and hosted on Netlify.",
     "result": "The client was delighted with the site and extremely grateful for the attention to detail and accessibility considerations.",
     "images": {
       "small": "",
