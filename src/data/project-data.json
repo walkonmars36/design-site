@@ -11,8 +11,11 @@
     "result": "The client was very happy with the site and has received positive feedback from clients and colleagues.",
     "images": {
       "small": "",
-      "large": "/assets/images/tim-hero.webp"
+      "large": "/assets/images/tim-hero.webp",
+      "featured": "/assets/images/tim-ondrian.webp"
     },
+    "altHero": "Screenshot of the hero section from Timothy Malnick's website",
+    "altFeatured": "Montage of Timothy Malnick's website in the style of Piet Mondrian",
     "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
   },
   {
@@ -34,6 +37,7 @@
       "small": "",
       "large": "/assets/images/jude-hero-1280.webp"
     },
+    "altHero": "Screenshot of the hero section from Jude Lawson Therapy's website",
     "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
   }
 ]

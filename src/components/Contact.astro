@@ -1,6 +1,5 @@
 ---
-// import Calendar from "./Calendar.astro";
-import CallBtn from "./CallBtn.astro";
+// import CallBtn from "./CallBtn.astro";
 import ContactForm from "./ContactForm.astro";
 ---
 
@@ -22,16 +21,14 @@ import ContactForm from "./ContactForm.astro";
           fill in the form, and I’ll get back to you as soon as possible.
         </p>
         <p>
-          email me directly
-          <a href="mailto:mark@walkonmars.co.uk"
-            >&#109;&#97;&#114;&#107;&#64;&#119;&#97;&#108;&#107;&#111;&#110;&#109;&#97;&#114;&#115;&#46;&#99;&#111;&#46;&#117;&#107;</a
-          >
+          or email me at
+          <span class="email">mark@walkon<b>deathtobots</b>mars.co.uk</span>
         </p>
-        <p>
+        <!-- <p>
           Or, if you’d like a quick face to face chat, make an appointment
           below.
         </p>
-        <CallBtn />
+        <CallBtn /> -->
       </div>
       <ContactForm />
     </div>
@@ -51,10 +48,6 @@ import ContactForm from "./ContactForm.astro";
     border-radius: var(--border-radius-sm);
   }
 
-  a {
-    color: var(--color-accent-200);
-  }
-
   .flow {
     --flow-space: 0.5em;
   }
@@ -63,7 +56,7 @@ import ContactForm from "./ContactForm.astro";
     background: var(--color-secondary-200);
   }
 
-  .contact * :not(a) {
+  .contact * :not(.email) {
     color: var(--color-white);
   }
   .grid {
@@ -78,5 +71,13 @@ import ContactForm from "./ContactForm.astro";
     max-width: 65rem;
     margin-inline: auto;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  span.email {
+    color: var(--color-accent-200);
+  }
+
+  span.email b {
+    display: none;
   }
 </style>

@@ -1,7 +1,6 @@
 ---
 import projectData from "../data/project-data.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
 const pageTitle = "Projects | walkonmars.design";
 ---
 
@@ -10,23 +9,24 @@ const pageTitle = "Projects | walkonmars.design";
     <h1 class="wrapper">Projects</h1>
 
     {
-      projectData.map(({ id, title, images, excerpt }) => (
+      projectData.map(({ id, title, images, excerpt, altHero }) => (
         <section class="project wrapper">
-          <a href={`/project-detail/${id} `} class="project-link">
-            <picture>
+          <a href={`/project-detail/${id} `} class="project__link-img">
+            <div class="project__img-wrapper">
               <img
                 class="border-radius-lg"
                 src={images.large}
-                alt={title}
+                alt={altHero}
                 title="View Project"
               />
-            </picture>
-
-            <div>
-              <h2 class="project-h2">{title}</h2>
-              <p>{excerpt}</p>
             </div>
-            <span>View Project</span>
+          </a>
+          <div>
+            <h2 class="project-h2">{title}</h2>
+            <p>{excerpt}</p>
+          </div>
+          <a class="project__link" href={`/project-detail/${id}`}>
+            View project
           </a>
         </section>
       ))
@@ -50,7 +50,7 @@ const pageTitle = "Projects | walkonmars.design";
     font-size: var(--step-2);
     margin-top: var(--space-l);
   }
-  picture {
+  .project__img-wrapper {
     margin-top: var(--space-s-m);
     position: relative;
     padding-top: 2em;
@@ -63,8 +63,11 @@ const pageTitle = "Projects | walkonmars.design";
     display: inline-block;
     margin-top: var(--space-s);
   }
-
-  picture::before {
+  .project {
+    margin-top: var(--space-l);
+    background: var(--color-bg-light);
+  }
+  .project__img-wrapper::before {
     content: "";
     position: absolute;
     top: 0;
@@ -73,29 +76,26 @@ const pageTitle = "Projects | walkonmars.design";
     height: 0.3rem;
     background: var(--color-accent-400);
   }
-  .project {
-    margin-top: var(--space-l);
-    background: var(--color-bg-light);
-  }
 
-  a.project-link {
+  a.project__link {
     display: inline-block;
+    margin-top: var(--space-m);
   }
 
-  a span {
+  a.project__link {
     transition: font-weight 0.2s;
   }
-  a span:hover {
+  a.project__link:hover {
     font-weight: 700;
   }
 
-  .project-link picture {
+  .project__link-img .project__img-wrapper {
     position: relative;
     display: inline-block;
     overflow: hidden;
   }
 
-  .project-link picture::after {
+  .project__link-img .project__img-wrapper::after {
     content: "View";
     position: absolute;
     top: 50%;
@@ -112,16 +112,16 @@ const pageTitle = "Projects | walkonmars.design";
     transition: opacity 0.3s ease;
   }
 
-  .project-link:hover picture::after {
+  .project__link-img:hover .project__img-wrapper::after {
     opacity: 1;
   }
 
-  .project-link picture img {
+  .project__link-img .project__img-wrapper img {
     transition: transform 0.3s ease;
     position: relative;
   }
 
-  .project-link:hover picture img {
+  .project__link-img:hover .project__img-wrapper img {
     transform: scale(1.1);
   }
 </style>

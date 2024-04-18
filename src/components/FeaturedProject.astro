@@ -2,7 +2,7 @@
 import projectData from "../data/project-data.json";
 import FeaturedBtn from "./FeaturedBtn.astro";
 
-const { title, excerpt } = projectData[0];
+const { title, excerpt, id, images, altFeatured } = projectData[0];
 ---
 
 <section>
@@ -17,7 +17,15 @@ const { title, excerpt } = projectData[0];
           </p>
           <FeaturedBtn />
         </div>
-        <img src="/assets/images/tim-ondrian.webp" alt="temp" />
+        <div class="featured__img-wrapper">
+          <a class="project-link" href={`/project-detail/${id}`}>
+            <img
+              class="featured__img"
+              src={images.featured}
+              alt={altFeatured}
+            />
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -33,7 +41,6 @@ const { title, excerpt } = projectData[0];
   }
   img {
     box-shadow: var(--shadow-medium);
-    /* border-radius: var(--border-radius-lg); */
     object-fit: cover;
   }
 
@@ -54,6 +61,48 @@ const { title, excerpt } = projectData[0];
   .featured__content-text {
     padding-right: var(--space-m);
     padding-top: var(--space-m);
+  }
+
+  /************************** */
+
+  .featured__img-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .project-link::after {
+    content: "View";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--color-accent-400);
+    color: var(--color-primary);
+    text-align: center;
+    line-height: 100px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-link:hover::after {
+    opacity: 1;
+  }
+
+  .project-link img {
+    transition: transform 0.3s ease;
+  }
+
+  .project-link:hover img {
+    transform: scale(1.1);
+  }
+
+  .featured__img-wrapper:hover {
+    box-shadow: var(--shadow-medium);
+    border-radius: var(--border-radius-md);
   }
 
   @media (min-width: 768px) {
