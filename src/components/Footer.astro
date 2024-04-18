@@ -3,13 +3,24 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="wrapper">
-  <div>
-    <p>Mark Lawson <span>&copy; {year}</span></p>
-  </div>
+  <p>
+    Mark Lawson <span>&copy; {year}</span> |
+    <a href="privacy-policy">Privacy Policy</a>
+  </p>
 </footer>
 
 <style>
   p {
     color: var(--color-white);
+  }
+
+  a {
+    color: var(--color-accent-300);
+    transition: font-weight 0.2s ease-in-out;
+  }
+
+  a:hover {
+    color: var(--color-accent-200);
+    font-weight: 700;
   }
 </style>
