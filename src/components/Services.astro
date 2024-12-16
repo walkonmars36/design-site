@@ -10,95 +10,53 @@ import { Code } from "astro:components";
       <div class="flow wdn">
         <h3>Web Design</h3>
         <p>
-          My focus is on creating clean, modern designs prioritising user
-          experience (UX) and accessibility best practices that aim for an
-          inclusive and intuitive experience for all users.
-        </p>
-        <p>
-          I use Figma, the leading user interface (UI) design tool, to craft web
-          designs with interactive prototyping, which means you'll be able to
-          see a working model of your website before the actual build.
-        </p>
-        <p>
-          This approach allows for client feedback and refinement, providing
-          opportunities for quick adjustments and redesigns before finalizing
-          the design that will go on to be developed.
-        </p>
-      </div>
-      <div class="flow wp">
-        <h3>WordPress development</h3>
-        <p>
-          I build custom WordPress sites using Oxygen or Bricks builder,
-          allowing me to prioritise both speed of development and client
-          usability. Sites are hosted on eco friendly servers and optimized for
-          WordPress performance.
-        </p>
-        <p>
-          With my knowledge of CSS and JavaScript, along with PHP and custom
-          theme creation, I can also customise existing sites built with
-          WordPress.
-        </p>
-        <p>
-          Whether customising code on your existing website or building a new
-          site from scratch, I work hard to ensure each WordPress website I
-          build meets your unique requirements.
+          I create designs in Figma with a focus on user experience and
+          accessibility, aiming for an intuitive and inclusive experience for
+          all users. This phase is also an opportunity to explore and present
+          different design options before the site goes on to be developed.
         </p>
       </div>
       <div class="flow wfw">
         <h3>Webflow development</h3>
         <p>
-          As an advanced visual coding tool, this platform enables rapid
-          development and easy, on page client editing, making it a great choice
-          for clients who want to maintain their own site. Webflow also has a
-          powerful CMS, which allows for easy content management and dynamic
-          content creation.
-        </p>
-        <p>
-          Webflow is also renowned for its interaction and animation tools,
-          which can be used to create engaging and dynamic websites.
-          Functionality can also be further enhanced with JavaScript and custom
-          CSS for tailored solutions.
+          Crafting websites with Webflow’s powerful visual development platform,
+          combining creative design freedom with seamless performance. This
+          approach ensures top-tier hosting, effortless client management, and a
+          flawless user experience across all devices.
         </p>
       </div>
+
       <div class="flow shp">
         <h3>Shopify</h3>
         <p>
-          Drawing from first hand experience of running my own ecommerce store,
-          I recommend Shopify as a platform that is easy to use and maintain.
+          With firsthand experience running my own e-commerce store, I can help
+          you build a Shopify store that’s easy to manage and tailored to your
+          needs.
         </p>
+      </div>
+      <div class="flow wp">
+        <h3>WordPress development</h3>
         <p>
-          Whilst it's entirely possible to build a store using a pre-made theme,
-          I can also create custom frontends or modify existing themes to meet
-          the requirements of the project, whilst also integrating third-party
-          apps and services to enhance the functionality of your store.
+          If you have an existing WordPress site, I can help with custom coding
+          and building tailored solutions. While I’ve built sites from scratch
+          using Oxygen and Elementor, I am now focusing on Webflow, which offers
+          a more user-friendly experience, making site management simpler and
+          more intuitive.
         </p>
       </div>
       <div class="flow fed">
         <h3>Frontend Development</h3>
         <p>
-          While I'm primarily focussed on client-friendly platforms like
-          WordPress, Webflow, and Shopify, I'm also a frontend developer with a
-          passion for creating clean, modern, and responsive websites.
-        </p>
-        <p>
-          I'm in my happy place when working in a code editor, writing HTML, CSS
-          and JavaScript. I've built projects in dynamic frontend frameworks
-          like ReactJS and static site generators like Astro, which this site is
-          built in.
-        </p>
-        <p>
-          Whether it's enhancing an existing site with responsive layouts and a
-          focus on accessibility, or building one from scratch with dynamic user
-          interfaces, I ensure a seamless and engaging user experience across
-          all devices and browsers.
+          While I primarily focus on platforms like Webflow, Shopify, and
+          WordPress, I’m also skilled in coding from scratch with HTML, CSS, and
+          JavaScript. I’ve worked on projects using dynamic frontend frameworks
+          like ReactJS and Astro and can offer versatile solutions tailored to
+          your needs.
         </p>
       </div>
       <div class="flow seo">
         <h3>SEO</h3>
-        <p>
-          While SEO isn't my primary focus, I continuously strive to implement
-          best practices into my code.
-        </p>
+
         <p>
           By optimizing website structures and content, conducting technical SEO
           audits, and implementing on-page optimization strategies like keyword
@@ -115,6 +73,16 @@ import { Code } from "astro:components";
 
       .wrapper {
         background: var(--color-bg-light);
+      }
+
+      @media (max-width: 600px) {
+        .wrapper {
+          padding: var(--space-xl) 0;
+        }
+      }
+
+      h2 {
+        margin: 0 var(--fluid-18-80);
       }
 
       .services {

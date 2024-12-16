@@ -11,9 +11,9 @@
       "SEO",
       "Green Hosting"
     ],
-    "objective": "Timothy Malnick is a leadership coach, facilitator and organisational psychologist. He wanted a website that reflected his professional services and expertise. His existing site was several years old, hard to navigate and needed a refresh. The new site had to be easy to navigate, showcase his services and provide a platform for his blog.",
-    "process": "The client provided a detailed brief and content for the site. After consultation and a thorough audit of the existing site I created the new design in Figma and developed it in WordPress using Oxygen Builder, with custom PHP and JavaScript. The site was optimised for SEO and performance.",
-    "result": "The client was very happy with the site and has received positive feedback from clients and colleagues.",
+    "objective": "Timothy Malnick, a leadership coach, facilitator, and organisational psychologist, needed a website that reflected his expertise and professional services. His existing site was outdated, difficult to navigate, and content-heavy, making it less effective for web audiences. The goal was to create an easy-to-navigate site that showcased his services, provided a platform for his blog, and adopted a punchier, more web-friendly style of writing.",
+    "process": "Tim provided a detailed brief and extensive content, reflecting his skill in long-form writing. It took careful collaboration to guide him toward a more concise style suitable for the web. After auditing his existing site, I designed the new layout in Figma and developed it in WordPress using Oxygen Builder, incorporating custom PHP and JavaScript for specific functionality. The site was optimized for SEO and performance, leading to faster load times and improved visibility.",
+    "result": "Tim was delighted with the final website, which now balances his expertise in content creation with a clear, user-friendly design. Clients and colleagues have provided excellent feedback, praising the site’s modern aesthetic, ease of navigation, and concise, impactful copy.",
     "images": {
       "small": "",
       "large": "/assets/images/tim-hero.webp",
@@ -24,25 +24,20 @@
     "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
   },
   {
-    "id": "jude-lawson",
-    "title": "Jude Lawson Therapy",
-    "excerpt": "Web design and development of a custom Webflow site for a Bristol based counsellor and psychotherapist.",
-    "heading": "Web design and development of a custom Webflow site.",
-    "url": "https://judelawsontherapy.co.uk/",
-    "services": [
-      "Website Design",
-      "Webflow Development",
-      "SEO",
-      "Netlify Hosting"
-    ],
-    "objective": "Jude Lawson is a Bristol based counsellor and psychotherapist. She required a simple and engaging website that showcased her services and expertise, focussing on accessibility and inclusivity.",
-    "process": "The client provided a simple brief, design system and content for the site. Using a font developed for dyslexic readers and a colour palette that is accessible to all, I designed the site in Figma and developed the final website using Webflow. As  there was no need for regular content updates, the site was exported from Webflow and hosted on Netlify.",
-    "result": "The client was delighted with the site and extremely grateful for the attention to detail and accessibility considerations.",
+    "id": "ilove-snacks",
+    "title": "iLOVE SNACKS",
+    "excerpt": "Web design and development of a Shopify site for this award winning ethical snack food producer.",
+    "heading": "Web design and development of a Shopify site.",
+    "url": "https://ilovesnacks.co.uk/",
+    "services": ["Website Design", "Shopify Development", "SEO"],
+    "objective": "Amanda from iLOVE SNACKS approached me with a WordPress site that was slow to load and hard to navigate. She wanted a solution that improved performance, refreshed the design, and enhanced usability.",
+    "process": "To address the immediate issue, I optimized the existing site’s images, improving loading times while building the new site. I then collaborated closely with Amanda through multiple design iterations, ensuring the final look and feel aligned with her vision before developing the updated site. ",
+    "result": "The new site is fast, user-friendly, and visually appealing, with a modern design that reflects the iLOVE SNACKS brand. Improved performance and navigation have enhanced the user experience, making it easier for customers to explore products and make purchases.",
     "images": {
       "small": "",
-      "large": "/assets/images/jude-hero-1280.webp"
+      "large": "/assets/images/ilove-snacks-home.webp"
     },
-    "altHero": "Screenshot of the hero section from Jude Lawson Therapy's website",
-    "tech": ["Wordpress", "PHP", "Oxygen", "Custom Code"]
+    "altHero": "Screenshot of the homepage hero section from I Love Snacks website",
+    "tech": ["Shopify", "CSS", "Javascript"]
   }
 ]

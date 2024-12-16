@@ -62,7 +62,7 @@ h3 {
 }
 
 p {
-  max-width: 60ch;
+  max-width: 70ch;
   color: var(--color-primary);
 }
 
@@ -94,10 +94,10 @@ fieldset {
   text-transform: uppercase;
 }
 
-@media (max-width: 370px) {
+@media (max-width: 600px) {
   header,
   main,
   footer {
-    padding-inline: var(--space-2xs);
+    padding-inline: 0;
   }
 }
