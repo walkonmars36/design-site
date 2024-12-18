@@ -17,7 +17,7 @@
   --hamburger-color: var(--color-primary);
   --ff-secondary: "Ubuntu", sans-serif;
   --ff-body: "OpenSans", sans-serif;
-  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1440,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
   --step--2: clamp(0.7813rem, 0.7759rem + 0.0268vw, 0.8rem);
   --step--1: clamp(0.9375rem, 0.9196rem + 0.0893vw, 1rem);
   --step-0: clamp(1.125rem, 1.0893rem + 0.1786vw, 1.25rem);

@@ -77,12 +77,6 @@ import { Code } from "astro:components";
         padding-bottom: var(--space-3xl);
       }
 
-      @media (max-width: 600px) {
-        .wrapper {
-          padding: var(--space-xl) 0;
-        }
-      }
-
       h2 {
         margin-left: var(--space-m);
         color: var(--color-white-80);
@@ -97,12 +91,18 @@ import { Code } from "astro:components";
       .services div {
         background: var(--color-white-80);
         border-radius: var(--border-radius-xl);
-        padding: var(--space-l) var(--space-m);
+        padding: var(--space-xl) var(--space-m);
         box-shadow: var(--shadow-low);
       }
 
       .flow {
         --flow-space: var(--space-s);
+      }
+
+      @media (max-width: 600px) {
+        .wrapper {
+          padding: var(--space-xl) 0;
+        }
       }
     </style>
   </div>
