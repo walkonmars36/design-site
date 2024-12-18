@@ -3,25 +3,45 @@ import HeroBtn from "../components/HeroBtn.astro";
 ---
 
 <section>
-  <div class="hero wrapper">
-    <span class="h3 bold">Hi, I'm Mark</span>
-    <h1>I design and develop websites</h1>
-
-    <h2 class="h3">
-      I can help you with ... <span id="typewriter"> </span>
-    </h2>
-    <HeroBtn />
+  <div class="hero wrapper-np">
+    <div class="hero__content">
+      <span>Hi, I’m Mark</span>
+      <h1>
+        A Web Designer / Developer <span>based in Bristol UK.</span>
+      </h1>
+      <p>
+        I can help you with ... <span class="typewriter"> </span>
+      </p>
+      <HeroBtn />
+    </div>
+    <div class="hero__image-wrap">
+      <img
+        src="/assets/images/mark-hero-large.webp"
+        alt="Bristol based web designer and developer Mark Lawson"
+      />
+    </div>
   </div>
 </section>
 
 <style>
-  h2 {
-    margin-top: var(--space-m);
-    display: flex;
-    flex-direction: column;
-    height: 3.75rem;
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    overflow: hidden;
   }
-  #typewriter {
+
+  .hero__content {
+    padding: var(--space-xl) var(--fluid-18-80);
+  }
+
+  h1 {
+    margin: 0.5rem 0;
+  }
+  h1 span {
+    color: #a9afbc;
+  }
+  .typewriter {
     margin-left: 0;
   }
 
@@ -41,13 +61,23 @@ import HeroBtn from "../components/HeroBtn.astro";
     max-width: 16ch;
   }
 
-  @media (min-width: 768px) {
-    h2 {
-      flex-direction: row;
-      height: initial;
+  @media (min-width: 992px) {
+    .hero {
+      grid-template-columns: 40rem 1fr;
     }
-    #typewriter {
-      margin-left: var(--space-xs);
+
+    .hero__content {
+      padding: 0 0;
+      padding-left: var(--fluid-18-80);
+    }
+
+    .hero__image-wrap {
+      max-width: 33.75rem;
+      justify-self: end;
+    }
+
+    .typewriter {
+      margin-left: 0.25rem;
     }
   }
 </style>
@@ -56,13 +86,12 @@ import HeroBtn from "../components/HeroBtn.astro";
   document.addEventListener("astro:page-load", () => {
     const words = [
       "Webflow",
-      "Wordpress",
       "Shopify",
+      "Custom Code",
       "SEO",
       "UX / UI Design",
-      "Custom Code",
     ];
-    let el = document.getElementById("typewriter");
+    let el = document.querySelector(".typewriter");
 
     let sleepTime = 100;
     let curWordIndex = 0;
