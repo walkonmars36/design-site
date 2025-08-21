@@ -93,10 +93,9 @@
   fieldset:has([required]) > label::after {
     content: " *";
     color: var(--clr-white);
-    font-weight: 700;
   }
 
-  /* kill default fieldset box so only the inputs show state */
+  /* Reset default fieldset box so only the inputs show state */
   fieldset {
     border: 0;
     padding: 0;
@@ -134,6 +133,29 @@
   .submit.btn:hover {
     background: var(--color-accent-300);
     transform: scale(1.03);
+  }
+
+  /* Normalise autofill look to your theme */
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-text-fill-color: inherit;
+    box-shadow: 0 0 0 1000px var(--input-background) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--input-background) inset;
+  }
+
+  /* Give autofilled fields a “valid” border immediately */
+  input:-webkit-autofill {
+    border: 2px solid var(--color-accent-300);
+  }
+
+  /* If the autofilled value is invalid (e.g., bad email), show error border */
+  form.was-validated input:-webkit-autofill:invalid {
+    border: 2px solid var(--clr-error);
+  }
+
+  /* (Optional, if you want the valid border even before .was-validated) */
+  input:-webkit-autofill:invalid {
+    border: 2px solid var(--clr-error);
   }
 </style>
 
