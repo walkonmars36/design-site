@@ -7,6 +7,8 @@
   netlify-honeypot="bot-field"
 >
   <input type="hidden" name="form-name" value="contact" />
+  <!-- real honeypot input for Netlify -->
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off" hidden />
 
   <fieldset>
     <label for="firstName">First name</label>
@@ -17,8 +19,16 @@
       autocomplete="given-name"
       required
       placeholder=" "
+      aria-describedby="firstName-error"
     />
-    <span class="error-text font-xs-step-2">First name is required</span>
+    <span
+      id="firstName-error"
+      class="error-text font-xs-step-2"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      First name is required
+    </span>
   </fieldset>
 
   <fieldset>
@@ -30,8 +40,16 @@
       autocomplete="family-name"
       required
       placeholder=" "
+      aria-describedby="lastName-error"
     />
-    <span class="error-text font-xs-step-2">Last name is required</span>
+    <span
+      id="lastName-error"
+      class="error-text font-xs-step-2"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      Last name is required
+    </span>
   </fieldset>
 
   <fieldset>
@@ -41,10 +59,21 @@
       name="email"
       type="email"
       autocomplete="email"
+      inputmode="email"
+      autocapitalize="none"
+      spellcheck="false"
       required
       placeholder=" "
+      aria-describedby="email-error"
     />
-    <span class="error-text font-xs-step-2">Email is not valid</span>
+    <span
+      id="email-error"
+      class="error-text font-xs-step-2"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      Email is not valid
+    </span>
   </fieldset>
 
   <fieldset>
@@ -55,8 +84,17 @@
       rows="5"
       required
       minlength="5"
-      placeholder=" "></textarea>
-    <span class="error-text font-xs-step-2">Message is required</span>
+      placeholder=" "
+      aria-describedby="message-error"
+      spellcheck="true"></textarea>
+    <span
+      id="message-error"
+      class="error-text font-xs-step-2"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      Message is required
+    </span>
   </fieldset>
 
   <button class="submit btn" type="submit">Send</button>
@@ -69,14 +107,17 @@
     color: var(--clr-error);
     text-align: end;
   }
+
   form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
+
   label {
     color: var(--color-white);
   }
+
   input,
   textarea {
     width: 100%;
@@ -88,25 +129,37 @@
     border-bottom: 2px solid var(--input-grey);
     outline: transparent;
   }
-  input:not(textarea) {
+
+  input {
     line-height: 1;
     height: 2.25rem;
   }
+
   textarea {
     margin-top: var(--space-2xs);
     resize: vertical;
     overflow: auto;
   }
+
   input:focus,
   textarea:focus {
     background: var(--input-focus);
     color: var(--color-primary);
   }
 
-  /* Append a white asterisk to labels whose fieldset contains a required control */
+  /* keep focus visible for keyboard users */
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-accent-300);
+    outline-offset: 2px;
+  }
+
+  /* Append an asterisk to labels whose fieldset contains a required control */
+  /* use currentColor so it matches the label colour; swap to var(--clr-error) if you prefer red */
   fieldset:has([required]) > label::after {
     content: " *";
-    color: var(--clr-white);
+    color: currentColor;
+    font-weight: 700;
   }
 
   /* Reset default fieldset box so only the inputs show state */
@@ -116,8 +169,7 @@
     margin: 0;
   }
 
-  /* show styles ONLY AFTER first failed submit;
-   target just inputs/textarea and change the bottom border */
+  /* show styles ONLY AFTER first failed submit; full border on controls */
   form.was-validated input:invalid,
   form.was-validated textarea:invalid {
     border: 2px solid var(--clr-error);
@@ -132,6 +184,7 @@
   form.was-validated textarea:invalid ~ .error-text {
     display: block;
   }
+
   /* button */
   .submit.btn {
     align-self: flex-start;
@@ -149,32 +202,8 @@
     transform: scale(1.03);
   }
 
-  /* Normalise autofill look to your theme */
-  input:-webkit-autofill,
-  textarea:-webkit-autofill {
-    -webkit-text-fill-color: inherit;
-    box-shadow: 0 0 0 1000px var(--input-background) inset;
-    -webkit-box-shadow: 0 0 0 1000px var(--input-background) inset;
-  }
-
-  /* Give autofilled fields a “valid” border immediately */
-  input:-webkit-autofill {
-    border: 2px solid var(--color-accent-300);
-  }
-
-  /* If the autofilled value is invalid (e.g., bad email), show error border */
-  form.was-validated input:-webkit-autofill:invalid {
-    border: 2px solid var(--clr-error);
-  }
-
-  /* (Optional, if you want the valid border even before .was-validated) */
-  input:-webkit-autofill:invalid {
-    border: 2px solid var(--clr-error);
-  }
-
-  /* Keep your focus look when the field has content OR is focused */
-  input:focus,
-  textarea:focus,
+  /* --- Autofill normalisation (consolidated) --- */
+  /* Make filled/autofilled fields look like 'focused' */
   input:not(:placeholder-shown),
   textarea:not(:placeholder-shown),
   input:-webkit-autofill,
@@ -183,12 +212,23 @@
     color: var(--color-primary);
   }
 
-  /* Normalize autofill so your colors show instead of yellow */
+  /* Paint over Chrome/Safari yellow */
   input:-webkit-autofill,
   textarea:-webkit-autofill {
     -webkit-text-fill-color: var(--color-primary);
     box-shadow: 0 0 0 1000px var(--input-focus) inset;
     -webkit-box-shadow: 0 0 0 1000px var(--input-focus) inset;
+  }
+
+  /* Show a 'valid' border on autofilled inputs; invalid overrides below */
+  input:-webkit-autofill {
+    border: 2px solid var(--color-accent-300);
+  }
+
+  /* If the autofilled value is invalid (e.g., bad email), show error border */
+  form.was-validated input:-webkit-autofill:invalid,
+  input:-webkit-autofill:invalid {
+    border: 2px solid var(--clr-error);
   }
 </style>
 
@@ -197,24 +237,26 @@
 
   const attachValidation = () => {
     const form = document.getElementById("contact-form");
-    if (!form || form.dataset.bound === "true") return; // avoid double-binding
+    if (!form || form.dataset.bound === "true") return;
     form.dataset.bound = "true";
 
-    // Disable native popups only when JS is active (progressive enhancement)
+    // Use inline errors (no native bubbles) when JS is active
     form.noValidate = true;
 
     const first = document.getElementById("firstName");
     const last = document.getElementById("lastName");
+    const email = document.getElementById("email");
     const msg = document.getElementById("message");
 
-    // Block whitespace-only values for names/message
+    // Block whitespace-only values for names/message and reflect a11y state
     const ensureNonEmpty = (el, label) => {
       if (!el) return;
-      el.setCustomValidity(
-        el.value && el.value.trim() !== "" ? "" : `Please enter your ${label}.`
-      );
+      const ok = !!el.value && el.value.trim() !== "";
+      el.setCustomValidity(ok ? "" : `Please enter your ${label}.`);
+      el.setAttribute("aria-invalid", ok ? "false" : "true");
     };
 
+    // Keep custom validity up to date while typing (no errors shown until submit)
     first &&
       first.addEventListener("input", () =>
         ensureNonEmpty(first, "first name")
@@ -223,18 +265,25 @@
       last.addEventListener("input", () => ensureNonEmpty(last, "last name"));
     msg &&
       msg.addEventListener("input", () => {
-        msg.setCustomValidity(
-          msg.value && msg.value.trim() !== "" ? "" : "Please enter a message."
-        );
+        const ok = !!msg.value && msg.value.trim() !== "";
+        msg.setCustomValidity(ok ? "" : "Please enter a message.");
+        msg.setAttribute("aria-invalid", ok ? "false" : "true");
+      });
+
+    // Optional: trim email input on blur to avoid stray spaces
+    email &&
+      email.addEventListener("blur", () => {
+        email.value = email.value.trim();
       });
 
     form.addEventListener("submit", (e) => {
       ensureNonEmpty(first, "first name");
       ensureNonEmpty(last, "last name");
-      if (msg)
-        msg.setCustomValidity(
-          msg.value && msg.value.trim() !== "" ? "" : "Please enter a message."
-        );
+      if (msg) {
+        const ok = !!msg.value && msg.value.trim() !== "";
+        msg.setCustomValidity(ok ? "" : "Please enter a message.");
+        msg.setAttribute("aria-invalid", ok ? "false" : "true");
+      }
 
       if (!form.checkValidity()) {
         e.preventDefault();
@@ -242,7 +291,6 @@
         const firstInvalid = form.querySelector(":invalid");
         if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
       }
-      // else: submit to Netlify normally
     });
   };
 
@@ -255,10 +303,8 @@
     attachValidation();
   }
 
-  // Astro soft navigations
+  // Astro soft navigations + BFCache restores
   document.addEventListener("astro:page-load", attachValidation);
-
-  // Back/forward cache: re-enable our classing and bindings, clear previous state
   window.addEventListener("pageshow", () => {
     const form = document.getElementById("contact-form");
     if (form) {
