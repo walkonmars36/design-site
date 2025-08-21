@@ -16,6 +16,7 @@
       type="text"
       autocomplete="given-name"
       required
+      placeholder=" "
     />
     <span class="error-text font-xs-step-2">First name is required</span>
   </fieldset>
@@ -28,20 +29,33 @@
       type="text"
       autocomplete="family-name"
       required
+      placeholder=" "
     />
     <span class="error-text font-xs-step-2">Last name is required</span>
   </fieldset>
 
   <fieldset>
     <label for="email">Email</label>
-    <input id="email" name="email" type="email" autocomplete="email" required />
+    <input
+      id="email"
+      name="email"
+      type="email"
+      autocomplete="email"
+      required
+      placeholder=" "
+    />
     <span class="error-text font-xs-step-2">Email is not valid</span>
   </fieldset>
 
   <fieldset>
     <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" required minlength="5"
-    ></textarea>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      minlength="5"
+      placeholder=" "></textarea>
     <span class="error-text font-xs-step-2">Message is required</span>
   </fieldset>
 
@@ -156,6 +170,25 @@
   /* (Optional, if you want the valid border even before .was-validated) */
   input:-webkit-autofill:invalid {
     border: 2px solid var(--clr-error);
+  }
+
+  /* Keep your focus look when the field has content OR is focused */
+  input:focus,
+  textarea:focus,
+  input:not(:placeholder-shown),
+  textarea:not(:placeholder-shown),
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    background: var(--input-focus);
+    color: var(--color-primary);
+  }
+
+  /* Normalize autofill so your colors show instead of yellow */
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-primary);
+    box-shadow: 0 0 0 1000px var(--input-focus) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--input-focus) inset;
   }
 </style>
 
