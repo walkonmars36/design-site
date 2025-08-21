@@ -8,7 +8,7 @@
     "services": ["Website Design", "Webflow Development", "Custom GSAP", "SEO"],
     "objective": "Avon Airstream Rentals needed a new website to replace their outdated one, which was not mobile-friendly and lacked the modern aesthetic they desired. The goal was to create a visually appealing, user-friendly site that showcased their luxury Airstream rentals, offered a booking system and improved online visibility.",
     "process": "I created the layout in Figma, focusing on a modern, clean design that highlighted the luxury aspect of their rentals. The site was developed in Webflow (with some custom GSAP), to allow for easy updates and maintenance. I implemented a third party booking system and embedded WhatsApp to enable instant contact.",
-    "result": "Andy was thrilled with the new website, which now features a sleek design, improved navigation, and a mobile-friendly layout. The site has received positive feedback from customers, and Andy has reported an increase in bookings since the launch.",
+    "result": "The new website now features a clean design, improved navigation, mobile-friendly layout and allows customers to check availability and book online.",
     "images": {
       "large": "/assets/images/avon-airstream-rentals-homepage.webp",
       "featured": "/assets/images/webflow-aar-sq.webp"
