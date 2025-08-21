@@ -5,7 +5,6 @@
   method="post"
   data-netlify="true"
   netlify-honeypot="bot-field"
-  novalidate
 >
   <input type="hidden" name="form-name" value="contact" />
 
@@ -90,19 +89,31 @@
     color: var(--color-primary);
   }
 
-  /* show styles ONLY AFTER first failed submit */
-  form.was-validated :invalid {
-    border: 2px solid var(--clr-error);
+  /* kill default fieldset box so only the inputs show state */
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
   }
-  form.was-validated :invalid ~ .error-text {
+
+  /* show styles ONLY AFTER first failed submit;
+   target just inputs/textarea and change the bottom border */
+  form.was-validated input:invalid,
+  form.was-validated textarea:invalid {
+    border: none;
+    border-bottom: 2px solid var(--clr-error);
+  }
+
+  form.was-validated input:valid,
+  form.was-validated textarea:valid {
+    border: none;
+    border-bottom: 2px solid var(--color-accent-300);
+  }
+
+  form.was-validated input:invalid ~ .error-text,
+  form.was-validated textarea:invalid ~ .error-text {
     display: block;
   }
-
-  /* optional success styling after first failed submit */
-  form.was-validated :valid {
-    border: 2px solid var(--color-accent-300);
-  }
-
   /* button */
   .submit.btn {
     align-self: flex-start;
@@ -122,40 +133,44 @@
 </style>
 
 <script>
-  // @ts-nocheck  // keep VS Code quiet for inline scripts in .astro
+  // @ts-nocheck
 
-  const form = document.getElementById("contact-form");
-  const first = document.getElementById("firstName");
-  const last = document.getElementById("lastName");
-  const email = document.getElementById("email");
-  const msg = document.getElementById("message");
+  const attachValidation = () => {
+    const form = document.getElementById("contact-form");
+    if (!form || form.dataset.bound === "true") return; // avoid double-binding
+    form.dataset.bound = "true";
 
-  // Helpers to prevent whitespace-only values on names/message
-  const requireNonSpace = (el, message) => {
-    if (!el) return;
-    el.setCustomValidity(el.value && el.value.trim() !== "" ? "" : message);
-  };
+    // Disable native popups only when JS is active (progressive enhancement)
+    form.noValidate = true;
 
-  // Keep custom validity up to date while typing (no errors shown until submit)
-  [first, last].forEach((el, i) => {
-    if (!el) return;
-    const label = i === 0 ? "first" : "last";
-    el.addEventListener("input", () =>
-      requireNonSpace(el, `Please enter your ${label} name.`)
-    );
-  });
-  if (msg) {
-    msg.addEventListener("input", () => {
-      const hasText = msg.value && msg.value.trim() !== "";
-      msg.setCustomValidity(hasText ? "" : "Please enter a message.");
-    });
-  }
+    const first = document.getElementById("firstName");
+    const last = document.getElementById("lastName");
+    const msg = document.getElementById("message");
 
-  if (form) {
+    // Block whitespace-only values for names/message
+    const ensureNonEmpty = (el, label) => {
+      if (!el) return;
+      el.setCustomValidity(
+        el.value && el.value.trim() !== "" ? "" : `Please enter your ${label}.`
+      );
+    };
+
+    first &&
+      first.addEventListener("input", () =>
+        ensureNonEmpty(first, "first name")
+      );
+    last &&
+      last.addEventListener("input", () => ensureNonEmpty(last, "last name"));
+    msg &&
+      msg.addEventListener("input", () => {
+        msg.setCustomValidity(
+          msg.value && msg.value.trim() !== "" ? "" : "Please enter a message."
+        );
+      });
+
     form.addEventListener("submit", (e) => {
-      // Ensure latest checks are applied
-      requireNonSpace(first, "Please enter your first name.");
-      requireNonSpace(last, "Please enter your last name.");
+      ensureNonEmpty(first, "first name");
+      ensureNonEmpty(last, "last name");
       if (msg)
         msg.setCustomValidity(
           msg.value && msg.value.trim() !== "" ? "" : "Please enter a message."
@@ -167,7 +182,28 @@
         const firstInvalid = form.querySelector(":invalid");
         if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
       }
-      // If valid, it posts to Netlify as normal
+      // else: submit to Netlify normally
     });
+  };
+
+  // Initial load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", attachValidation, {
+      once: true,
+    });
+  } else {
+    attachValidation();
   }
+
+  // Astro soft navigations (if you use them)
+  document.addEventListener("astro:page-load", attachValidation);
+
+  // Back/forward cache: re-enable our classing and bindings, clear previous state
+  window.addEventListener("pageshow", () => {
+    const form = document.getElementById("contact-form");
+    if (form) {
+      form.classList.remove("was-validated");
+      attachValidation();
+    }
+  });
 </script>
