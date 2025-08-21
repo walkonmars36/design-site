@@ -61,6 +61,12 @@ import HeroBtn from "../components/HeroBtn.astro";
     max-width: 16ch;
   }
 
+  .hero__image-wrap {
+    max-width: 33.75rem;
+    height: 25rem;
+    justify-self: end;
+  }
+
   @media (min-width: 992px) {
     .hero {
       grid-template-columns: 40rem 1fr;
@@ -72,8 +78,7 @@ import HeroBtn from "../components/HeroBtn.astro";
     }
 
     .hero__image-wrap {
-      max-width: 33.75rem;
-      justify-self: end;
+      height: 37.5rem;
     }
 
     .typewriter {

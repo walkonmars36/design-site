@@ -54,6 +54,7 @@ img,
 picture {
   max-width: 100%;
   display: block;
+  object-fit: cover;
 }
 /* give svg's that don't have width or height set a default size */
 svg:not([width]):not([height]) {
