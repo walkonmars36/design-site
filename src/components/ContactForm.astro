@@ -100,14 +100,12 @@
    target just inputs/textarea and change the bottom border */
   form.was-validated input:invalid,
   form.was-validated textarea:invalid {
-    border: none;
-    border-bottom: 2px solid var(--clr-error);
+    border: 2px solid var(--clr-error);
   }
 
   form.was-validated input:valid,
   form.was-validated textarea:valid {
-    border: none;
-    border-bottom: 2px solid var(--color-accent-300);
+    border: 2px solid var(--color-accent-300);
   }
 
   form.was-validated input:invalid ~ .error-text,
@@ -195,7 +193,7 @@
     attachValidation();
   }
 
-  // Astro soft navigations (if you use them)
+  // Astro soft navigations
   document.addEventListener("astro:page-load", attachValidation);
 
   // Back/forward cache: re-enable our classing and bindings, clear previous state
