@@ -7,14 +7,15 @@
     "url": "https://avonairstreamrentals.co.uk/",
     "services": ["Website Design", "Webflow Development", "SEO"],
     "objective": "Avon Airstream Rentals needed a new website to replace their outdated one, which was not mobile-friendly and lacked the modern aesthetic they desired. The goal was to create a visually appealing, user-friendly site that showcased their luxury Airstream rentals and improved online visibility.",
-    "process": "Andy from Avon Airstream Rentals provided a detailed brief and a clear vision for the new site. I designed the layout in Figma, focusing on a modern, clean aesthetic that highlighted the luxury aspect of their rentals. The site was developed in Webflow, allowing for easy updates and maintenance. I also implemented SEO best practices to enhance visibility in search engines.",
+    "process": "I designed the layout in Figma, focusing on a modern, clean aesthetic that highlighted the luxury aspect of their rentals, featuring photo galleries. The site was developed in Webflow, allowing for easy updates and maintenance. I also implemented SEO best practices to enhance visibility in search engines.",
     "result": "Andy was thrilled with the new website, which now features a sleek design, improved navigation, and a mobile-friendly layout. The site has received positive feedback from customers, and Andy has reported an increase in bookings since the launch.",
     "images": {
       "large": "/assets/images/avon-airstream-rentals-homepage.webp",
-      "featured": "/assets/images/aar-logo-full.svg"
+      "featured": "/assets/images/webflow-aar-sq.png"
     },
     "altHero": "Screenshot of the hero section from Avon Airstream Rentals website",
-    "tech": ["Webflow", "CSS", "JavaScript"]
+    "altFeatured": "Logo of Avon Airstream Rentals",
+    "tech": ["Webflow", "CSS", "GSAP", "JavaScript"]
   },
   {
     "id": "timothy-malnick",
