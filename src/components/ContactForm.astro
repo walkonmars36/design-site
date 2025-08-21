@@ -7,7 +7,6 @@
   netlify-honeypot="bot-field"
 >
   <input type="hidden" name="form-name" value="contact" />
-  <!-- real honeypot input for Netlify -->
   <input type="text" name="bot-field" tabindex="-1" autocomplete="off" hidden />
 
   <fieldset>
@@ -154,22 +153,41 @@
     outline-offset: 2px;
   }
 
-  /* Append an asterisk to labels whose fieldset contains a required control */
-  /* use currentColor so it matches the label colour; swap to var(--clr-error) if you prefer red */
+  /* asterisk for required fields */
   fieldset:has([required]) > label::after {
     content: " *";
     color: currentColor;
     font-weight: 700;
   }
 
-  /* Reset default fieldset box so only the inputs show state */
+  /* reset default fieldset box */
   fieldset {
     border: 0;
     padding: 0;
     margin: 0;
   }
 
-  /* show styles ONLY AFTER first failed submit; full border on controls */
+  /* ---------------- Filled state (before validation) ---------------- */
+  /* If a control has content OR is autofilled, keep focus look + show accent border */
+  input:not(:placeholder-shown),
+  textarea:not(:placeholder-shown),
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    background: var(--input-focus);
+    color: var(--color-primary);
+    border: 2px solid var(--color-accent-300);
+  }
+
+  /* Normalize Chrome/Safari autofill paint */
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-primary);
+    box-shadow: 0 0 0 1000px var(--input-focus) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--input-focus) inset;
+  }
+
+  /* ---------------- After first failed submit ---------------- */
+  /* These come LAST so they override the filled-state border when invalid/valid */
   form.was-validated input:invalid,
   form.was-validated textarea:invalid {
     border: 2px solid var(--clr-error);
@@ -200,35 +218,6 @@
   .submit.btn:hover {
     background: var(--color-accent-300);
     transform: scale(1.03);
-  }
-
-  /* --- Autofill normalisation (consolidated) --- */
-  /* Make filled/autofilled fields look like 'focused' */
-  input:not(:placeholder-shown),
-  textarea:not(:placeholder-shown),
-  input:-webkit-autofill,
-  textarea:-webkit-autofill {
-    background: var(--input-focus);
-    color: var(--color-primary);
-  }
-
-  /* Paint over Chrome/Safari yellow */
-  input:-webkit-autofill,
-  textarea:-webkit-autofill {
-    -webkit-text-fill-color: var(--color-primary);
-    box-shadow: 0 0 0 1000px var(--input-focus) inset;
-    -webkit-box-shadow: 0 0 0 1000px var(--input-focus) inset;
-  }
-
-  /* Show a 'valid' border on autofilled inputs; invalid overrides below */
-  input:-webkit-autofill {
-    border: 2px solid var(--color-accent-300);
-  }
-
-  /* If the autofilled value is invalid (e.g., bad email), show error border */
-  form.was-validated input:-webkit-autofill:invalid,
-  input:-webkit-autofill:invalid {
-    border: 2px solid var(--clr-error);
   }
 </style>
 
