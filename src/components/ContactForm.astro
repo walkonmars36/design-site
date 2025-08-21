@@ -89,6 +89,13 @@
     color: var(--color-primary);
   }
 
+  /* Append a white asterisk to labels whose fieldset contains a required control */
+  fieldset:has([required]) > label::after {
+    content: " *";
+    color: var(--clr-white);
+    font-weight: 700;
+  }
+
   /* kill default fieldset box so only the inputs show state */
   fieldset {
     border: 0;
