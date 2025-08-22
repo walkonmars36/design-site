@@ -18,7 +18,7 @@
       </div>
 
       <details class="about-disclosure">
-        <summary class="btn">Read more</summary>
+        <summary class="btn space-xs">Read more ...</summary>
 
         <div class="more-text flow">
           <p>
@@ -71,8 +71,13 @@
   }
 
   /* --- Summary “Read more” button (top opener) --- */
+
+  summary.btn,
+  .details-close {
+    color: currentColor;
+    font-weight: 700;
+  }
   summary.btn {
-    color: var(--color-accent-500);
     cursor: pointer;
     list-style: none; /* Firefox default marker */
     user-select: none;
