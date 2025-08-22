@@ -18,10 +18,7 @@
       </div>
 
       <details class="about-disclosure">
-        <summary class="btn">
-          <span class="label-more">Read more</span>
-          <span class="label-less">Show less</span>
-        </summary>
+        <summary class="btn">Read more</summary>
 
         <div class="more-text flow">
           <p>
@@ -48,6 +45,7 @@
             tailored to your needs and budget, with a collaborative approach
             that makes you feel like we’re part of the same team.
           </p>
+          <button type="button" class="btn details-close">Show less</button>
         </div>
       </details>
     </div>
@@ -55,30 +53,28 @@
 </section>
 
 <style>
+  /* --- About section base --- */
   section {
     margin-top: var(--space-l);
   }
-
   .about {
     margin-inline: auto;
     background: var(--color-bg-light);
   }
-
   .about__content {
     max-width: 65rem;
     margin-inline: auto;
   }
-
   .huge-5 {
     line-height: 1.2;
     max-width: 23ch;
   }
 
-  /* Make summary look/behave like your buttons */
+  /* --- Summary “Read more” button (top opener) --- */
   summary.btn {
     color: var(--color-accent-500);
     cursor: pointer;
-    list-style: none; /* Firefox */
+    list-style: none; /* Firefox default marker */
     user-select: none;
     display: inline-flex;
     align-items: center;
@@ -86,60 +82,48 @@
   }
   summary.btn::-webkit-details-marker {
     display: none;
-  } /* Chrome/Safari */
+  } /* Chrome/Safari marker */
   summary.btn::marker {
     content: "";
-  } /* Firefox */
+  } /* Firefox marker reset */
   summary.btn:focus-visible {
     outline: 2px solid var(--color-accent-300);
     outline-offset: 2px;
   }
 
-  /* Toggle labels */
+  /* --- Open/close visibility (Safari-safe) --- */
+  /* Hide the top summary when open; show the bottom close button */
+  details.about-disclosure[open] > summary.btn {
+    display: none;
+  }
+  .details-close {
+    display: none;
+  }
+  details.about-disclosure[open] .details-close {
+    display: inline-flex;
+  }
+
+  /* Optional: if your summary contains label spans, this swaps them */
   .label-less {
     display: none;
   }
-  details[open] .label-more {
+  details.about-disclosure[open] .label-more {
     display: none;
   }
-  details[open] .label-less {
+  details.about-disclosure[open] .label-less {
     display: inline;
   }
 
-  /* -------- Generic disclosure layout (works for all “read more” blocks) -------- */
-  details.about-disclosure {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s, 0.75rem);
-  }
-
-  /* Summary first when closed, moves to bottom when open */
-  details.about-disclosure > summary.btn {
-    order: 1;
-  }
-  details.about-disclosure .more-text {
-    order: 2;
-  }
-  details.about-disclosure[open] > summary.btn {
-    order: 3;
-  }
-
-  /* Collapsible region — JS-driven smooth transition (replace the CSS-only block) */
+  /* --- Collapsible panel --- */
+  /* JS will animate height; just ensure we can clip. */
   details.about-disclosure .more-text {
     margin-top: 1em;
-    overflow: hidden; /* clip during animation */
-    /* remove max-height/opacity transitions — JS will animate height */
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    details.about-disclosure .more-text {
-      transition: none;
-    }
+    overflow: hidden;
   }
 </style>
 
 <script is:inline>
-  // Smooth expand/collapse for ALL <details class="about-disclosure"> blocks
+  // Smooth open/close for ALL <details class="about-disclosure"> blocks on the page
   function bindDisclosures() {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -149,13 +133,14 @@
 
       const summary = det.querySelector("summary");
       const panel = det.querySelector(".more-text");
+      const closeBtn = det.querySelector(".details-close");
       if (!summary || !panel) return;
 
       panel.style.overflow = panel.style.overflow || "hidden";
 
       const openAnim = () => {
         det.setAttribute("open", ""); // set open state first
-        if (reduce) return; // no motion
+        if (reduce) return;
         panel.style.height = "0px";
         const end = panel.scrollHeight;
         requestAnimationFrame(() => {
@@ -188,22 +173,28 @@
           () => {
             panel.style.height = "";
             panel.style.transition = "";
-            det.removeAttribute("open"); // actually close after collapse
+            det.removeAttribute("open");
           },
           { once: true }
         );
       };
 
-      // Intercept native toggle to avoid the yoyo loop
+      // Open from the top summary (prevent native toggle to avoid loops)
       summary.addEventListener("click", (e) => {
         e.preventDefault();
-        if (det.hasAttribute("open")) closeAnim();
-        else openAnim();
+        if (!det.hasAttribute("open")) openAnim();
       });
+
+      // Close from the bottom button
+      if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (det.hasAttribute("open")) closeAnim();
+        });
+      }
     });
   }
 
-  // Initial + Astro soft nav + back/forward cache
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", bindDisclosures, {
       once: true,
