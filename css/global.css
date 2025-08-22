@@ -337,6 +337,7 @@ img,
 picture {
   max-width: 100%;
   display: block;
+  object-fit: cover;
 }
 
 /* give svg's that don't have width or height set a default size */
@@ -422,7 +423,7 @@ h3:not(.services-h3)::after,
   font-family: "OpenSans";
   font-style: normal;
   src: url("/assets/fonts/variable/OpenSans-VariableFont_wght.woff2") format("woff2");
-  font-variation-settings: "wght" 400 700;
+  font-variation-settings: "wght" 400 600 700;
 }
 @font-face {
   font-family: "Ubuntu";
@@ -480,6 +481,7 @@ p {
 a {
   color: var(--color-accent-500);
   text-decoration: none;
+  font-weight: 600;
 }
 
 fieldset {
