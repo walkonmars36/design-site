@@ -442,6 +442,8 @@ h3:not(.services-h3)::after,
 }
 html {
   scroll-behavior: smooth;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {

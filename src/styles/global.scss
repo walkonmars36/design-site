@@ -32,6 +32,8 @@
 
 html {
   scroll-behavior: smooth;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
