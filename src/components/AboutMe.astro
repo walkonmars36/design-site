@@ -1,7 +1,3 @@
----
-
----
-
 <section id="about-me">
   <div class="about flow wrapper">
     <div class="about__content">
@@ -20,34 +16,40 @@
           business, creating websites to promote local artists and their work.
         </p>
       </div>
-      <div class="more-text flow">
-        <p>
-          This experience gave me a strong eye for detail, colour, and design,
-          along with a deep understanding of working closely with clients to
-          bring their visions to life.
-        </p>
-        <p>
-          Today, I focus on frontend development, user experience, and
-          accessibility, while drawing on technical knowledge from backend
-          development and software engineering training.
-        </p>
-        <p>
-          Alongside web design, I run an online t-shirt design business, which
-          keeps me connected to creative industries and sharpens my skills in
-          ecommerce and branding.
-        </p>
-        <p>
-          I believe in building websites that reflect your goals and values,
-          whether you're an individual, small business, or nonprofit.
-        </p>
-        <p>
-          Based in Bristol, UK, I’ll work with you to create a site that’s
-          tailored to your needs and budget, with a collaborative approach that
-          makes you feel like we’re part of the same team.
-        </p>
-      </div>
-      <button class="btn read-more">Read more</button>
-      <button class="btn show-less">Show less</button>
+
+      <details class="about-disclosure">
+        <summary class="btn">
+          <span class="label-more">Read more</span>
+          <span class="label-less">Show less</span>
+        </summary>
+
+        <div class="more-text flow">
+          <p>
+            This experience gave me a strong eye for detail, colour, and design,
+            along with a deep understanding of working closely with clients to
+            bring their visions to life.
+          </p>
+          <p>
+            Today, I focus on frontend development, user experience, and
+            accessibility, while drawing on technical knowledge from backend
+            development and software engineering training.
+          </p>
+          <p>
+            Alongside web design, I run an online t-shirt design business, which
+            keeps me connected to creative industries and sharpens my skills in
+            ecommerce and branding.
+          </p>
+          <p>
+            I believe in building websites that reflect your goals and values,
+            whether you're an individual, small business, or nonprofit.
+          </p>
+          <p>
+            Based in Bristol, UK, I’ll work with you to create a site that’s
+            tailored to your needs and budget, with a collaborative approach
+            that makes you feel like we’re part of the same team.
+          </p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -55,9 +57,6 @@
 <style>
   section {
     margin-top: var(--space-l);
-  }
-  button.btn {
-    color: var(--color-accent-500);
   }
 
   .about {
@@ -69,55 +68,149 @@
     max-width: 65rem;
     margin-inline: auto;
   }
+
   .huge-5 {
     line-height: 1.2;
     max-width: 23ch;
   }
-  .show-less {
+
+  /* Make summary look/behave like your buttons */
+  summary.btn {
+    color: var(--color-accent-500);
+    cursor: pointer;
+    list-style: none; /* Firefox */
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  summary.btn::-webkit-details-marker {
     display: none;
+  } /* Chrome/Safari */
+  summary.btn::marker {
+    content: "";
+  } /* Firefox */
+  summary.btn:focus-visible {
+    outline: 2px solid var(--color-accent-300);
+    outline-offset: 2px;
+  }
+
+  /* Toggle labels */
+  .label-less {
+    display: none;
+  }
+  details[open] .label-more {
+    display: none;
+  }
+  details[open] .label-less {
+    display: inline;
+  }
+
+  /* -------- Generic disclosure layout (works for all “read more” blocks) -------- */
+  details.about-disclosure {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s, 0.75rem);
+  }
+
+  /* Summary first when closed, moves to bottom when open */
+  details.about-disclosure > summary.btn {
+    order: 1;
+  }
+  details.about-disclosure .more-text {
+    order: 2;
+  }
+  details.about-disclosure[open] > summary.btn {
+    order: 3;
+  }
+
+  /* Collapsible region — JS-driven smooth transition (replace the CSS-only block) */
+  details.about-disclosure .more-text {
     margin-top: 1em;
+    overflow: hidden; /* clip during animation */
+    /* remove max-height/opacity transitions — JS will animate height */
   }
 
-  .read-more,
-  .show-less {
-    transition: font-weight 0.3s;
-  }
-
-  .read-more:hover,
-  .show-less:hover {
-    font-weight: 700;
-  }
-
-  .more-text {
-    margin-top: 1em;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition:
-      opacity 0.5s,
-      max-height 0.5s;
-  }
-  .more-text.visible {
-    opacity: 1;
-    max-height: 100rem;
+  @media (prefers-reduced-motion: reduce) {
+    details.about-disclosure .more-text {
+      transition: none;
+    }
   }
 </style>
 
-<script>
-  // read more button
-  const readMore = document.querySelector(".read-more") as HTMLButtonElement;
-  const showLess = document.querySelector(".show-less") as HTMLButtonElement;
-  const moreText = document.querySelector(".more-text");
+<script is:inline>
+  // Smooth expand/collapse for ALL <details class="about-disclosure"> blocks
+  function bindDisclosures() {
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  readMore.addEventListener("click", () => {
-    moreText.classList.add("visible");
-    readMore.style.display = "none";
-    showLess.style.display = "block";
-  });
+    document.querySelectorAll("details.about-disclosure").forEach((det) => {
+      if (det.dataset.bound) return;
+      det.dataset.bound = "1";
 
-  showLess.addEventListener("click", () => {
-    moreText.classList.remove("visible");
-    readMore.style.display = "block";
-    showLess.style.display = "none";
-  });
+      const summary = det.querySelector("summary");
+      const panel = det.querySelector(".more-text");
+      if (!summary || !panel) return;
+
+      panel.style.overflow = panel.style.overflow || "hidden";
+
+      const openAnim = () => {
+        det.setAttribute("open", ""); // set open state first
+        if (reduce) return; // no motion
+        panel.style.height = "0px";
+        const end = panel.scrollHeight;
+        requestAnimationFrame(() => {
+          panel.style.transition = "height 350ms ease";
+          panel.style.height = end + "px";
+        });
+        panel.addEventListener(
+          "transitionend",
+          () => {
+            panel.style.height = "";
+            panel.style.transition = "";
+          },
+          { once: true }
+        );
+      };
+
+      const closeAnim = () => {
+        if (reduce) {
+          det.removeAttribute("open");
+          return;
+        }
+        const start = panel.scrollHeight;
+        panel.style.height = start + "px";
+        requestAnimationFrame(() => {
+          panel.style.transition = "height 300ms ease";
+          panel.style.height = "0px";
+        });
+        panel.addEventListener(
+          "transitionend",
+          () => {
+            panel.style.height = "";
+            panel.style.transition = "";
+            det.removeAttribute("open"); // actually close after collapse
+          },
+          { once: true }
+        );
+      };
+
+      // Intercept native toggle to avoid the yoyo loop
+      summary.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (det.hasAttribute("open")) closeAnim();
+        else openAnim();
+      });
+    });
+  }
+
+  // Initial + Astro soft nav + back/forward cache
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindDisclosures, {
+      once: true,
+    });
+  } else {
+    bindDisclosures();
+  }
+  document.addEventListener("astro:page-load", bindDisclosures);
+  window.addEventListener("pageshow", bindDisclosures);
 </script>
