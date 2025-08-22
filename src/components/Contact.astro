@@ -16,7 +16,18 @@ import ContactForm from "./ContactForm.astro";
         </p>
         <p>
           or email me at
-          <span class="email">mark@walkon<b>deathtobots</b>mars.co.uk</span>
+          <button
+            type="button"
+            class="email-copy"
+            data-user="mark"
+            data-domain="walkonmars.co.uk"
+          >
+            <span class="email-vis">
+              mark@walkon<b aria-hidden="true">deathtobots</b>mars.co.uk
+            </span>
+            <span class="copy-toast" aria-hidden="true">Copied!</span>
+            <span class="sr-only" aria-live="polite"></span>
+          </button>
         </p>
       </div>
       <ContactForm />
@@ -69,4 +80,129 @@ import ContactForm from "./ContactForm.astro";
   span.email b {
     display: none;
   }
+
+  /* Make the whole thing look like a link */
+  .email-copy {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: currentColor;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 0.08em;
+
+    position: relative; /* for the toast */
+    display: inline; /* behaves like text */
+  }
+  .email-copy:focus-visible {
+    outline: 2px solid var(--color-accent-300);
+    outline-offset: 2px;
+  }
+
+  /* Hide the honeypot token from users/AT */
+  .email-vis b {
+    display: none;
+  }
+
+  /* The “Copied!” toast: off-layout so it doesn’t shift the line */
+  .copy-toast {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    transform: translateY(-0.25rem);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 0.85em;
+    padding: 0.15em 0.4em;
+    border-radius: 0.3rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 150ms ease,
+      transform 150ms ease,
+      visibility 0s linear 150ms;
+  }
+  .email-copy[data-copied="true"] .copy-toast {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-0.5rem);
+    transition-delay: 0s;
+  }
+
+  /* Visually hidden helper (screen-reader only) */
+  .sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
 </style>
+
+<script is:inline>
+  const bindEmailCopy = () => {
+    document.querySelectorAll(".email-copy").forEach((btn) => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = "1";
+
+      const user = btn.dataset.user;
+      const domain = btn.dataset.domain;
+      const email = `${user}@${domain}`;
+      const live = btn.querySelector(".sr-only");
+
+      async function copyNow() {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(email);
+          } else {
+            const ta = document.createElement("textarea");
+            ta.value = email;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "absolute";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            ta.remove();
+          }
+          btn.dataset.copied = "true";
+          if (live) {
+            live.textContent = "Email copied to clipboard";
+          }
+          setTimeout(() => {
+            btn.removeAttribute("data-copied");
+            if (live) {
+              live.textContent = "";
+            }
+          }, 1200);
+        } catch {}
+      }
+
+      btn.addEventListener("click", copyNow);
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          copyNow();
+        }
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindEmailCopy, {
+      once: true,
+    });
+  } else {
+    bindEmailCopy();
+  }
+  document.addEventListener("astro:page-load", bindEmailCopy);
+  window.addEventListener("pageshow", bindEmailCopy);
+</script>
