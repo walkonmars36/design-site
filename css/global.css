@@ -6,7 +6,7 @@
   --color-accent-200: #a9f0e2;
   --color-accent-300: #88ebdf;
   --color-accent-400: #0fc5b0;
-  --color-accent-500: #00937e;
+  --color-accent-500: #027e6b;
   --color-accent-600: #0a4039;
   --color-primary: #1d1e20;
   --color-secondary-200: #434956;
@@ -487,6 +487,7 @@ a {
   color: var(--color-accent-500);
   text-decoration: none;
   font-weight: 600;
+  cursor: pointer;
 }
 
 fieldset {
