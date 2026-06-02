@@ -1,6 +1,17 @@
 ---
-import projectData from "../data/project-data.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { sanityClient } from "../sanity/client";
+
+const projectData = await sanityClient.fetch(`
+  *[_type == "project"] | order(_createdAt asc) {
+    "id": slug.current,
+    title,
+    excerpt,
+    "heroImage": heroImage.asset->url,
+    "altHero": heroImage.alt,
+  }
+`);
+
 const pageTitle = "Projects | walkonmars.design";
 const description =
   "A collection of projects by walkonmars.design showcasing web design and development.";
@@ -11,16 +22,18 @@ const description =
     <h1 class="wrapper">Projects</h1>
 
     {
-      projectData.map(({ id, title, images, excerpt, altHero }) => (
+      projectData.map(({ id, title, heroImage, excerpt, altHero }) => (
         <section class="project wrapper">
-          <a href={`/project-detail/${id} `} class="project__link-img">
+          <a href={`/project-detail/${id}`} class="project__link-img">
             <div class="project__img-wrapper">
-              <img
-                class="border-radius-lg"
-                src={images.large}
-                alt={altHero}
-                title="View Project"
-              />
+              {heroImage && (
+                <img
+                  class="border-radius-lg"
+                  src={heroImage}
+                  alt={altHero}
+                  title="View Project"
+                />
+              )}
             </div>
           </a>
           <div>

@@ -5,7 +5,8 @@ import ResetFilters from "../../components/ResetFilters.astro";
 import BlogPost from "../../components/BlogPost.astro";
 import SelectableTag from "../../components/SelectableTag.astro";
 
-let allPosts = await Astro.glob("./posts/*.md");
+const postModules = import.meta.glob<{ frontmatter: any; url: string }>("./posts/*.md", { eager: true });
+let allPosts = Object.values(postModules);
 
 allPosts.sort((a, b) => {
   let dateA = new Date(a.frontmatter.pubDate);

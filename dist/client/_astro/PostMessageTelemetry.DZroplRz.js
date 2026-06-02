@@ -1,0 +1,1 @@
+import{c as i,N as u}from"./pane2.C76Mdgvr.js";import{r as a}from"./client.BGlq-OEd.js";const f=n=>{const e=i.c(4),{comlink:o}=n,t=u();let r,s;return e[0]!==o||e[1]!==t?(r=()=>o.on("visual-editing/telemetry-log",c=>{const{event:l,data:m}=c;m?t.log(l,m):t.log(l)}),s=[o,t],e[0]=o,e[1]=t,e[2]=r,e[3]=s):(r=e[2],s=e[3]),a.useEffect(r,s),null};var y=a.memo(f);export{y as default};

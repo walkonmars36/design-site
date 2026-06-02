@@ -1,53 +1,32 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import projectData from "../../data/project-data.json";
+import { sanityClient } from "../../sanity/client";
+import { createDataAttribute } from "@sanity/visual-editing";
 
-export async function getStaticPaths() {
-  return projectData.map(
-    ({
-      id,
-      title,
-      heading,
-      images,
-      altHero,
-      url,
-      services,
-      objective,
-      process,
-      result,
-      tech,
-    }) => {
-      return {
-        params: { id },
-        props: {
-          title,
-          heading,
-          url,
-          images,
-          altHero,
-          services,
-          objective,
-          process,
-          result,
-          tech,
-        },
-      };
-    }
-  );
-}
+const { id } = Astro.params;
 
-const {
-  title,
-  heading,
-  images,
-  url,
-  services,
-  objective,
-  process,
-  altHero,
-  result,
-  tech,
-} = Astro.props;
+const project = await sanityClient.fetch(
+  `*[_type == "project" && slug.current == $id][0] {
+    "docId": _id,
+    title,
+    heading,
+    url,
+    services,
+    objective,
+    process,
+    result,
+    "heroImage": heroImage.asset->url,
+    "altHero": heroImage.alt,
+  }`,
+  { id }
+);
+
+if (!project) return Astro.redirect("/404");
+
+const { docId, title, heading, heroImage, url, services, objective, process, altHero, result } = project;
+
+const attr = (path: string) =>
+  createDataAttribute({ id: docId, type: "project", path }).toString();
 
 const pageTitle = `${title} | Project detail`;
 const description = `Project detail for ${title}`;
@@ -55,16 +34,16 @@ const description = `Project detail for ${title}`;
 
 <BaseLayout pageTitle={pageTitle} description={description}>
   <article>
-    <h1 class="wrapper">Project detail: <br />{title}</h1>
+    <h1 class="wrapper" data-sanity={attr("title")}>Project detail: <br />{title}</h1>
     <section class="wrapper">
-      <img src={images.large} alt={altHero} />
+      {heroImage && <img src={heroImage} alt={altHero} />}
       <div class="project-detail__info flex space-xl">
         <div>
           <span class="project-info title-small">Project info</span>
         </div>
         <div>
           <div class="project-detail-content">
-            <h2 class="project-detail__h2">{heading}</h2>
+            <h2 class="project-detail__h2" data-sanity={attr("heading")}>{heading}</h2>
             <div class="project-detail__url flex">
               <span class="title-small">Client site:</span>
               <a href={url} target="_blank">{url}</a>
@@ -83,15 +62,15 @@ const description = `Project detail for ${title}`;
       <div class="project-detail__info-b flex">
         <div class="flow">
           <h3>Objective</h3>
-          <p>{objective}</p>
+          <p data-sanity={attr("objective")}>{objective}</p>
         </div>
         <div class="flow">
           <h3>Process</h3>
-          <p>{process}</p>
+          <p data-sanity={attr("process")}>{process}</p>
         </div>
         <div class="flow">
           <h3>Result</h3>
-          <p>{result}</p>
+          <p data-sanity={attr("result")}>{result}</p>
         </div>
       </div>
     </section>
