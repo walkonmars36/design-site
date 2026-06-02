@@ -6,11 +6,11 @@ import HeroBtn from "../components/HeroBtn.astro";
   <div class="hero wrapper-np">
     <div class="hero__content">
       <span>Hi, I’m Mark Lawson</span>
-      <h1>
-        A Web Designer / Developer <span>based in Bristol UK.</span>
-      </h1>
+      <h1>Your digital partner</h1>
       <p>
-        I can help you with ... <span class="typewriter"> </span>
+        Helping purpose driven professionals get more from their online
+        presence, from strategy and messaging through to the build and the tools
+        that support it.
       </p>
       <HeroBtn />
     </div>
@@ -75,55 +75,3 @@ import HeroBtn from "../components/HeroBtn.astro";
     background: var(--color-secondary-200);
   }
 </style>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const words = [
-      "Webflow",
-      "Custom Code",
-      "Accessibility",
-      "UX / UI Design",
-      "Shopify",
-
-      "SEO",
-    ];
-    let el = document.querySelector(".typewriter");
-
-    let sleepTime = 100;
-    let curWordIndex = 0;
-
-    function writeLoop() {
-      if (!el) {
-        return;
-      }
-
-      let curWord = words[curWordIndex % words.length];
-      let i = 0;
-
-      function typeForward() {
-        if (i <= curWord.length) {
-          el.textContent = curWord.substring(0, i + 1);
-          i++;
-          setTimeout(typeForward, sleepTime);
-        } else {
-          setTimeout(typeBackward, sleepTime * 5);
-        }
-      }
-
-      function typeBackward() {
-        if (i >= 0) {
-          el.textContent = curWord.substring(0, i - 1);
-          i--;
-          setTimeout(typeBackward, sleepTime);
-        } else {
-          curWordIndex = (curWordIndex + 1) % words.length;
-          setTimeout(writeLoop, sleepTime * 5);
-        }
-      }
-
-      typeForward();
-    }
-
-    writeLoop();
-  });
-</script>
